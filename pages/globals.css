@@ -9,3 +9,10 @@
 body {
   background-color: #020202;
 }
+
+.hero {
+  background-image: url('/assets/hero_index.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

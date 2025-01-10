@@ -4,16 +4,16 @@ import { Poppins } from 'next/font/google'
 
 const poppins = Poppins({
   subsets: ['latin'],
-  weight: ['100', '200', '300', '400', '500', '600', '700'], // Especifica los pesos que vas a usar
+  weight: ['100', '200', '300', '400', '500', '600', '700'],
 })
 
 export default function NavBar() {
   return (
     <>
       <section
-        className={`fixed left-0 top-0 z-10 w-full px-8 ${poppins.className}`}
+        className={`fixed left-0 top-0 z-10 w-full px-4 lg:px-8 ${poppins.className}`}
       >
-        <header className='header mx-auto flex h-16 max-w-[100rem] flex-row items-center justify-between'>
+        <header className='header mx-auto flex h-16 flex-row items-center justify-between'>
           <div className='logo__header relative min-w-[200px]'>
             <Link href={'/'} className='block'>
               <Image
@@ -46,7 +46,7 @@ export default function NavBar() {
               <div className='' key={id}>
                 <Link
                   href={`/${vinculo.toLowerCase()}`}
-                  className='text-base font-light tracking-wider text-white'
+                  className='text-clamp-menu font-light tracking-wider text-white'
                 >
                   {vinculo}
                 </Link>

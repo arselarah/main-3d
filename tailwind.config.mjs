@@ -15,6 +15,13 @@ export default {
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
       },
+      fontSize: {
+        'clamp-xl': 'clamp(1.8rem, 5vw, 5rem)',
+        'clamp-lg': 'clamp(1.5rem, 2.5vw, 3rem)',
+        'clamp-md': 'clamp(1rem, 2vw, 2rem)',
+        'clamp-sm': 'clamp(0.875rem, 1.5vw, 1.5rem)',
+        'clamp-menu': 'clamp(0.875rem, 1vw, 1.1rem)',
+      },
     },
     screens: {
       xsm: '480px',
