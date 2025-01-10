@@ -13,17 +13,17 @@ export default function HeroHome() {
         className={`hero relative m-0 h-dvh min-h-[640px] w-full ${poppins.className}`}
       >
         <div className='relative flex h-full w-full flex-col items-center justify-end bg-black bg-opacity-50'>
-          <div className='hero_text-container px-4 py-20 tracking-widest lg:px-8'>
-            <h1 className='text-clamp-xl text-center font-light leading-none text-white'>
+          <div className='hero_text-container px-4 pb-20 tracking-widest md:pb-[10%] lg:px-8'>
+            <h1 className='text-center text-clamp-xl font-light leading-none text-white'>
               Advanced research
               <br />
               and printing materials
             </h1>
-            <p className='text-clamp-sm mx-auto max-w-[350px] pt-6 text-center font-light text-white md:max-w-[520px] lg:max-w-[640px]'>
+            <p className='mx-auto max-w-[350px] pt-6 text-center text-clamp-sm font-light text-white md:max-w-[520px] lg:max-w-[640px]'>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non
               tincidunt eros.
             </p>
-            <div className='mx-auto mt-12 w-full max-w-[350px] rounded-full bg-white bg-opacity-15 py-3'>
+            <div className='mx-auto mt-12 w-full max-w-[450px] rounded-full bg-white bg-opacity-15 py-2'>
               <Link
                 href={'/'}
                 className='block text-center uppercase text-white'
