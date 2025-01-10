@@ -1,7 +1,9 @@
+import HeroHome from '@/components/HeroHome'
 export default function Home() {
   return (
     <>
-      <div>Main 3D Home</div>
+      <HeroHome />
+      <main className='text-white'>Main 3D Home</main>
     </>
-  );
+  )
 }

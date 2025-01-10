@@ -2,6 +2,7 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useRouter } from 'next/router'
 import '@/pages/globals.css'
+import NavBar from '@/components/NavBar'
 
 export default function App({ Component, pageProps }) {
   const router = useRouter()
@@ -26,6 +27,7 @@ export default function App({ Component, pageProps }) {
           exitState: {},
         }}
       >
+        <NavBar />
         <Component {...pageProps} />
       </motion.div>
     </AnimatePresence>
