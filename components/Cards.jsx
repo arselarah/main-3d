@@ -8,7 +8,9 @@ const poppins = Poppins({
 
 export default function Cards() {
   return (
-    <section className={`relative h-[300vh] p-4 lg:px-8 ${poppins.className}`}>
+    <section
+      className={`relative mb-40 h-[300vh] px-4 pt-20 lg:px-8 ${poppins.className}`}
+    >
       <Article1 />
       <Article2 />
       <Article3 />
@@ -19,7 +21,7 @@ export default function Cards() {
 const Article1 = () => {
   return (
     <div className='relative top-0 h-auto min-h-screen md:sticky'>
-      <div className='flex h-auto min-h-screen w-full flex-col justify-center rounded-3xl bg-[#EEF3ED] p-4 md:p-8'>
+      <div className='flex h-auto min-h-screen w-full flex-col justify-center bg-[#EEF3ED] p-4 md:p-8'>
         <div className='relative mx-auto flex h-full max-h-[1080px] w-full flex-col justify-center lg:w-[83vw]'>
           <div className='titleContainer text-black'>
             <h3 className='pb-4 text-center text-clamp-sm font-medium'>
@@ -71,9 +73,7 @@ const Article1 = () => {
             <div className='imageContainer relative h-[320px] overflow-hidden'>
               <div className='relative h-full w-full'>
                 <Image
-                  src={
-                    '/assets/Impresora-3D-tumakaer-nx-modular-Diagonal-SinFondo-1-1.png.webp'
-                  }
+                  src={'/assets/banner-landing-H56.webp'}
                   fill
                   className='object-cover'
                 />
@@ -88,8 +88,8 @@ const Article1 = () => {
 
 const Article2 = () => {
   return (
-    <div className='relative top-0 h-auto min-h-screen md:sticky'>
-      <div className='flex h-auto min-h-screen w-full flex-col justify-center rounded-3xl bg-[#EEF3ED] p-4 md:p-8'>
+    <div className='relative top-0 h-auto min-h-screen border-t-8 md:sticky'>
+      <div className='flex h-auto min-h-screen w-full flex-col justify-center bg-[#EEF3ED] bg-opacity-95 p-4 backdrop-blur-sm md:p-8'>
         <div className='relative mx-auto flex h-full max-h-[1080px] w-full flex-col justify-center lg:w-[83vw]'>
           <div className='titleContainer text-black'>
             <h3 className='pb-4 text-center text-clamp-sm font-medium'>
@@ -99,7 +99,7 @@ const Article2 = () => {
               Configuración con uno o dos extrusores de pellets o filamento
             </h2>
           </div>
-          <div className='infoContainer mt-20 flex flex-col items-center gap-4 md:flex-row md:gap-8'>
+          <div className='infoContainer mt-20 flex flex-col items-stretch gap-4 md:flex-row md:gap-8'>
             <div className='textContainer flex-1'>
               <div className='textContainer_title pb-4 md:pb-8'>
                 <h4 className='pr-[20%] text-clamp-sm font-medium leading-snug text-black'>
@@ -137,14 +137,13 @@ const Article2 = () => {
                 </div>
               </div>
             </div>
-            <div className='imageContainer flex-1'>
-              <div>
+            <div className='imageContainer min-h-[300px] flex-1'>
+              <div className='relative h-full min-h-[300px] w-full'>
                 <Image
                   src={
                     '/assets/Impresora-3D-tumakaer-nx-modular-Diagonal-SinFondo-1-1.png.webp'
                   }
-                  width={1080}
-                  height={1080}
+                  fill
                   className='object-contain'
                 />
               </div>
@@ -158,23 +157,23 @@ const Article2 = () => {
 
 const Article3 = () => {
   return (
-    <div className='relative top-0 h-auto min-h-screen md:sticky'>
-      <div className='flex h-screen w-full flex-col justify-center rounded-3xl bg-[#EEF3ED] p-4 md:p-8'>
+    <div className='relative top-0 h-auto min-h-screen border-t-8 md:sticky'>
+      <div className='flex h-auto min-h-screen w-full flex-col justify-center bg-[#EEF3ED] bg-opacity-95 p-4 backdrop-blur-sm md:p-8'>
         <div className='relative mx-auto flex h-full max-h-[1080px] w-full flex-col justify-center lg:w-[83vw]'>
           <div className='titleContainer text-black'>
             <h3 className='pb-4 text-center text-clamp-sm font-medium'>
-              NX 300 Modular
+              BIGFoot​ 500 Modular
             </h3>
             <h2 className='mx-auto max-w-[840px] text-center text-clamp-lg font-semibold leading-none'>
-              Configuración con uno o dos extrusores de pellets o filamento
+              Flexibilidad y precisión para grandes proyectos
             </h2>
           </div>
-          <div className='infoContainer mt-20 flex flex-col gap-4 md:flex-row md:gap-8'>
+          <div className='infoContainer mt-20 flex flex-col items-stretch gap-4 md:flex-row md:gap-8'>
             <div className='textContainer flex-1'>
               <div className='textContainer_title pb-4 md:pb-8'>
                 <h4 className='pr-[20%] text-clamp-sm font-medium leading-snug text-black'>
-                  La impresora 3D Tumaker NX 300 ofrece configuración con uno o
-                  dos extrusores de pellets o filamento, adaptados al trabajo.
+                  La impresora 3D Tumaker BigFoot 500 Modular es un equipo que
+                  redefine los estándares de la fabricación aditiva profesional.
                 </h4>
               </div>
               <div className='textContainer_caracteristicas flex flex-row flex-wrap gap-4 md:gap-8'>
@@ -207,7 +206,17 @@ const Article3 = () => {
                 </div>
               </div>
             </div>
-            <div className='imageContainer flex-1 bg-white'></div>
+            <div className='imageContainer min-h-[300px] flex-1'>
+              <div className='relative h-full min-h-[300px] w-full'>
+                <Image
+                  src={
+                    '/assets/Impresora-3D-Tumaker-2.0-BF-Modular-Pegatinas-Ind-SinFondo.png.webp'
+                  }
+                  fill
+                  className='object-contain'
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
