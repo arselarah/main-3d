@@ -1,5 +1,7 @@
 import { Poppins } from 'next/font/google'
 import Link from 'next/link'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useRef } from 'react'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -7,13 +9,24 @@ const poppins = Poppins({
 })
 
 export default function HeroHome() {
+  const container = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: container,
+    offset: ['start start', 'end start'],
+  })
+  const slideUp = useTransform(scrollYProgress, [0, 1], ['0%', '-25%'])
+  const opacityDown = useTransform(scrollYProgress, [0, 1], [1, 0.1])
   return (
     <>
       <section
+        ref={container}
         className={`hero relative m-0 h-dvh min-h-[640px] w-full ${poppins.className}`}
       >
         <div className='relative flex h-full w-full flex-col items-center justify-end bg-black bg-opacity-50'>
-          <div className='hero_text-container px-4 pb-20 tracking-widest md:pb-[10%] lg:px-8'>
+          <motion.div
+            style={{ y: slideUp, opacity: opacityDown }}
+            className='hero_text-container px-4 pb-20 tracking-widest md:pb-[10%] lg:px-8'
+          >
             <h1 className='text-center text-clamp-xl font-light leading-none text-white'>
               Advanced research
               <br />
@@ -31,7 +44,7 @@ export default function HeroHome() {
                 Descubre más
               </Link>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
     </>

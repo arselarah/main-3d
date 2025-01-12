@@ -6,7 +6,7 @@ export default function Home() {
       <HeroHome />
       <main className='text-white'>
         <Cards />
-        <section className='bg-negro relative h-screen w-full'></section>
+        <section className='relative h-screen w-full bg-negro'></section>
       </main>
     </>
   )
