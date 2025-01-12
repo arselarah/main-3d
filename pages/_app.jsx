@@ -3,8 +3,20 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useRouter } from 'next/router'
 import '@/pages/globals.css'
 import NavBar from '@/components/NavBar'
+import Lenis from 'lenis'
+import 'lenis/dist/lenis.css'
+import { useEffect } from 'react'
 
 export default function App({ Component, pageProps }) {
+  useEffect(() => {
+    const lenis = new Lenis()
+    function raf(time) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
+    requestAnimationFrame(raf)
+  }, [])
+
   const router = useRouter()
   return (
     // <AnimatePresence exitBeforeEnter>
