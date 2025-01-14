@@ -1,12 +1,14 @@
 import Cards from '@/components/Cards'
 import HeroHome from '@/components/HeroHome'
+import HorizontalDrag from '@/components/HorizontalDrag'
 export default function Home() {
   return (
     <>
       <HeroHome />
       <main className='text-white'>
         <Cards />
-        <section className='relative h-screen w-full bg-negro'></section>
+        <HorizontalDrag />
+        <section className='h-screen'></section>
       </main>
     </>
   )

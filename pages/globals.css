@@ -16,3 +16,14 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.impresora-uno {
+  background-image: url('/assets/pexels-googledeepmind-18069490.jpg');
+}
+.impresora-dos {
+  background-image: url('/assets/pexels-steve-30177090.jpg');
+}
+
+.impresora-tres {
+  background-image: url('/assets/pexels-thisisengineering-3862372.jpg');
+}
