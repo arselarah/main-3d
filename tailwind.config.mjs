@@ -11,8 +11,10 @@ export default {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
         rojo: '#C72020',
-        gris_oscuro: '#b2b2b2',
+        gris_oscuro: '#6C6C6C',
+
         negro: '#020202',
+        fondo_claro: '#EEF3ED',
       },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],

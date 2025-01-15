@@ -1,6 +1,12 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Link from 'next/link'
+import { Poppins } from 'next/font/google'
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600', '700'],
+})
 
 export default function HorizontalDrag() {
   const targetRef = useRef(null)
@@ -9,7 +15,10 @@ export default function HorizontalDrag() {
   const x = useTransform(scrollYProgress, [0, 1], ['0%', '-200%'])
   return (
     <>
-      <section className='draggableSlider h-[400vh]' ref={targetRef}>
+      <section
+        className='draggableSlider h-[400vh] tracking-widest'
+        ref={targetRef}
+      >
         <div className='draggableSlider_container sticky top-0 h-screen overflow-hidden'>
           <motion.div
             className='dragableSlider_images grid auto-cols-[100%] grid-flow-col'
@@ -23,7 +32,7 @@ export default function HorizontalDrag() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false }}
                     transition={{ duration: 0.5, ease: 'linear' }}
-                    className='absolute left-4 top-1/4 p-4 lg:left-16 lg:p-8'
+                    className={`absolute left-4 top-1/4 p-4 lg:left-16 lg:p-8 ${poppins.className}`}
                   >
                     <h2 className='border-b-[1px] border-white pb-4 text-clamp-xl font-light leading-none text-white'>
                       Advanced research

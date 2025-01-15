@@ -27,3 +27,8 @@ body {
 .impresora-tres {
   background-image: url('/assets/pexels-thisisengineering-3862372.jpg');
 }
+
+/* .escaneres_intem:nth-child(2),
+.escaneres_intem:nth-child(4) {
+  justify-self: end;
+} */

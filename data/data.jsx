@@ -51,3 +51,49 @@ export const impresoras = [
       '/assets/Impresora-3D-Tumaker-2.0-BF-Modular-Pegatinas-Ind-SinFondo.png.webp',
   },
 ]
+
+export const escaneres = [
+  {
+    titulo: 'Escáner 3D ONE',
+    texto: 'Dramatic time and cost savings compared to wax room and legacy SLA',
+    imagen: '/assets/Escaner-3d-KSCAN-Magic.png',
+  },
+  {
+    titulo: 'AutoScan-K',
+    texto: 'Dramatic time and cost savings compared to wax room and legacy SLA',
+    imagen: '/assets/escaner-3D-scantech-TrackScan-p42-27.png',
+  },
+  {
+    titulo: 'Escáneres 3D de Metrología',
+    texto: 'Dramatic time and cost savings compared to wax room and legacy SLA',
+    imagen: '/assets/Trackscan-p.png.webp',
+  },
+  {
+    titulo: 'AutoScan Customizado',
+    texto: 'Dramatic time and cost savings compared to wax room and legacy SLA',
+    imagen: '/assets/landing-Sistema-AutoScan-T42-3D-10.png.webp',
+  },
+]
+
+export const modales = [
+  {
+    titulo: 'Escáner 3D ONE',
+    texto: 'Dramatic time and cost savings compared to wax room and legacy SLA',
+    imagen: '/assets/Escaner-3d-KSCAN-Magic.png',
+  },
+  {
+    titulo: 'AutoScan-K',
+    texto: 'Dramatic time and cost savings compared to wax room and legacy SLA',
+    imagen: '/assets/escaner-3D-scantech-TrackScan-p42-27.png',
+  },
+  {
+    titulo: 'Escáneres 3D de Metrología',
+    texto: 'Dramatic time and cost savings compared to wax room and legacy SLA',
+    imagen: '/assets/Trackscan-p.png.webp',
+  },
+  {
+    titulo: 'AutoScan Customizado',
+    texto: 'Dramatic time and cost savings compared to wax room and legacy SLA',
+    imagen: '/assets/landing-Sistema-AutoScan-T42-3D-10.png.webp',
+  },
+]
