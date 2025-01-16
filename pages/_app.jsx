@@ -6,6 +6,7 @@ import NavBar from '@/components/NavBar'
 import Lenis from 'lenis'
 import 'lenis/dist/lenis.css'
 import { useEffect } from 'react'
+import Footer from '@/components/footer/Footer'
 
 export default function App({ Component, pageProps }) {
   useEffect(() => {
@@ -41,6 +42,7 @@ export default function App({ Component, pageProps }) {
       >
         <NavBar />
         <Component {...pageProps} />
+        <Footer />
       </motion.div>
     </AnimatePresence>
   )

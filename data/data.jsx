@@ -54,21 +54,49 @@ export const impresoras = [
 
 export const escaneres = [
   {
+    id: 1,
     titulo: 'Escáner 3D ONE',
     texto: 'Dramatic time and cost savings compared to wax room and legacy SLA',
     imagen: '/assets/Escaner-3d-KSCAN-Magic.png',
   },
   {
+    id: 2,
     titulo: 'AutoScan-K',
     texto: 'Dramatic time and cost savings compared to wax room and legacy SLA',
     imagen: '/assets/escaner-3D-scantech-TrackScan-p42-27.png',
   },
   {
+    id: 3,
     titulo: 'Escáneres 3D de Metrología',
     texto: 'Dramatic time and cost savings compared to wax room and legacy SLA',
     imagen: '/assets/Trackscan-p.png.webp',
   },
   {
+    id: 4,
+    titulo: 'AutoScan Customizado',
+    texto: 'Dramatic time and cost savings compared to wax room and legacy SLA',
+    imagen: '/assets/landing-Sistema-AutoScan-T42-3D-10.png.webp',
+  },
+  {
+    id: 5,
+    titulo: 'Escáner 3D ONE',
+    texto: 'Dramatic time and cost savings compared to wax room and legacy SLA',
+    imagen: '/assets/Escaner-3d-KSCAN-Magic.png',
+  },
+  {
+    id: 6,
+    titulo: 'AutoScan-K',
+    texto: 'Dramatic time and cost savings compared to wax room and legacy SLA',
+    imagen: '/assets/escaner-3D-scantech-TrackScan-p42-27.png',
+  },
+  {
+    id: 7,
+    titulo: 'Escáneres 3D de Metrología',
+    texto: 'Dramatic time and cost savings compared to wax room and legacy SLA',
+    imagen: '/assets/Trackscan-p.png.webp',
+  },
+  {
+    id: 8,
     titulo: 'AutoScan Customizado',
     texto: 'Dramatic time and cost savings compared to wax room and legacy SLA',
     imagen: '/assets/landing-Sistema-AutoScan-T42-3D-10.png.webp',

@@ -41,7 +41,7 @@ export default function Impresoras({
       ref={container}
       className='relative top-0 h-auto min-h-screen md:sticky'
     >
-      <div className='flex h-auto min-h-screen w-full flex-col justify-center bg-[#EEF3ED] p-4 md:p-8'>
+      <div className='flex h-auto min-h-screen w-full flex-col justify-center rounded-3xl bg-[#EEF3ED] p-4 md:p-8'>
         <div className='relative mx-auto flex h-full max-h-[1080px] w-full flex-col justify-center lg:w-[83vw]'>
           <div className='titleContainer border-b-[1px] border-gray-500 pb-20 text-black'>
             <motion.h3

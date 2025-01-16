@@ -7,7 +7,7 @@
 }
 
 body {
-  background-color: #020202;
+  background-color: #fff;
 }
 
 .hero {
@@ -32,3 +32,75 @@ body {
 .escaneres_intem:nth-child(4) {
   justify-self: end;
 } */
+
+.modalSlider {
+  transition: top 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.escaneres_intem::after {
+  content: '';
+  height: 1px;
+  background-color: #020202;
+  width: 50%;
+  position: absolute;
+  bottom: 0;
+  transition: width 0.8s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.escaneres_intem:hover::after {
+  width: 100%;
+}
+
+.clonDigital {
+  background-image: url('/assets/logo-clon-digital-blanco.png.webp');
+}
+
+.domoBio {
+  background-image: url('/assets/logo-domobio-negro.png.webp');
+}
+
+.aulaFuturo {
+  background-image: url('/assets/logo-aula-del-futuro-negro.png.webp');
+}
+
+.prevIcon {
+  background-image: url('/assets/8666557_chevron_left_icon.png');
+  background-size: 50%;
+}
+
+.nextIcon {
+  background-image: url('/assets/8666777_chevron_right_arrow_icon.png');
+  background-size: 50%;
+}
+
+.postUno {
+  background-image: url('/assets/realidad-aumentada-educacion.jpg.webp');
+}
+
+.postDos {
+  background-image: url('/assets/realidad-virtual-multijugador.jpg.webp');
+}
+
+.postTres {
+  background-image: url('/assets/DomoBIO-A4.png.webp');
+}
+
+.facebook {
+  background-image: url('/assets/icons/facebook.png');
+}
+
+.instagram {
+  background-image: url('/assets/icons/instagram.png');
+}
+
+.twitter {
+  background-image: url('/assets/icons/x.png');
+}
+
+.youtube {
+  background-image: url('/assets/icons/youtube.png');
+}
+
+.linkedin {
+  background-image: url('/assets/icons/linkedin.png');
+}

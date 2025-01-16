@@ -1,20 +1,44 @@
 import { motion } from 'framer-motion'
 import { Poppins } from 'next/font/google'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { escaneres } from '@/data/data'
+import Link from 'next/link'
 
 const poppins = Poppins({
   subsets: ['latin'],
   weight: ['100', '200', '300', '400', '500', '600', '700'],
 })
+
+const scaleAnimation = {
+  initial: {
+    scale: 0,
+    opacity: 0,
+    transition: { duration: 0.4, ease: [0.76, 0, 0.24, 1] },
+  },
+  open: {
+    scale: 1,
+    opacity: 1,
+    transition: { duration: 0.4, ease: [0.76, 0, 0.24, 1] },
+  },
+  closed: {
+    scale: 0,
+    opacity: 0,
+    transition: { duration: 0.4, ease: [0.76, 0, 0.24, 1] },
+  },
+}
+
 export default function Escaneres() {
+  const [modal, setModal] = useState({ active: false, index: 0 })
+  const { active, index } = modal
+  const container = useRef(null)
+
   return (
     <>
       <section
-        className={`relative min-h-screen w-full p-4 lg:p-8 ${poppins.className}`}
+        className={`relative w-full px-4 pt-20 lg:px-8 lg:pt-40 ${poppins.className}`}
       >
-        <article className='relative min-h-screen w-full bg-fondo_claro p-4 lg:p-16'>
+        <article className='relative w-full rounded-3xl bg-fondo_claro p-4 lg:p-16'>
           <div className='titleContainer border-b-[1px] border-gray-500 pb-20 text-black'>
             <motion.h3 className='pb-4 text-center text-clamp-sm font-medium'>
               Escáneres 3D
@@ -25,13 +49,19 @@ export default function Escaneres() {
             </motion.h2>
           </div>
 
-          <div className='relative flex h-[80vh] w-full flex-row flex-nowrap'>
-            <div className='relative h-full w-full'>
-              <div className='escaneres_contenedor h-full p-4 lg:p-16'>
-                {escaneres.map((escaner, titulo, texto, imagen, index) => (
+          <div className='relative h-auto w-full p-4 lg:p-16'>
+            <div className='relative grid h-full w-full grid-cols-2 justify-stretch'>
+              <div className='escaneres_contenedor h-full'>
+                {escaneres.map((escaner, index) => (
                   <div
-                    key={escaner.index}
-                    className='escaneres_intem cursor-pointer py-8'
+                    key={index}
+                    className='escaneres_intem group relative cursor-pointer py-8 transition-all duration-1000 hover:translate-x-5'
+                    onMouseEnter={() => {
+                      setModal({ active: true, index })
+                    }}
+                    onMouseLeave={() => {
+                      setModal({ active: false, index })
+                    }}
                   >
                     <h4 className='max-w-[240px] text-clamp-sm font-medium text-black'>
                       {escaner.titulo}
@@ -39,6 +69,12 @@ export default function Escaneres() {
                     <p className='max-w-[240px] text-gris_oscuro'>
                       {escaner.texto}
                     </p>
+                    <Link
+                      className='mas-info absolute right-0 top-1/2 hidden rounded-full bg-negro px-4 py-2 text-white opacity-0 transition-all duration-1000 group-hover:opacity-100 md:block'
+                      href={'/'}
+                    >
+                      Más Información
+                    </Link>
                     {/* <div className='absolute left-1/2 top-1/2 aspect-square w-3/4 max-w-2xl -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full border-2 border-negro'>
                       <Image
                         src={escaner.imagen}
@@ -47,26 +83,49 @@ export default function Escaneres() {
                         className='object-contain transition-all duration-500'
                       /> 
                     </div>*/}
+                    <Link
+                      href={`/${index}`}
+                      className='absolute inset-0 left-0 top-0'
+                    ></Link>
                   </div>
                 ))}
               </div>
-              <div className='modal-container absolute right-0 top-0 h-96 w-96 bg-white'>
-                <div className='modal-slider h-full w-full'>
-                  {escaneres.map((modalT, index) => {
-                    const { imagen, titulo } = modalT
-                    return (
+              <div className='pointer-events-none relative h-full w-full'>
+                <motion.div
+                  ref={container}
+                  variants={scaleAnimation}
+                  initial={'initial'}
+                  animate={active ? 'open' : 'closed'}
+                  className='modal-container sticky top-0 flex aspect-square w-full flex-col items-center justify-center overflow-hidden'
+                >
+                  <div
+                    className='modal-slider modalSlider absolute h-full w-full max-w-[640px]'
+                    style={{ top: index * -100 + '%' }}
+                  >
+                    {escaneres.map((escaner, index) => (
                       <div key={index} className='relative h-full w-full'>
                         <Image
-                          src={imagen}
+                          src={escaner.imagen}
                           fill
-                          alt={titulo}
+                          alt={escaner.titulo}
                           className='object-contain'
                         />
                       </div>
-                    )
-                  })}
-                </div>
+                    ))}
+                  </div>
+                </motion.div>
               </div>
+            </div>
+            {/* contenedor */}
+          </div>
+          <div className='titleContainer border-t-[1px] border-gray-500 py-20 text-black'>
+            <div className='mx-auto mt-12 w-full max-w-[450px] rounded-full bg-negro py-2'>
+              <Link
+                href={'/'}
+                className='block text-center uppercase text-white'
+              >
+                Descubre más
+              </Link>
             </div>
           </div>
         </article>
