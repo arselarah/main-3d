@@ -19,7 +19,7 @@ export default function Cards() {
     <>
       <section
         ref={container}
-        className={`relative mb-40 h-[300vh] px-4 pt-20 lg:px-8 ${poppins.className}`}
+        className={`relative mb-40 min-h-[300vh] px-4 pt-20 lg:px-8 ${poppins.className}`}
       >
         {impresoras.map((impresora, i) => {
           const targetScale = 1 - (impresoras.length - i) * 0.05

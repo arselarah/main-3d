@@ -50,7 +50,7 @@ export default function Escaneres() {
           </div>
 
           <div className='relative h-auto w-full p-4 lg:p-16'>
-            <div className='relative grid h-full w-full grid-cols-2 justify-stretch'>
+            <div className='relative grid h-full w-full md:grid-cols-2 justify-stretch'>
               <div className='escaneres_contenedor h-full'>
                 {escaneres.map((escaner, index) => (
                   <div
@@ -63,10 +63,10 @@ export default function Escaneres() {
                       setModal({ active: false, index })
                     }}
                   >
-                    <h4 className='max-w-[240px] text-clamp-sm font-medium text-black'>
+                    <h4 className='md:max-w-[240px] text-clamp-sm font-medium text-black'>
                       {escaner.titulo}
                     </h4>
-                    <p className='max-w-[240px] text-gris_oscuro'>
+                    <p className='md:max-w-[240px] text-gris_oscuro'>
                       {escaner.texto}
                     </p>
                     <Link
@@ -90,7 +90,7 @@ export default function Escaneres() {
                   </div>
                 ))}
               </div>
-              <div className='pointer-events-none relative h-full w-full'>
+              <div className='pointer-events-none relative h-full w-full hidden md:block'>
                 <motion.div
                   ref={container}
                   variants={scaleAnimation}
@@ -118,7 +118,7 @@ export default function Escaneres() {
             </div>
             {/* contenedor */}
           </div>
-          <div className='titleContainer border-t-[1px] border-gray-500 py-20 text-black'>
+          <div className='titleContainer py-20 text-black'>
             <div className='mx-auto mt-12 w-full max-w-[450px] rounded-full bg-negro py-2'>
               <Link
                 href={'/'}
