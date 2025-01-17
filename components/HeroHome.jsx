@@ -36,10 +36,10 @@ export default function HeroHome() {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non
               tincidunt eros.
             </p>
-            <div className='mx-auto mt-12 w-full max-w-[450px] rounded-full bg-white bg-opacity-15 py-2'>
+            <div className='group mx-auto mt-12 w-full max-w-[450px] rounded-full bg-white bg-opacity-15 py-2 transition-all duration-300 ease-[cubic-bezier(.51,.92,.24,1.15)] hover:bg-opacity-100'>
               <Link
                 href={'/'}
-                className='block text-center uppercase text-white'
+                className='block text-center uppercase text-white transition-all duration-300 ease-[cubic-bezier(.51,.92,.24,1.15)] group-hover:text-negro'
               >
                 Descubre más
               </Link>

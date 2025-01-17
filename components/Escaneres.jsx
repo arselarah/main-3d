@@ -50,7 +50,7 @@ export default function Escaneres() {
           </div>
 
           <div className='relative h-auto w-full p-4 lg:p-16'>
-            <div className='relative grid h-full w-full md:grid-cols-2 justify-stretch'>
+            <div className='relative grid h-full w-full justify-stretch md:grid-cols-2'>
               <div className='escaneres_contenedor h-full'>
                 {escaneres.map((escaner, index) => (
                   <div
@@ -63,14 +63,14 @@ export default function Escaneres() {
                       setModal({ active: false, index })
                     }}
                   >
-                    <h4 className='md:max-w-[240px] text-clamp-sm font-medium text-black'>
+                    <h4 className='text-clamp-sm font-medium text-black md:max-w-[240px]'>
                       {escaner.titulo}
                     </h4>
-                    <p className='md:max-w-[240px] text-gris_oscuro'>
+                    <p className='text-gris_oscuro md:max-w-[240px]'>
                       {escaner.texto}
                     </p>
                     <Link
-                      className='mas-info absolute right-0 top-1/2 hidden rounded-full bg-negro px-4 py-2 text-white opacity-0 transition-all duration-1000 group-hover:opacity-100 md:block'
+                      className='mas-info absolute right-0 top-1/2 z-10 hidden rounded-full border-[1px] border-negro bg-negro px-8 py-2 text-white opacity-0 transition-all duration-300 hover:bg-transparent hover:text-negro group-hover:opacity-100 md:block'
                       href={'/'}
                     >
                       Más Información
@@ -90,7 +90,7 @@ export default function Escaneres() {
                   </div>
                 ))}
               </div>
-              <div className='pointer-events-none relative h-full w-full hidden md:block'>
+              <div className='pointer-events-none relative hidden h-full w-full md:block'>
                 <motion.div
                   ref={container}
                   variants={scaleAnimation}
@@ -119,10 +119,10 @@ export default function Escaneres() {
             {/* contenedor */}
           </div>
           <div className='titleContainer py-20 text-black'>
-            <div className='mx-auto mt-12 w-full max-w-[450px] rounded-full bg-negro py-2'>
+            <div className='group mx-auto mt-12 w-full max-w-[450px] rounded-full border-[1px] border-negro bg-negro py-2 transition-all duration-300 hover:bg-transparent'>
               <Link
                 href={'/'}
-                className='block text-center uppercase text-white'
+                className='block text-center uppercase text-white transition-all duration-300 group-hover:text-negro'
               >
                 Descubre más
               </Link>

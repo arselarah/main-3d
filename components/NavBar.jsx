@@ -10,6 +10,18 @@ const poppins = Poppins({
 })
 
 export default function NavBar() {
+  const links = [
+    'Impresoras 3D',
+    'Escáneres 3D',
+    'AR-VR',
+    'Servicios',
+    'Accesorios',
+    'Consumibles',
+    'Nosotros',
+    'Blog',
+    'Soporte',
+  ]
+
   const [headerBackground, setHeaderBackground] = useState('transparent')
   const [textColor, setTextColor] = useState('text-white')
   const [burgerBackground, setBurgerBackground] = useState('bg-white')
@@ -98,23 +110,43 @@ export default function NavBar() {
               'Nosotros',
               'Blog',
               'Soporte',
-            ].map((vinculo, id) => (
-              <div className='' key={id}>
-                <Link
-                  href={`/${vinculo.toLowerCase()}`}
-                  className={`text-clamp-menu font-light tracking-wider ${textColor}`}
+            ].map((vinculo, id) => {
+              const width = vinculo.length * 12
+              const href = `/${vinculo.toLowerCase().replace(/\s+/g, '')}`
+              return (
+                <div
+                  className='group relative flex h-10 flex-col justify-center overflow-hidden px-1'
+                  key={id}
+                  style={{
+                    width: `${width}px`, // Aplica el ancho dinámico
+                  }}
                 >
-                  {vinculo}
-                </Link>
-              </div>
-            ))}
+                  <Link
+                    href={href}
+                    className={`text-clamp-menu font-light ${textColor} absolute inset-0 left-0 top-0 flex h-10 w-full flex-wrap items-center justify-center overflow-hidden`}
+                  >
+                    <div className='relative flex h-10 w-full items-center justify-center text-center tracking-wider transition-all delay-150 duration-300 ease-[cubic-bezier(.57,.21,.69,1.25)] group-hover:-translate-y-full'>
+                      {vinculo}
+                    </div>
+                    <div className='relative flex h-10 w-full items-center justify-center text-center font-semibold transition-all delay-150 duration-300 ease-[cubic-bezier(.57,.21,.69,1.25)] group-hover:-translate-y-full'>
+                      {vinculo}
+                    </div>
+                  </Link>
+                </div>
+              )
+            })}
           </nav>
-          <div className='cta__header hidden w-[200px] rounded-full bg-rojo py-2 md:block'>
+          <div className='cta__header group relative hidden h-10 w-[200px] flex-col justify-center overflow-hidden rounded-full bg-rojo md:flex'>
             <Link
               href={'/contacto'}
-              className='block text-center text-sm font-medium uppercase tracking-wider text-white'
+              className='absolute inset-0 left-0 top-0 flex h-10 flex-wrap items-center justify-center text-sm font-medium uppercase tracking-wider text-white'
             >
-              Contacto
+              <div className='relative flex h-10 w-full items-center justify-center text-center transition-all duration-300 ease-[cubic-bezier(.57,.21,.69,1.25)] group-hover:-translate-y-full'>
+                Contacto
+              </div>
+              <div className='relative flex h-10 w-full items-center justify-center text-center font-semibold transition-all duration-300 ease-[cubic-bezier(.57,.21,.69,1.25)] group-hover:-translate-y-full'>
+                Contacto
+              </div>
             </Link>
           </div>
         </header>

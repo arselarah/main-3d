@@ -32,10 +32,10 @@ export default function Footer() {
                 </h1>
               </div>
               <div className='flex flex-col'>
-                <Link href={''} className='mb-4 inline-block'>
+                <Link href={''} className='mb-4 inline-block hover:underline'>
                   info@main-3d.com
                 </Link>
-                <Link href={''} className='inline-block'>
+                <Link href={''} className='inline-block hover:underline'>
                   871 122 3344
                 </Link>
               </div>
@@ -44,40 +44,40 @@ export default function Footer() {
               <div className='flex flex-col items-start'>
                 <Link
                   href={''}
-                  className='mb-4 inline-block text-clamp-lg font-semibold leading-none lg:mb-8'
+                  className='mb-4 inline-block text-clamp-lg font-semibold leading-none transition-all duration-300 hover:ml-4 lg:mb-8'
                 >
                   Soporte
                 </Link>
                 <Link
                   href={''}
-                  className='mb-4 inline-block text-clamp-lg font-semibold leading-none lg:mb-8'
+                  className='mb-4 inline-block text-clamp-lg font-semibold leading-none transition-all duration-300 hover:ml-4 lg:mb-8'
                 >
                   Servicios
                 </Link>
                 <Link
                   href={''}
-                  className='mb-4 inline-block text-clamp-lg font-semibold leading-none lg:mb-8'
+                  className='mb-4 inline-block text-clamp-lg font-semibold leading-none transition-all duration-300 hover:ml-4 lg:mb-8'
                 >
                   Nosotros
                 </Link>
                 <Link
                   href={''}
-                  className='mb-4 inline-block text-clamp-lg font-semibold leading-none lg:mb-8'
+                  className='mb-4 inline-block text-clamp-lg font-semibold leading-none transition-all duration-300 hover:ml-4 lg:mb-8'
                 >
                   Contacto
                 </Link>
               </div>
               <div className='flex flex-col items-start'>
-                <Link href={''} className='mb-4 inline-block'>
+                <Link href={''} className='mb-4 inline-block hover:underline'>
                   Términos y Condiciones
                 </Link>
-                <Link href={''} className='mb-4 inline-block'>
+                <Link href={''} className='mb-4 inline-block hover:underline'>
                   Privacidad
                 </Link>
-                <Link href={''} className='mb-4 inline-block'>
+                <Link href={''} className='mb-4 inline-block hover:underline'>
                   Cookies
                 </Link>
-                <Link href={''} className='mb-4 inline-block'>
+                <Link href={''} className='mb-4 inline-block hover:underline'>
                   Lorem Impsum
                 </Link>
               </div>

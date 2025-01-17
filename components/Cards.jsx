@@ -30,7 +30,7 @@ export default function Cards() {
               {...impresora}
               progress={scrollYProgress}
               range={[i * 0.25, 1]}
-              targetScale={targetScale}
+              // targetScale={targetScale}
             />
           )
         })}

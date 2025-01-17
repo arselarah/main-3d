@@ -70,9 +70,12 @@ export default function IndexBlogSection() {
           </div> */}
         </article>
         <div className='titleContainer py-20 text-black'>
-          <div className='mx-auto mt-12 w-full max-w-[450px] rounded-full bg-negro py-2'>
-            <Link href={'/'} className='block text-center uppercase text-white'>
-              Ver todos
+          <div className='group mx-auto mt-12 w-full max-w-[450px] rounded-full border-[1px] border-negro bg-negro py-2 transition-all duration-300 hover:bg-transparent'>
+            <Link
+              href={'/'}
+              className='block text-center uppercase text-white transition-all duration-300 group-hover:text-negro'
+            >
+              Leer el Blog
             </Link>
           </div>
         </div>

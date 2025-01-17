@@ -14,8 +14,9 @@ export default function Home() {
         <HorizontalDrag />
         <Escaneres />
         <CarruselInicio />
-        {/* <Horizontal /> */}
+
         <IndexBlogSection />
+        {/* <Horizontal /> */}
       </main>
     </>
   )
