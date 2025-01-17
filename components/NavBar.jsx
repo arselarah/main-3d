@@ -12,6 +12,7 @@ const poppins = Poppins({
 export default function NavBar() {
   const [headerBackground, setHeaderBackground] = useState('transparent')
   const [textColor, setTextColor] = useState('text-white')
+  const [burgerBackground, setBurgerBackground] = useState('bg-white')
   const [hasScrolled, setHasScrolled] = useState(false) // Estado de scroll
 
   useEffect(() => {
@@ -25,12 +26,12 @@ export default function NavBar() {
 
       if (heroBottom <= scrollThreshold) {
         setHasScrolled(true) // Supera el umbral
-
+        setBurgerBackground('bg-negro')
         setHeaderBackground('rgba(255, 255, 255, 1)')
         setTextColor('text-black')
       } else {
         setHasScrolled(false) // Aún estamos en la sección Hero
-
+        setBurgerBackground('bg-white')
         setHeaderBackground('transparent')
         setTextColor('text-white')
       }
@@ -81,9 +82,9 @@ export default function NavBar() {
           </div>
           <div className='menuIcon_header 2xl:hidden'>
             <button className='flex h-9 flex-col justify-between p-2'>
-              <div className='h-[2px] w-10 bg-white'></div>
-              <div className='h-[2px] w-10 bg-white'></div>
-              <div className='h-[2px] w-10 bg-white'></div>
+              <div className={`h-[2px] w-10 ${burgerBackground}`}></div>
+              <div className={`h-[2px] w-10 ${burgerBackground}`}></div>
+              <div className={`h-[2px] w-10 ${burgerBackground}`}></div>
             </button>
           </div>
           <nav className='hidden w-auto grow flex-row justify-center gap-8 2xl:flex'>
