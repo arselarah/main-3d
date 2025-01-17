@@ -20,7 +20,7 @@ export default function HeroHome() {
     <>
       <section
         ref={container}
-        className={`hero relative m-0 h-dvh min-h-[640px] w-full ${poppins.className}`}
+        className={`hero relative m-0 h-dvh min-h-[640px] w-full ${poppins.className} hero`}
       >
         <div className='relative flex h-full w-full flex-col items-center justify-end bg-black bg-opacity-50'>
           <motion.div

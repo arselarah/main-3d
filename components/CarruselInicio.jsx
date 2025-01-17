@@ -98,7 +98,7 @@ export default function CarruselInicio() {
                 {slides.map((slide, index) => (
                   <motion.div
                     key={index}
-                    className='group relative overflow-hidden rounded-3xl'
+                    className='group relative aspect-video overflow-hidden rounded-3xl'
                   >
                     <Image
                       src={slide.imagen}

@@ -40,7 +40,7 @@ export default function IndexBlogSection() {
         </div>
         <article className='flex w-full flex-col justify-stretch gap-10 md:flex-row lg:gap-20'>
           {posts.map((post, index) => (
-            <div className='group relative flex flex-1 flex-col'>
+            <div key={index} className='group relative flex flex-1 flex-col'>
               <div
                 className={`aspect-video h-full w-full overflow-hidden rounded-3xl`}
               >
