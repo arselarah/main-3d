@@ -74,8 +74,25 @@ export default function NavBar() {
     <>
       <motion.section
         variants={{
-          visible: { y: 0 },
-          hidden: { y: '-100%' },
+          visible: {
+            y: 0,
+            transition: {
+              type: 'spring', // Puedes usar 'tween' o 'spring'
+              stiffness: 100, // Solo para 'spring'
+              damping: 15, // Solo para 'spring'
+              duration: 0.5, // Duración de la animación
+              delay: 0.2, // Retardo antes de iniciar
+            },
+          },
+          hidden: {
+            y: '-100%',
+            transition: {
+              type: 'tween', // Puedes cambiar esto según tus necesidades
+              ease: 'easeInOut',
+              duration: 0.5,
+              delay: 0.5,
+            },
+          },
         }}
         animate={hidden ? 'hidden' : 'visible'}
         className={`fixed left-0 top-0 z-10 w-full px-4 lg:px-8 ${poppins.className} menu`}
@@ -125,10 +142,10 @@ export default function NavBar() {
                     href={href}
                     className={`text-clamp-menu font-light ${textColor} absolute inset-0 left-0 top-0 flex h-10 w-full flex-wrap items-center justify-center overflow-hidden`}
                   >
-                    <div className='relative flex h-10 w-full items-center justify-center text-center tracking-wider transition-all delay-150 duration-300 ease-[cubic-bezier(.57,.21,.69,1.25)] group-hover:-translate-y-full'>
+                    <div className='relative flex h-10 w-full items-center justify-center text-center tracking-wider transition-all duration-500 ease-[cubic-bezier(.57,.21,.69,1.25)] group-hover:-translate-y-full'>
                       {vinculo}
                     </div>
-                    <div className='relative flex h-10 w-full items-center justify-center text-center font-semibold transition-all delay-150 duration-300 ease-[cubic-bezier(.57,.21,.69,1.25)] group-hover:-translate-y-full'>
+                    <div className='relative flex h-10 w-full items-center justify-center text-center font-semibold transition-all duration-500 ease-[cubic-bezier(.57,.21,.69,1.25)] group-hover:-translate-y-full'>
                       {vinculo}
                     </div>
                   </Link>
@@ -141,10 +158,10 @@ export default function NavBar() {
               href={'/contacto'}
               className='absolute inset-0 left-0 top-0 flex h-10 flex-wrap items-center justify-center text-sm font-medium uppercase tracking-wider text-white'
             >
-              <div className='relative flex h-10 w-full items-center justify-center text-center transition-all duration-300 ease-[cubic-bezier(.57,.21,.69,1.25)] group-hover:-translate-y-full'>
+              <div className='relative flex h-10 w-full items-center justify-center text-center transition-all duration-500 ease-[cubic-bezier(.57,.21,.69,1.25)] group-hover:-translate-y-full'>
                 Contacto
               </div>
-              <div className='relative flex h-10 w-full items-center justify-center text-center font-semibold transition-all duration-300 ease-[cubic-bezier(.57,.21,.69,1.25)] group-hover:-translate-y-full'>
+              <div className='relative flex h-10 w-full items-center justify-center text-center font-semibold transition-all duration-500 ease-[cubic-bezier(.57,.21,.69,1.25)] group-hover:-translate-y-full'>
                 Contacto
               </div>
             </Link>

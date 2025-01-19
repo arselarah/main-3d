@@ -40,11 +40,13 @@ export default function Impresoras({
     <motion.div
       //style={{ scale }}
       ref={container}
-      className='relative top-0 h-auto min-h-screen md:sticky'
+      className='relative top-0 flex h-auto min-h-screen items-center md:sticky'
     >
-      <div className='flex h-auto min-h-screen w-full flex-col justify-center rounded-3xl bg-fondo_claro p-4 md:p-8'>
+      {/* <div className='affter:border-t-[1px] relative flex h-auto min-h-[90vh] w-full flex-col justify-center overflow-hidden rounded-3xl bg-fondo_claro p-4 after:absolute after:left-1/2 after:top-0 after:h-[1px] after:w-[100%] after:-translate-x-1/2 after:bg-negro after:content-[""] md:p-8'></div> */}
+
+      <div className='relative flex h-auto min-h-[90vh] w-full flex-col items-center justify-center overflow-hidden rounded-3xl bg-fondo_claro p-4 md:p-8'>
         <div className='relative mx-auto flex h-full max-h-[1080px] w-full flex-col justify-center lg:w-[83vw]'>
-          <div className='titleContainer overflow-hidden border-b-[1px] border-gray-500 pb-20 text-black'>
+          <div className='titleContainer overflow-hidden pb-20 text-black'>
             <motion.h3
               initial={{ opacity: 0, x: '-50px' }}
               whileInView={{ opacity: 1, x: 0 }}

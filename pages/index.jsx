@@ -18,6 +18,23 @@ export default function Home() {
         <IndexBlogSection />
         {/* <Horizontal /> */}
       </main>
+      {/* <section className='relative h-[500vh] w-full bg-slate-400'>
+        <div className='sticky top-0 h-[100vh] w-full bg-white'>
+          <div className='relative flex h-full w-[30%] flex-col justify-center'>
+            <div className='prueba-1 relative h-[80%] w-full'></div>
+          </div>
+        </div>
+        <div className='sticky top-0 h-[100vh] w-full'>
+          <div className='relative flex h-full w-[30%] flex-col justify-center'>
+            <div className='prueba-2 relative h-[80%] w-full'></div>
+          </div>
+        </div>
+        <div className='sticky top-0 h-[100vh] w-full bg-slate-600'>
+          Sticky 3
+        </div>
+        <div className='sticky top-0 h-[100vh] w-full bg-white'>Sticky 4</div>
+        <div className='sticky top-0 h-[100vh] w-full bg-white'>Sticky 5</div>
+      </section> */}
     </>
   )
 }

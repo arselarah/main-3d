@@ -22,15 +22,16 @@ export default function Cards() {
         className={`relative mb-40 min-h-[300vh] px-4 pt-20 lg:px-8 ${poppins.className}`}
       >
         {impresoras.map((impresora, i) => {
-          const targetScale = 1 - (impresoras.length - i) * 0.05
+          const targetScale = 0
+          console.log(targetScale)
           return (
             <Impresoras
               key={i}
               i={i}
               {...impresora}
               progress={scrollYProgress}
-              range={[i * 0.25, 1]}
-              // targetScale={targetScale}
+              range={[i * 0.33, 1]}
+              targetScale={targetScale}
             />
           )
         })}
