@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Poppins } from 'next/font/google'
 import Link from 'next/link'
 
@@ -53,6 +53,25 @@ const slides = [
 export default function CarruselInicio() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [viewportWidth, setViewportWidth] = useState(0)
+  const diapositivaLargo = useRef(null)
+  const [largo, setLargo] = useState(0)
+
+  useEffect(() => {
+    if (diapositivaLargo.current) {
+      // Obtén el ancho inicial del contenedor
+      setLargo(diapositivaLargo.current.offsetWidth)
+    }
+
+    // Opcional: Actualizar el ancho si cambia el tamaño de la ventana
+    const handleResize = () => {
+      if (diapositivaLargo.current) {
+        setLargo(diapositivaLargo.current.offsetWidth)
+      }
+    }
+
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   useEffect(() => {
     // Obtiene el ancho inicial del viewport
@@ -72,12 +91,12 @@ export default function CarruselInicio() {
 
   const prevSlide = () => {
     setCurrentIndex((prev) => (prev === 0 ? slides.length - 1 : prev - 1))
-    console.log('click')
+    console.log(slides.length)
   }
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev === slides.length - 1 ? 0 : prev + 1))
-    console.log('clickNext')
+    console.log(slides.length)
     console.log(currentIndex)
   }
 
@@ -91,14 +110,15 @@ export default function CarruselInicio() {
             <div className='h-auto w-full overflow-hidden'>
               <motion.div
                 initial={{ x: 0 }}
-                animate={{ x: -currentIndex * (viewportWidth * 0.4) }}
+                animate={{ x: -currentIndex * (largo + 40) }}
                 transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                className='relative grid auto-cols-[90vw] grid-flow-col gap-10 lg:auto-cols-[40vw] lg:gap-20'
+                className='relative grid auto-cols-[90vw] grid-flow-col gap-10 lg:auto-cols-[40vw]'
               >
                 {slides.map((slide, index) => (
                   <motion.div
                     key={index}
-                    className='group relative aspect-video overflow-hidden rounded-3xl'
+                    ref={diapositivaLargo}
+                    className='diapositiva group relative aspect-video overflow-hidden rounded-3xl'
                   >
                     <Image
                       src={slide.imagen}
