@@ -4,13 +4,15 @@ import Escaneres from '@/components/Escaneres'
 import HeroHome from '@/components/HeroHome'
 // import Horizontal from '@/components/horizontal/Horizontal'
 import HorizontalDrag from '@/components/HorizontalDrag'
+import Impresoras from '@/components/Impresoras'
 import IndexBlogSection from '@/components/IndexBlogSection/Blog'
 export default function Home() {
   return (
     <>
       <HeroHome />
       <main className='pt-10 lg:pt-20'>
-        <Cards />
+        {/* <Cards /> */}
+        <Impresoras />
         <HorizontalDrag />
         <Escaneres />
         <CarruselInicio />

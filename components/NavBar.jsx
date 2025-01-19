@@ -142,10 +142,10 @@ export default function NavBar() {
                     href={href}
                     className={`text-clamp-menu font-light ${textColor} absolute inset-0 left-0 top-0 flex h-10 w-full flex-wrap items-center justify-center overflow-hidden`}
                   >
-                    <div className='relative flex h-10 w-full items-center justify-center text-center tracking-wider transition-all duration-500 ease-[cubic-bezier(.57,.21,.69,1.25)] group-hover:-translate-y-full'>
+                    <div className='relative flex h-10 w-full items-center justify-center text-center tracking-wider transition-all duration-500 ease-[cubic-bezier(.57,.21,.69,1.25)] group-hover:-translate-y-full group-hover:scale-90'>
                       {vinculo}
                     </div>
-                    <div className='relative flex h-10 w-full items-center justify-center text-center font-semibold transition-all duration-500 ease-[cubic-bezier(.57,.21,.69,1.25)] group-hover:-translate-y-full'>
+                    <div className='relative flex h-10 w-full scale-90 items-center justify-center text-center font-semibold transition-all duration-500 ease-[cubic-bezier(.57,.21,.69,1.25)] group-hover:-translate-y-full group-hover:scale-100'>
                       {vinculo}
                     </div>
                   </Link>
@@ -158,10 +158,10 @@ export default function NavBar() {
               href={'/contacto'}
               className='absolute inset-0 left-0 top-0 flex h-10 flex-wrap items-center justify-center text-sm font-medium uppercase tracking-wider text-white'
             >
-              <div className='relative flex h-10 w-full items-center justify-center text-center transition-all duration-500 ease-[cubic-bezier(.57,.21,.69,1.25)] group-hover:-translate-y-full'>
+              <div className='relative flex h-10 w-full items-center justify-center text-center transition-all duration-500 ease-[cubic-bezier(.57,.21,.69,1.25)] group-hover:-translate-y-full group-hover:scale-90'>
                 Contacto
               </div>
-              <div className='relative flex h-10 w-full items-center justify-center text-center font-semibold transition-all duration-500 ease-[cubic-bezier(.57,.21,.69,1.25)] group-hover:-translate-y-full'>
+              <div className='relative flex h-10 w-full scale-90 items-center justify-center text-center font-semibold transition-all duration-500 ease-[cubic-bezier(.57,.21,.69,1.25)] group-hover:-translate-y-full group-hover:scale-100'>
                 Contacto
               </div>
             </Link>
