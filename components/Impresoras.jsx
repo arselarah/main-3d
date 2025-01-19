@@ -14,13 +14,13 @@ export default function Impresoras() {
   const containerDos = useRef(null)
   const { scrollYProgress: scrollSecondCard } = useScroll({
     target: container,
-    offset: ['start 0.7', 'start start'],
+    offset: ['start 0.5', 'start start'],
   })
   const hide1 = useTransform(scrollSecondCard, [0, 1], [1, 0])
 
   const { scrollYProgress: scrollThirdCard } = useScroll({
     target: containerDos,
-    offset: ['start 0.7', 'start start'],
+    offset: ['start 0.5', 'start start'],
   })
   const hide2 = useTransform(scrollThirdCard, [0, 1], [1, 0])
   return (
