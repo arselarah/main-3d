@@ -27,7 +27,7 @@ export default function HeroHome() {
           loop
           muted
           preload='auto'
-          className='absolute inset-0 left-0 top-0 w-full'
+          className='pointer-events-none absolute inset-0 left-0 top-0 h-full w-full object-cover'
         >
           <source src='/assets/hero_index.mp4' type='video/mp4' />
           {/* <track
