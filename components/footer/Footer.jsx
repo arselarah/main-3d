@@ -13,7 +13,7 @@ export default function Footer() {
       <section
         className={`relative w-full px-4 pb-4 pt-20 lg:px-8 lg:pb-8 lg:pt-40 ${poppins.className} text-white`}
       >
-        <article className='relative flex min-h-screen w-full flex-col items-stretch rounded-3xl bg-negro p-4 lg:p-16'>
+        <article className='relative flex min-h-screen w-full flex-col items-stretch overflow-hidden rounded-3xl bg-[url("/assets/pexels-photo-15584332.webp")] bg-cover bg-center bg-no-repeat p-4 before:absolute before:inset-0 before:left-0 before:top-0 before:bg-negro before:bg-opacity-85 before:content-[""] lg:p-16'>
           <div className='relative pb-8 md:pb-16'>
             <Link href={'/'} className=''>
               <Image

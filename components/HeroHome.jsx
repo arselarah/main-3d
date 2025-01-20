@@ -20,8 +20,24 @@ export default function HeroHome() {
     <>
       <section
         ref={container}
-        className={`hero relative m-0 h-dvh min-h-[640px] w-full ${poppins.className} hero`}
+        className={`hero relative m-0 h-dvh min-h-[640px] w-full ${poppins.className} hero overflow-hidden`}
       >
+        <video
+          autoPlay
+          loop
+          muted
+          preload='auto'
+          className='absolute inset-0 left-0 top-0 w-full'
+        >
+          <source src='/assets/hero_index.mp4' type='video/mp4' />
+          {/* <track
+            src='/path/to/captions.vtt'
+            kind='subtitles'
+            srcLang='en'
+            label='English'
+          /> */}
+          Your browser does not support the video tag.
+        </video>
         <div className='relative flex h-full w-full flex-col items-center justify-end bg-black bg-opacity-50'>
           <motion.div
             style={{ y: slideUp, opacity: opacityDown }}
