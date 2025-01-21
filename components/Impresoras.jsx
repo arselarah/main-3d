@@ -17,23 +17,36 @@ export default function Impresoras() {
     offset: ['start end', 'start start'],
   })
   const hide1 = useTransform(scrollSecondCard, [0, 1], [1, 0])
+  const backgroundColor1 = useTransform(
+    scrollSecondCard,
+    [0, 1],
+    ['#EEF3ED', '#b2b2b2'], // Cambiar de rojo a azul
+  )
 
   const { scrollYProgress: scrollThirdCard } = useScroll({
     target: containerDos,
     offset: ['start end', 'start start'],
   })
   const hide2 = useTransform(scrollThirdCard, [0, 1], [1, 0])
+  const backgroundColor2 = useTransform(
+    scrollThirdCard,
+    [0, 1],
+    ['#EEF3ED', '#b2b2b2'], // Cambiar de rojo a azul
+  )
   return (
     <section
-      className={`relative mb-40 min-h-[300vh] px-4 pt-20 lg:px-8 ${poppins.className}`}
+      className={`relative min-h-[300vh] px-4 py-[2vw] lg:mb-[3vw] lg:px-8 lg:py-[3vw] ${poppins.className}`}
     >
       <motion.div className='relative top-0 flex h-auto min-h-screen items-center md:sticky'>
         <motion.div
-          style={{ opacity: hide1 }}
-          className='relative flex h-auto min-h-[90vh] w-full flex-col items-center justify-center overflow-hidden rounded-3xl bg-fondo_claro p-4 md:p-8'
+          style={{ backgroundColor: backgroundColor1 }}
+          className='relative flex h-auto min-h-screen w-full flex-col items-center justify-center overflow-hidden rounded-3xl p-4 md:p-8'
         >
-          <div className='relative mx-auto flex h-full max-h-[1080px] w-full flex-col justify-center lg:w-[83vw]'>
-            <div className='titleContainer overflow-hidden pb-20 text-black'>
+          <motion.div
+            style={{ opacity: hide1 }}
+            className='relative mx-auto flex h-full max-h-[1080px] w-full flex-col justify-center lg:w-[83vw]'
+          >
+            <div className='titleContainer overflow-hidden border-b-[1px] border-negro pb-[2vw] text-black lg:pb-[3vw]'>
               <motion.h3
                 initial={{ opacity: 0, x: '-50px' }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -53,7 +66,7 @@ export default function Impresoras() {
                 Alta Velocidad y Gran Volumen de Impresión
               </motion.h2>
             </div>
-            <motion.div className='infoContainer mt-20 flex flex-col items-stretch justify-between gap-4 md:flex-row md:gap-8'>
+            <motion.div className='infoContainer mt-[2vw] flex flex-col items-stretch justify-between gap-4 md:flex-row md:gap-8 lg:mt-[3vw]'>
               <motion.div
                 initial={{ opacity: 0, y: '50px' }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -96,6 +109,16 @@ export default function Impresoras() {
                       legacy SLA
                     </p>
                   </div>
+                  <div className='w-full'>
+                    <div className='group relative w-full max-w-[250px] rounded-full border-[1px] border-negro bg-negro py-2 transition-all duration-300 hover:bg-transparent'>
+                      <Link
+                        href={'/'}
+                        className='block text-center uppercase text-white transition-all duration-300 group-hover:text-negro'
+                      >
+                        Mas información
+                      </Link>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
               <motion.div
@@ -114,7 +137,7 @@ export default function Impresoras() {
                 </motion.div>
               </motion.div>
             </motion.div>
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: '50px' }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
@@ -129,8 +152,8 @@ export default function Impresoras() {
                   Mas información
                 </Link>
               </div>
-            </motion.div>
-          </div>
+            </motion.div> */}
+          </motion.div>
         </motion.div>
       </motion.div>
       <motion.div
@@ -138,11 +161,14 @@ export default function Impresoras() {
         className='relative top-0 flex h-auto min-h-screen items-center md:sticky'
       >
         <motion.div
-          style={{ opacity: hide2 }}
-          className='relative flex h-auto min-h-[90vh] w-full flex-col items-center justify-center overflow-hidden rounded-3xl bg-fondo_claro p-4 md:p-8'
+          style={{ backgroundColor: backgroundColor2 }}
+          className='relative flex h-auto min-h-screen w-full flex-col items-center justify-center overflow-hidden rounded-3xl bg-fondo_claro p-4 md:p-8'
         >
-          <div className='relative mx-auto flex h-full max-h-[1080px] w-full flex-col justify-center lg:w-[83vw]'>
-            <div className='titleContainer overflow-hidden pb-20 text-black'>
+          <motion.div
+            style={{ opacity: hide2 }}
+            className='relative mx-auto flex h-full max-h-[1080px] w-full flex-col justify-center lg:w-[83vw]'
+          >
+            <div className='titleContainer overflow-hidden border-b-[1px] border-negro pb-[2vw] text-black lg:pb-[3vw]'>
               <motion.h3
                 initial={{ opacity: 0, x: '-50px' }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -162,7 +188,7 @@ export default function Impresoras() {
                 Configuración con uno o dos extrusores de pellets o filamento
               </motion.h2>
             </div>
-            <motion.div className='infoContainer mt-20 flex flex-col items-stretch justify-between gap-4 md:flex-row md:gap-8'>
+            <motion.div className='infoContainer mt-[2vw] flex flex-col items-stretch justify-between gap-4 md:flex-row md:gap-8 lg:mt-[3vw]'>
               <motion.div
                 initial={{ opacity: 0, y: '50px' }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -205,6 +231,16 @@ export default function Impresoras() {
                       legacy SLA
                     </p>
                   </div>
+                  <div className='w-full'>
+                    <div className='group relative w-full max-w-[250px] rounded-full border-[1px] border-negro bg-negro py-2 transition-all duration-300 hover:bg-transparent'>
+                      <Link
+                        href={'/'}
+                        className='block text-center uppercase text-white transition-all duration-300 group-hover:text-negro'
+                      >
+                        Mas información
+                      </Link>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
               <motion.div
@@ -225,7 +261,7 @@ export default function Impresoras() {
                 </motion.div>
               </motion.div>
             </motion.div>
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: '50px' }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
@@ -240,17 +276,17 @@ export default function Impresoras() {
                   Mas información
                 </Link>
               </div>
-            </motion.div>
-          </div>
+            </motion.div> */}
+          </motion.div>
         </motion.div>
       </motion.div>
       <motion.div
         ref={containerDos}
         className='relative top-0 flex h-auto min-h-screen items-center md:sticky'
       >
-        <div className='relative flex h-auto min-h-[90vh] w-full flex-col items-center justify-center overflow-hidden rounded-3xl bg-fondo_claro p-4 md:p-8'>
+        <div className='relative flex h-auto min-h-screen w-full flex-col items-center justify-center overflow-hidden rounded-3xl bg-fondo_claro p-4 md:p-8'>
           <div className='relative mx-auto flex h-full max-h-[1080px] w-full flex-col justify-center lg:w-[83vw]'>
-            <div className='titleContainer overflow-hidden pb-20 text-black'>
+            <div className='titleContainer overflow-hidden border-b-[1px] border-negro pb-[2vw] text-black lg:pb-[3vw]'>
               <motion.h3
                 initial={{ opacity: 0, x: '-50px' }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -270,7 +306,7 @@ export default function Impresoras() {
                 Flexibilidad y precisión para grandes proyectos
               </motion.h2>
             </div>
-            <motion.div className='infoContainer mt-20 flex flex-col items-stretch justify-between gap-4 md:flex-row md:gap-8'>
+            <motion.div className='infoContainer mt-[2vw] flex flex-col items-stretch justify-between gap-4 md:flex-row md:gap-8 lg:mt-[3vw]'>
               <motion.div
                 initial={{ opacity: 0, y: '50px' }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -313,6 +349,16 @@ export default function Impresoras() {
                       legacy SLA
                     </p>
                   </div>
+                  <div className='w-full'>
+                    <div className='group relative w-full max-w-[250px] rounded-full border-[1px] border-negro bg-negro py-2 transition-all duration-300 hover:bg-transparent'>
+                      <Link
+                        href={'/'}
+                        className='block text-center uppercase text-white transition-all duration-300 group-hover:text-negro'
+                      >
+                        Mas información
+                      </Link>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
               <motion.div
@@ -333,7 +379,7 @@ export default function Impresoras() {
                 </motion.div>
               </motion.div>
             </motion.div>
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: '50px' }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
@@ -348,7 +394,7 @@ export default function Impresoras() {
                   Mas información
                 </Link>
               </div>
-            </motion.div>
+            </motion.div> */}
           </div>
         </div>
       </motion.div>

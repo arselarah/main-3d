@@ -3,6 +3,8 @@ import Image from 'next/image'
 import { useState, useEffect, useRef } from 'react'
 import { Poppins } from 'next/font/google'
 import Link from 'next/link'
+import { SlArrowLeft } from 'react-icons/sl'
+import { SlArrowRight } from 'react-icons/sl'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -103,7 +105,7 @@ export default function CarruselInicio() {
   return (
     <>
       <section
-        className={`relative w-full px-4 pt-20 lg:px-8 lg:pt-40 ${poppins.className}`}
+        className={`relative w-full px-4 py-[2vw] lg:px-8 lg:py-[3vw] ${poppins.className}`}
       >
         <article className='relative w-full'>
           <div className='relative flex flex-col items-center'>
@@ -112,7 +114,7 @@ export default function CarruselInicio() {
                 initial={{ x: 0 }}
                 animate={{ x: -currentIndex * (largo + 40) }}
                 transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                className='relative grid auto-cols-[90vw] grid-flow-col gap-10 lg:auto-cols-[40vw]'
+                className='relative grid auto-cols-[90vw] grid-flow-col gap-10 md:auto-cols-[40vw]'
               >
                 {slides.map((slide, index) => (
                   <motion.div
@@ -127,15 +129,15 @@ export default function CarruselInicio() {
                       height={100}
                       className='h-full w-full object-cover transition-all duration-500 group-hover:scale-105'
                     />
-                    <div className='absolute inset-0 left-0 top-0 flex flex-col items-center justify-end bg-negro bg-opacity-55'>
-                      <h3 className='mx-auto max-w-[840px] text-center text-clamp-lg font-semibold capitalize leading-none text-white'>
+                    <div className='absolute inset-0 left-0 top-0 flex flex-col items-center justify-end bg-negro bg-opacity-55 px-[2vw] lg:px-[3vw]'>
+                      <h3 className='mx-auto max-w-[840px] text-center text-clamp-md font-medium capitalize leading-none text-white'>
                         {slide.titulo}
                       </h3>
-                      <p className='max-w-[350px] pb-6 pt-6 text-center text-clamp-sm font-light text-white md:max-w-[520px] lg:max-w-[640px] lg:pb-20'>
+                      <p className='pb-[1vw] pt-[1vw] text-center text-clamp-sm font-light text-white lg:max-w-[640px] lg:pb-[2]'>
                         {slide.subtitulo}
                       </p>
                       <div
-                        className={`absolute left-4 top-4 h-[15%] min-h-[60px] w-[20%] min-w-[120px] bg-contain bg-center bg-no-repeat lg:left-32 lg:top-16 ${slide.logo}`}
+                        className={`absolute left-[2vw] top-4 h-[15%] min-h-[60px] w-[20%] min-w-[120px] bg-contain bg-center bg-no-repeat lg:left-[3vw] lg:top-16 ${slide.logo}`}
                       ></div>
                     </div>
                     <Link
@@ -146,11 +148,13 @@ export default function CarruselInicio() {
                 ))}
               </motion.div>
             </div>
-            <div className='mt-6 flex w-full flex-row justify-end'>
+            <div className='mt-6 flex w-full flex-row justify-start'>
               <button
                 onClick={prevSlide}
-                className='prevIcon mr-8 h-12 w-12 rounded-full border-[1px] border-negro bg-center bg-no-repeat shadow transition-all hover:opacity-70'
-              ></button>
+                className='mr-8 flex h-12 w-12 items-center justify-center rounded-full border-[1px] border-negro bg-transparent text-negro transition-all hover:bg-negro hover:text-white'
+              >
+                <SlArrowLeft />
+              </button>
               {/* <div className='flex flex-row gap-2'>
                 {slides.map((_, index) => (
                   <div
@@ -162,8 +166,10 @@ export default function CarruselInicio() {
 
               <button
                 onClick={nextSlide}
-                className='nextIcon h-12 w-12 rounded-full border-[1px] border-negro bg-center bg-no-repeat shadow transition-all hover:opacity-70'
-              ></button>
+                className='flex h-12 w-12 items-center justify-center rounded-full border-[1px] border-negro bg-transparent text-negro transition-all hover:bg-negro hover:text-white'
+              >
+                <SlArrowRight />
+              </button>
             </div>
           </div>
         </article>

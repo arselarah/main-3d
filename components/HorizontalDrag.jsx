@@ -16,7 +16,7 @@ export default function HorizontalDrag() {
   return (
     <>
       <section
-        className='draggableSlider h-[400vh] tracking-widest'
+        className='draggableSlider my-[2vw] h-[400vh] tracking-widest lg:my-[3vw]'
         ref={targetRef}
       >
         <div className='draggableSlider_container sticky top-0 h-screen overflow-hidden'>
@@ -34,7 +34,7 @@ export default function HorizontalDrag() {
                     transition={{ duration: 0.5, ease: 'linear' }}
                     className={`absolute left-4 top-1/4 p-4 lg:left-16 lg:p-8 ${poppins.className}`}
                   >
-                    <h2 className='border-b-[1px] border-white pb-4 text-clamp-xl font-light leading-none text-white'>
+                    <h2 className='font-medieum border-b-[1px] border-white pb-4 text-clamp-lg leading-none text-white'>
                       Advanced research
                       <br />
                       and printing materials
@@ -65,7 +65,7 @@ export default function HorizontalDrag() {
                     transition={{ duration: 0.5, ease: 'linear' }}
                     className='absolute left-4 top-1/4 p-4 lg:left-16 lg:p-8'
                   >
-                    <h2 className='border-b-[1px] border-white pb-4 text-clamp-xl font-light leading-none text-white'>
+                    <h2 className='border-b-[1px] border-white pb-4 text-clamp-lg font-medium leading-none text-white'>
                       Advanced research
                       <br />
                       and printing materials
@@ -96,7 +96,7 @@ export default function HorizontalDrag() {
                     transition={{ duration: 0.5, ease: 'linear' }}
                     className='absolute left-4 top-1/4 p-4 lg:left-16 lg:p-8'
                   >
-                    <h2 className='border-b-[1px] border-white pb-4 text-clamp-xl font-light leading-none text-white'>
+                    <h2 className='border-b-[1px] border-white pb-4 text-clamp-lg font-medium leading-none text-white'>
                       Advanced research
                       <br />
                       and printing materials

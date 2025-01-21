@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <>
       <HeroHome />
-      <main className='pt-10 lg:pt-20'>
+      <main className='pt-[2vw] lg:pt-[3vw]'>
         {/* <Cards /> */}
         <Impresoras />
         <HorizontalDrag />

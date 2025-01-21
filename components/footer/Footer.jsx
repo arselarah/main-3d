@@ -11,7 +11,7 @@ export default function Footer() {
   return (
     <>
       <section
-        className={`relative w-full px-4 pb-4 pt-20 lg:px-8 lg:pb-8 lg:pt-40 ${poppins.className} text-white`}
+        className={`relative w-full px-4 py-[2vw] lg:px-8 lg:py-[3vw] ${poppins.className} text-white`}
       >
         <article className='relative flex min-h-screen w-full flex-col items-stretch overflow-hidden rounded-3xl bg-[url("/assets/pexels-photo-15584332.webp")] bg-cover bg-center bg-no-repeat p-4 before:absolute before:inset-0 before:left-0 before:top-0 before:bg-negro before:bg-opacity-85 before:content-[""] lg:p-16'>
           <div className='relative pb-8 md:pb-16'>
@@ -46,7 +46,7 @@ export default function Footer() {
                   href={''}
                   className='mb-4 inline-block text-clamp-lg font-semibold leading-none transition-all duration-300 hover:ml-4 lg:mb-8'
                 >
-                  Soporte
+                  Contacto
                 </Link>
                 <Link
                   href={''}
@@ -64,7 +64,7 @@ export default function Footer() {
                   href={''}
                   className='mb-4 inline-block text-clamp-lg font-semibold leading-none transition-all duration-300 hover:ml-4 lg:mb-8'
                 >
-                  Contacto
+                  Soporte
                 </Link>
               </div>
               <div className='flex flex-col items-start'>

@@ -116,7 +116,7 @@ export default function NavBar() {
               <div className={`h-[2px] w-10 ${burgerBackground}`}></div>
             </button>
           </div>
-          <nav className='hidden w-auto grow flex-row justify-center gap-8 2xl:flex'>
+          <nav className='hidden w-auto flex-row justify-center gap-8 2xl:flex'>
             {[
               'Impresoras 3D',
               'Escáneres 3D',
@@ -128,7 +128,7 @@ export default function NavBar() {
               'Blog',
               'Soporte',
             ].map((vinculo, id) => {
-              const width = vinculo.length * 12
+              const width = vinculo.length * 11
               const href = `/${vinculo.toLowerCase().replace(/\s+/g, '')}`
               return (
                 <div
@@ -153,7 +153,7 @@ export default function NavBar() {
               )
             })}
           </nav>
-          <div className='cta__header group relative hidden h-10 w-[200px] flex-col justify-center overflow-hidden rounded-full bg-rojo md:flex'>
+          <div className='cta__header group relative hidden h-10 min-w-[200px] flex-col justify-center overflow-hidden rounded-full bg-rojo md:flex'>
             <Link
               href={'/contacto'}
               className='absolute inset-0 left-0 top-0 flex h-10 flex-wrap items-center justify-center text-sm font-medium uppercase tracking-wider text-white'

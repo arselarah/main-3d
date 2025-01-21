@@ -31,9 +31,9 @@ export default function IndexBlogSection() {
   return (
     <>
       <section
-        className={`relative w-full px-4 pt-20 lg:px-8 lg:pt-40 ${poppins.className}`}
+        className={`relative w-full px-4 py-[2vw] lg:px-8 lg:py-[3vw] ${poppins.className}`}
       >
-        <div className='titleContainer pb-20 text-black'>
+        <div className='titleContainer pb-[2vw] text-black lg:pb-[3vw]'>
           <h2 className='mx-auto max-w-[840px] text-center text-clamp-lg font-semibold leading-none'>
             Descubre nuestro blog
           </h2>
@@ -69,8 +69,8 @@ export default function IndexBlogSection() {
             </div>
           </div> */}
         </article>
-        <div className='titleContainer py-20 text-black'>
-          <div className='group mx-auto mt-12 w-full max-w-[450px] rounded-full border-[1px] border-negro bg-negro py-2 transition-all duration-300 hover:bg-transparent'>
+        <div className='titleContainer pt-[2vw] text-black lg:pt-[3vw]'>
+          <div className='group mx-auto w-full max-w-[450px] rounded-full border-[1px] border-negro bg-negro py-2 transition-all duration-300 hover:bg-transparent'>
             <Link
               href={'/'}
               className='block text-center uppercase text-white transition-all duration-300 group-hover:text-negro'

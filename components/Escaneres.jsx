@@ -4,6 +4,8 @@ import Image from 'next/image'
 import { useState, useEffect, useRef } from 'react'
 import { escaneres } from '@/data/data'
 import Link from 'next/link'
+import { SlArrowLeft } from 'react-icons/sl'
+import { SlArrowRight } from 'react-icons/sl'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -36,10 +38,10 @@ export default function Escaneres() {
   return (
     <>
       <section
-        className={`relative w-full px-4 pt-20 lg:px-8 lg:pt-40 ${poppins.className}`}
+        className={`relative w-full px-4 py-[2vw] lg:px-8 lg:py-[3vw] ${poppins.className}`}
       >
         <article className='relative w-full rounded-3xl bg-fondo_claro p-4 lg:p-16'>
-          <div className='titleContainer border-b-[1px] border-gray-500 pb-20 text-black'>
+          <div className='titleContainer border-b-[1px] border-gray-500 py-[2vw] text-black lg:py-[3vw]'>
             <motion.h3 className='pb-4 text-center text-clamp-sm font-medium'>
               Escáneres 3D
             </motion.h3>
@@ -70,10 +72,10 @@ export default function Escaneres() {
                       {escaner.texto}
                     </p>
                     <Link
-                      className='mas-info absolute right-0 top-1/2 z-10 hidden rounded-full border-[1px] border-negro bg-negro px-8 py-2 text-white opacity-0 transition-all duration-300 hover:bg-transparent hover:text-negro group-hover:opacity-100 md:block'
+                      className='mas-info absolute right-0 top-1/2 z-[5] hidden rounded-full border-[1px] border-negro bg-negro p-4 text-white opacity-0 transition-all duration-300 hover:bg-transparent hover:text-negro group-hover:opacity-100 md:block'
                       href={'/'}
                     >
-                      Más Información
+                      <SlArrowRight />
                     </Link>
                     {/* <div className='absolute left-1/2 top-1/2 aspect-square w-3/4 max-w-2xl -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full border-2 border-negro'>
                       <Image
@@ -91,7 +93,7 @@ export default function Escaneres() {
                 ))}
               </div>
 
-              <div className='pointer-events-none relative flex-1 items-center justify-center md:flex'>
+              <div className='pointer-events-none relative z-[1] flex-1 items-center justify-center overflow-clip rounded-full border-[1px] border-negro bg-fondo_claro md:flex'>
                 <motion.div
                   ref={container}
                   variants={scaleAnimation}
@@ -139,10 +141,10 @@ export default function Escaneres() {
                     </div>
 
                     <Link
-                      className='mas-info absolute left-0 top-1/2 z-10 hidden rounded-full border-[1px] border-negro bg-negro px-8 py-2 text-white opacity-0 transition-all duration-300 hover:bg-transparent hover:text-negro group-hover:opacity-100 md:block'
+                      className='prevIcon-white absolute left-[1vw] top-1/2 z-10 hidden rounded-full border-[1px] border-negro bg-negro p-4 text-white opacity-0 transition-all duration-300 hover:bg-transparent hover:text-negro group-hover:opacity-100 md:block'
                       href={'/'}
                     >
-                      Más Información
+                      <SlArrowLeft />
                     </Link>
                     {/* <div className='absolute left-1/2 top-1/2 aspect-square w-3/4 max-w-2xl -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full border-2 border-negro'>
                       <Image
@@ -162,8 +164,8 @@ export default function Escaneres() {
             </div>
             {/* contenedor */}
           </div>
-          <div className='titleContainer py-20 text-black'>
-            <div className='group mx-auto mt-12 w-full max-w-[450px] rounded-full border-[1px] border-negro bg-negro py-2 transition-all duration-300 hover:bg-transparent'>
+          <div className='titleContainer py-[2vw] text-black lg:py-[3vw]'>
+            <div className='group mx-auto w-full max-w-[450px] rounded-full border-[1px] border-negro bg-negro py-2 transition-all duration-300 hover:bg-transparent'>
               <Link
                 href={'/'}
                 className='block text-center uppercase text-white transition-all duration-300 group-hover:text-negro'
