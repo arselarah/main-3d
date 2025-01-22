@@ -33,7 +33,7 @@ export default {
       md: '768px',
       lg: '1024px',
       lgx: '1080px',
-      xl: '1280px',
+      xl: '1440px',
       '2xl': '1536px',
     },
   },

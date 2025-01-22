@@ -37,7 +37,13 @@ export default function Impresoras() {
     <section
       className={`relative min-h-[300vh] px-4 py-[2vw] lg:mb-[3vw] lg:px-8 lg:py-[3vw] ${poppins.className}`}
     >
-      <motion.div className='relative top-0 flex h-auto min-h-screen items-center md:sticky'>
+      <motion.div
+        initial={{ opacity: 0, y: '50px' }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false }}
+        transition={{ delay: 0.3, duration: 0.5, ease: 'linear' }}
+        className='relative top-0 flex h-auto min-h-screen items-center pb-[2vw] lg:pb-[3vw]'
+      >
         <motion.div
           style={{ backgroundColor: backgroundColor1 }}
           className='relative flex h-auto min-h-screen w-full flex-col items-center justify-center overflow-hidden rounded-3xl p-4 md:p-8'
@@ -157,8 +163,12 @@ export default function Impresoras() {
         </motion.div>
       </motion.div>
       <motion.div
+        initial={{ opacity: 0, y: '50px' }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false }}
+        transition={{ delay: 0.3, duration: 0.5, ease: 'linear' }}
         ref={container}
-        className='relative top-0 flex h-auto min-h-screen items-center md:sticky'
+        className='relative top-0 flex h-auto min-h-screen items-center pb-[2vw] lg:pb-[3vw]'
       >
         <motion.div
           style={{ backgroundColor: backgroundColor2 }}
@@ -281,8 +291,12 @@ export default function Impresoras() {
         </motion.div>
       </motion.div>
       <motion.div
+        initial={{ opacity: 0, y: '50px' }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false }}
+        transition={{ delay: 0.3, duration: 0.5, ease: 'linear' }}
         ref={containerDos}
-        className='relative top-0 flex h-auto min-h-screen items-center md:sticky'
+        className='relative top-0 flex h-auto min-h-screen items-center'
       >
         <div className='relative flex h-auto min-h-screen w-full flex-col items-center justify-center overflow-hidden rounded-3xl bg-fondo_claro p-4 md:p-8'>
           <div className='relative mx-auto flex h-full max-h-[1080px] w-full flex-col justify-center lg:w-[83vw]'>

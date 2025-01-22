@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { Poppins } from 'next/font/google'
 import Image from 'next/image'
 import { useState, useEffect, useRef } from 'react'
@@ -34,6 +34,26 @@ export default function Escaneres() {
   const [modal, setModal] = useState({ active: false, index: 0 })
   const { active, index } = modal
   const container = useRef(null)
+  const ref = useRef(null)
+
+  // 2. Usar el hook useScroll para detectar el scroll
+  const { scrollYProgress: scrollBorder } = useScroll({
+    target: ref, // Elemento que se va a observar
+    offset: ['start end', 'end 0.5'], // Rango de detección (cuando entra y sale del viewport)
+  })
+
+  // 3. Usar useTransform para mapear el progreso del scroll al ancho del borde
+  const strokeDashoffset = useTransform(
+    scrollBorder,
+    [0, 1], // Rango de progreso del scroll (0 = inicio, 1 = final)
+    [283, 0], // Ancho del borde (de 0% a 100%)
+  )
+
+  const rotate = useTransform(
+    scrollBorder,
+    [0, 1], // Rango de progreso del scroll (0 = inicio, 1 = final)
+    [0, 360], // Rotación (0° a 360°)
+  )
 
   return (
     <>
@@ -51,13 +71,13 @@ export default function Escaneres() {
             </motion.h2>
           </div>
 
-          <div className='relative h-auto w-full p-4 lg:p-16'>
-            <div className='relative flex h-full w-full flex-row flex-nowrap justify-stretch'>
+          <div className='relative h-auto w-full p-4 lg:p-16' ref={ref}>
+            <div className='relative flex h-full w-full flex-row flex-nowrap items-center justify-center'>
               <div className='escaneres_contenedor h-full flex-1'>
                 {escaneres.slice(0, 4).map((escaner, index) => (
                   <div
                     key={index}
-                    className='escaneres_intem group relative cursor-pointer py-8 transition-all duration-1000 hover:translate-x-5'
+                    className='escaneres_intem group relative flex w-full cursor-pointer flex-row items-end gap-10 py-8 transition-all duration-1000 hover:translate-x-5'
                     onMouseEnter={() => {
                       setModal({ active: true, index })
                     }}
@@ -65,14 +85,17 @@ export default function Escaneres() {
                       setModal({ active: false, index })
                     }}
                   >
-                    <h4 className='text-clamp-sm font-medium text-black md:max-w-[240px]'>
-                      {escaner.titulo}
-                    </h4>
-                    <p className='text-gris_oscuro md:max-w-[240px]'>
-                      {escaner.texto}
-                    </p>
+                    <div>
+                      <h4 className='text-clamp-sm font-medium text-black md:max-w-[240px]'>
+                        {escaner.titulo}
+                      </h4>
+                      <p className='text-gris_oscuro md:max-w-[240px]'>
+                        {escaner.texto}
+                      </p>
+                    </div>
+
                     <Link
-                      className='mas-info absolute right-0 top-1/2 z-[5] hidden rounded-full border-[1px] border-negro bg-negro p-4 text-white opacity-0 transition-all duration-300 hover:bg-transparent hover:text-negro group-hover:opacity-100 md:block'
+                      className='relative z-10 hidden rounded-full border-[1px] border-negro bg-negro p-4 text-white opacity-0 transition-all duration-300 hover:bg-transparent hover:text-negro group-hover:ml-4 group-hover:opacity-100 md:block'
                       href={'/'}
                     >
                       <SlArrowRight />
@@ -93,7 +116,37 @@ export default function Escaneres() {
                 ))}
               </div>
 
-              <div className='pointer-events-none relative z-[1] flex-1 items-center justify-center overflow-clip rounded-full border-[1px] border-negro bg-fondo_claro md:flex'>
+              <div className='borderAnimado relative z-[1] flex-1 items-center justify-center overflow-clip rounded-full bg-fondo_claro md:flex'>
+                <motion.svg
+                  width='100%'
+                  height='100%'
+                  viewBox='0 0 100 100'
+                  className='absolute left-0 top-0'
+                  preserveAspectRatio='xMidYMid meet' // Asegura que el SVG se escale correctamente
+                  style={{ rotate }} // Aplicar la rotación al SVG
+                >
+                  {/* Círculo de fondo (estático) */}
+                  <circle
+                    cx='50'
+                    cy='50'
+                    r='50'
+                    stroke='#020202'
+                    strokeWidth='2'
+                    fill='transparent'
+                  />
+                  {/* Círculo animado (barra de progreso) */}
+                  <motion.circle
+                    cx='50'
+                    cy='50'
+                    r='50'
+                    stroke='#dadada'
+                    strokeWidth='2'
+                    fill='transparent'
+                    strokeDasharray='283' // Circunferencia del círculo (2 * π * r)
+                    style={{ strokeDashoffset }} // Aplicar la animación
+                    transform='rotate(-90 50 50)' // Rotar para que comience desde arriba
+                  />
+                </motion.svg>
                 <motion.div
                   ref={container}
                   variants={scaleAnimation}
@@ -123,7 +176,7 @@ export default function Escaneres() {
                 {escaneres.slice(4, 8).map((escaner, index) => (
                   <div
                     key={index}
-                    className='escaneres_intem group relative flex w-full cursor-pointer flex-col items-end py-8 transition-all duration-1000 hover:-translate-x-5'
+                    className='escaneres_intem group relative flex w-full cursor-pointer flex-row-reverse items-end gap-10 py-8 transition-all duration-1000 hover:-translate-x-5'
                     onMouseEnter={() => {
                       setModal({ active: true, index })
                     }}
@@ -141,7 +194,7 @@ export default function Escaneres() {
                     </div>
 
                     <Link
-                      className='prevIcon-white absolute left-[1vw] top-1/2 z-10 hidden rounded-full border-[1px] border-negro bg-negro p-4 text-white opacity-0 transition-all duration-300 hover:bg-transparent hover:text-negro group-hover:opacity-100 md:block'
+                      className='prevIcon-white relative hidden rounded-full border-[1px] border-negro bg-negro p-4 text-white opacity-0 transition-all duration-300 hover:bg-transparent hover:text-negro group-hover:mr-4 group-hover:opacity-100 md:block'
                       href={'/'}
                     >
                       <SlArrowLeft />

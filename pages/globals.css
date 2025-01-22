@@ -118,3 +118,6 @@ body {
   background-repeat: no-repeat;
   background-size: contain;
 } */
+.menuDesplegable:hover > div {
+  width: 100%;
+}
