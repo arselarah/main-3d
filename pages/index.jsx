@@ -1,4 +1,4 @@
-import Cards from '@/components/Cards'
+//import Cards from '@/components/Cards'
 import CarruselInicio from '@/components/CarruselInicio'
 import Escaneres from '@/components/Escaneres'
 import HeroHome from '@/components/HeroHome'

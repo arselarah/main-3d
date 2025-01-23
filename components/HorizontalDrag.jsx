@@ -13,10 +13,34 @@ export default function HorizontalDrag() {
   const { scrollYProgress } = useScroll({ target: targetRef })
 
   const x = useTransform(scrollYProgress, [0, 1], ['0%', '-200%'])
+  // const backgroundParallax = useTransform(
+  //   scrollYProgress,
+  //   [0, 1],
+  //   ['0%', '50%'],
+  // )
+  // 3. Usar useTransform con funciones personalizadas para cada contenedor
+  const backgroundParallax = useTransform(scrollYProgress, [0, 1], [0, 1000], {
+    transform: (value) => Math.sqrt(value) * -100 + '%', // Ralentizar con raíz cuadrada
+  })
+  console.log('backgroundParallax')
+
+  const backgroundParallax2 = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [-500, 500],
+    {
+      transform: (value) => value * 50 + '%', // Ralentizar con multiplicación
+    },
+  )
+
+  const backgroundParallax3 = useTransform(scrollYProgress, [0, 1], [-600, 0], {
+    transform: (value) => Math.pow(value, 2) * -60 + '%', // Acelerar con función cuadrática
+  })
+
   return (
     <>
       <section
-        className='draggableSlider my-[2vw] h-[400vh] tracking-widest lg:my-[3vw]'
+        className='draggableSlider my-[2vw] h-[800vh] tracking-widest lg:my-[3vw]'
         ref={targetRef}
       >
         <div className='draggableSlider_container sticky top-0 h-screen overflow-hidden'>
@@ -25,7 +49,10 @@ export default function HorizontalDrag() {
             style={{ x }}
           >
             <div className='draggableSlider_item h-screen w-screen'>
-              <div className='draggableSlider_content impresora-uno relative h-full w-full bg-cover bg-no-repeat'>
+              <motion.div
+                style={{ backgroundPositionX: backgroundParallax }}
+                className='draggableSlider_content impresora-uno relative h-full w-full bg-cover bg-no-repeat'
+              >
                 <div className='absolute inset-0 left-0 top-0 bg-black bg-opacity-45'>
                   <motion.div
                     initial={{ opacity: 0, y: '100px' }}
@@ -53,10 +80,13 @@ export default function HorizontalDrag() {
                     </div>
                   </motion.div>
                 </div>
-              </div>
+              </motion.div>
             </div>
             <div className='draggableSlider_item h-screen w-screen'>
-              <div className='draggableSlider_content impresora-dos relative h-full w-full bg-cover bg-no-repeat'>
+              <motion.div
+                style={{ backgroundPositionX: backgroundParallax2 }}
+                className='draggableSlider_content impresora-dos relative h-full w-full bg-cover bg-no-repeat'
+              >
                 <div className='absolute inset-0 left-0 top-0 bg-black bg-opacity-45'>
                   <motion.div
                     initial={{ opacity: 0, y: '100px' }}
@@ -84,10 +114,15 @@ export default function HorizontalDrag() {
                     </div>
                   </motion.div>
                 </div>
-              </div>
+              </motion.div>
             </div>
             <div className='draggableSlider_item h-screen w-screen'>
-              <div className='draggableSlider_content impresora-tres relative h-full w-full bg-cover bg-no-repeat'>
+              <motion.div
+                style={{
+                  backgroundPositionX: backgroundParallax3,
+                }}
+                className='draggableSlider_content impresora-tres relative h-full w-full bg-cover bg-no-repeat'
+              >
                 <div className='absolute inset-0 left-0 top-0 bg-black bg-opacity-45'>
                   <motion.div
                     initial={{ opacity: 0, y: '100px' }}
@@ -115,7 +150,7 @@ export default function HorizontalDrag() {
                     </div>
                   </motion.div>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </motion.div>
         </div>

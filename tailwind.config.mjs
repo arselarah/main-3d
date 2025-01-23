@@ -24,7 +24,7 @@ export default {
         'clamp-lg': 'clamp(1.5rem, 2.5vw, 3rem)',
         'clamp-md': 'clamp(1rem, 2vw, 2rem)',
         'clamp-sm': 'clamp(0.875rem, 1.5vw, 1.5rem)',
-        'clamp-menu': 'clamp(0.75rem, .8vw, 1rem)',
+        'clamp-menu': 'clamp(0.65rem, .75vw, 1rem)',
       },
     },
     screens: {

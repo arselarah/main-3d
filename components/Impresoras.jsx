@@ -40,7 +40,7 @@ export default function Impresoras() {
       <motion.div
         initial={{ opacity: 0, y: '50px' }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false }}
+        viewport={{ once: true }}
         transition={{ delay: 0.3, duration: 0.5, ease: 'linear' }}
         className='relative top-0 flex h-auto min-h-screen items-center pb-[2vw] lg:pb-[3vw]'
       >
@@ -165,7 +165,7 @@ export default function Impresoras() {
       <motion.div
         initial={{ opacity: 0, y: '50px' }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false }}
+        viewport={{ once: true }}
         transition={{ delay: 0.3, duration: 0.5, ease: 'linear' }}
         ref={container}
         className='relative top-0 flex h-auto min-h-screen items-center pb-[2vw] lg:pb-[3vw]'
@@ -293,7 +293,7 @@ export default function Impresoras() {
       <motion.div
         initial={{ opacity: 0, y: '50px' }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false }}
+        viewport={{ once: true }}
         transition={{ delay: 0.3, duration: 0.5, ease: 'linear' }}
         ref={containerDos}
         className='relative top-0 flex h-auto min-h-screen items-center'
