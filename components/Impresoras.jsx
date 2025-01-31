@@ -10,62 +10,62 @@ const poppins = Poppins({
 })
 
 export default function Impresoras() {
-  const container = useRef(null)
-  const containerDos = useRef(null)
-  const { scrollYProgress: scrollSecondCard } = useScroll({
-    target: container,
-    offset: ['start end', 'start start'],
-  })
-  const hide1 = useTransform(scrollSecondCard, [0, 1], [1, 0])
-  const backgroundColor1 = useTransform(
-    scrollSecondCard,
-    [0, 1],
-    ['#EEF3ED', '#b2b2b2'], // Cambiar de rojo a azul
-  )
+  // const container = useRef(null)
+  // const containerDos = useRef(null)
+  // const { scrollYProgress: scrollSecondCard } = useScroll({
+  //   target: container,
+  //   offset: ['start end', 'start start'],
+  // })
+  //const hide1 = useTransform(scrollSecondCard, [0, 1], [1, 0])
+  // const backgroundColor1 = useTransform(
+  //   scrollSecondCard,
+  //   [0, 1],
+  //   ['#EEF3ED', '#b2b2b2'],
+  // )
 
-  const { scrollYProgress: scrollThirdCard } = useScroll({
-    target: containerDos,
-    offset: ['start end', 'start start'],
-  })
-  const hide2 = useTransform(scrollThirdCard, [0, 1], [1, 0])
-  const backgroundColor2 = useTransform(
-    scrollThirdCard,
-    [0, 1],
-    ['#EEF3ED', '#b2b2b2'], // Cambiar de rojo a azul
-  )
+  // const { scrollYProgress: scrollThirdCard } = useScroll({
+  //   target: containerDos,
+  //   offset: ['start end', 'start start'],
+  // })
+  //const hide2 = useTransform(scrollThirdCard, [0, 1], [1, 0])
+  // const backgroundColor2 = useTransform(
+  //   scrollThirdCard,
+  //   [0, 1],
+  //   ['#EEF3ED', '#b2b2b2'],
+  // )
   return (
     <section
-      className={`relative min-h-[300vh] px-4 py-[2vw] lg:mb-[3vw] lg:px-8 lg:py-[3vw] ${poppins.className}`}
+      className={`relative mx-4 mb-[3vw] lg:mx-8 lg:mb-[6vw] ${poppins.className} rounded-3xl bg-fondo_claro`}
     >
-      <motion.div
-        initial={{ opacity: 0, y: '50px' }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.3, duration: 0.5, ease: 'linear' }}
-        className='relative top-0 flex h-auto min-h-screen items-center pb-[2vw] lg:pb-[3vw]'
+      <div
+        // initial={{ opacity: 0, y: '50px' }}
+        // whileInView={{ opacity: 1, y: 0 }}
+        // viewport={{ once: true }}
+        // transition={{ delay: 0.3, duration: 0.5, ease: 'linear' }}
+        className='relative flex h-auto items-center pb-[6vw] pt-[4vw]'
       >
         <motion.div
-          style={{ backgroundColor: backgroundColor1 }}
-          className='relative flex h-auto min-h-screen w-full flex-col items-center justify-center overflow-hidden rounded-3xl p-4 md:p-8'
+          //style={{ backgroundColor: backgroundColor1 }}
+          className='relative flex h-auto w-full flex-col items-center justify-center overflow-hidden p-4 md:p-8'
         >
           <motion.div
-            style={{ opacity: hide1 }}
+            //style={{ opacity: hide1 }}
             className='relative mx-auto flex h-full max-h-[1080px] w-full flex-col justify-center lg:w-[83vw]'
           >
-            <div className='titleContainer overflow-hidden border-b-[1px] border-negro pb-[2vw] text-black lg:pb-[3vw]'>
+            <div className='titleContainer overflow-hidden pb-[2vw] text-black lg:pb-[3vw]'>
               <motion.h3
-                initial={{ opacity: 0, x: '-50px' }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: false }}
+                initial={{ opacity: 0, y: '3rem' }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 transition={{ delay: 0.3, duration: 0.5, ease: 'linear' }}
                 className='pb-4 text-center text-clamp-sm font-medium'
               >
                 IT3D H56
               </motion.h3>
               <motion.h2
-                initial={{ opacity: 0, x: '50px' }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: false }}
+                initial={{ opacity: 0, y: '3rem' }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 transition={{ delay: 0.3, duration: 0.5, ease: 'linear' }}
                 className='mx-auto max-w-[840px] text-center text-clamp-lg font-semibold leading-none'
               >
@@ -74,9 +74,9 @@ export default function Impresoras() {
             </div>
             <motion.div className='infoContainer mt-[2vw] flex flex-col items-stretch justify-between gap-4 md:flex-row md:gap-8 lg:mt-[3vw]'>
               <motion.div
-                initial={{ opacity: 0, y: '50px' }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
                 transition={{ delay: 0.5, duration: 0.5, ease: 'linear' }}
                 className='textContainer max-w-[800px] flex-1 2xl:flex-initial'
               >
@@ -128,9 +128,9 @@ export default function Impresoras() {
                 </div>
               </motion.div>
               <motion.div
-                initial={{ opacity: 0, y: '50px' }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
                 transition={{ delay: 0.6, duration: 0.5, ease: 'linear' }}
                 className='imageContainer min-h-[300px] w-full max-w-[800px] flex-1 2xl:min-h-[420px] 2xl:flex-initial'
               >
@@ -161,37 +161,40 @@ export default function Impresoras() {
             </motion.div> */}
           </motion.div>
         </motion.div>
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0, y: '50px' }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.3, duration: 0.5, ease: 'linear' }}
-        ref={container}
-        className='relative top-0 flex h-auto min-h-screen items-center pb-[2vw] lg:pb-[3vw]'
+      </div>
+      <article className='relative h-[1px] w-full'>
+        <div className='relative mx-auto h-[1px] w-[90%] bg-black'></div>
+      </article>
+      <div
+        // initial={{ opacity: 0, y: '50px' }}
+        // whileInView={{ opacity: 1, y: 0 }}
+        // viewport={{ once: true }}
+        // transition={{ delay: 0.3, duration: 0.5, ease: 'linear' }}
+        //ref={container}
+        className='relative flex h-auto items-center py-[6vw]'
       >
         <motion.div
-          style={{ backgroundColor: backgroundColor2 }}
-          className='relative flex h-auto min-h-screen w-full flex-col items-center justify-center overflow-hidden rounded-3xl bg-fondo_claro p-4 md:p-8'
+          //style={{ backgroundColor: backgroundColor2 }}
+          className='relative flex h-auto w-full flex-col items-center justify-center overflow-hidden p-4 md:p-8'
         >
           <motion.div
-            style={{ opacity: hide2 }}
+            //style={{ opacity: hide2 }}
             className='relative mx-auto flex h-full max-h-[1080px] w-full flex-col justify-center lg:w-[83vw]'
           >
-            <div className='titleContainer overflow-hidden border-b-[1px] border-negro pb-[2vw] text-black lg:pb-[3vw]'>
+            <div className='titleContainer overflow-hidden pb-[2vw] text-black lg:pb-[3vw]'>
               <motion.h3
-                initial={{ opacity: 0, x: '-50px' }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: false }}
+                initial={{ opacity: 0, y: '3rem' }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 transition={{ delay: 0.3, duration: 0.5, ease: 'linear' }}
                 className='pb-4 text-center text-clamp-sm font-medium'
               >
                 NX 300 Modular
               </motion.h3>
               <motion.h2
-                initial={{ opacity: 0, x: '50px' }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: false }}
+                initial={{ opacity: 0, y: '3rem' }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 transition={{ delay: 0.3, duration: 0.5, ease: 'linear' }}
                 className='mx-auto max-w-[840px] text-center text-clamp-lg font-semibold leading-none'
               >
@@ -200,9 +203,9 @@ export default function Impresoras() {
             </div>
             <motion.div className='infoContainer mt-[2vw] flex flex-col items-stretch justify-between gap-4 md:flex-row md:gap-8 lg:mt-[3vw]'>
               <motion.div
-                initial={{ opacity: 0, y: '50px' }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
                 transition={{ delay: 0.5, duration: 0.5, ease: 'linear' }}
                 className='textContainer max-w-[800px] flex-1 2xl:flex-initial'
               >
@@ -254,9 +257,9 @@ export default function Impresoras() {
                 </div>
               </motion.div>
               <motion.div
-                initial={{ opacity: 0, y: '50px' }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
                 transition={{ delay: 0.6, duration: 0.5, ease: 'linear' }}
                 className='imageContainer min-h-[300px] w-full max-w-[800px] flex-1 2xl:min-h-[420px] 2xl:flex-initial'
               >
@@ -289,31 +292,34 @@ export default function Impresoras() {
             </motion.div> */}
           </motion.div>
         </motion.div>
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0, y: '50px' }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.3, duration: 0.5, ease: 'linear' }}
-        ref={containerDos}
-        className='relative top-0 flex h-auto min-h-screen items-center'
+      </div>
+      <article className='relative h-[1px] w-full'>
+        <div className='relative mx-auto h-[1px] w-[90%] bg-black'></div>
+      </article>
+      <div
+        // initial={{ opacity: 0, y: '50px' }}
+        // whileInView={{ opacity: 1, y: 0 }}
+        // viewport={{ once: true }}
+        // transition={{ delay: 0.3, duration: 0.5, ease: 'linear' }}
+        // ref={containerDos}
+        className='relative flex h-auto items-center py-[6vw]'
       >
-        <div className='relative flex h-auto min-h-screen w-full flex-col items-center justify-center overflow-hidden rounded-3xl bg-fondo_claro p-4 md:p-8'>
+        <div className='relative flex h-auto w-full flex-col items-center justify-center overflow-hidden p-4 md:p-8'>
           <div className='relative mx-auto flex h-full max-h-[1080px] w-full flex-col justify-center lg:w-[83vw]'>
-            <div className='titleContainer overflow-hidden border-b-[1px] border-negro pb-[2vw] text-black lg:pb-[3vw]'>
+            <div className='titleContainer overflow-hidden pb-[2vw] text-black lg:pb-[3vw]'>
               <motion.h3
-                initial={{ opacity: 0, x: '-50px' }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: false }}
+                initial={{ opacity: 0, y: '3rem' }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 transition={{ delay: 0.3, duration: 0.5, ease: 'linear' }}
                 className='pb-4 text-center text-clamp-sm font-medium'
               >
                 BIGFoot​ 500 Modular
               </motion.h3>
               <motion.h2
-                initial={{ opacity: 0, x: '50px' }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: false }}
+                initial={{ opacity: 0, y: '3rem' }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 transition={{ delay: 0.3, duration: 0.5, ease: 'linear' }}
                 className='mx-auto max-w-[840px] text-center text-clamp-lg font-semibold leading-none'
               >
@@ -322,9 +328,9 @@ export default function Impresoras() {
             </div>
             <motion.div className='infoContainer mt-[2vw] flex flex-col items-stretch justify-between gap-4 md:flex-row md:gap-8 lg:mt-[3vw]'>
               <motion.div
-                initial={{ opacity: 0, y: '50px' }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
                 transition={{ delay: 0.5, duration: 0.5, ease: 'linear' }}
                 className='textContainer max-w-[800px] flex-1 2xl:flex-initial'
               >
@@ -376,9 +382,9 @@ export default function Impresoras() {
                 </div>
               </motion.div>
               <motion.div
-                initial={{ opacity: 0, y: '50px' }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
                 transition={{ delay: 0.6, duration: 0.5, ease: 'linear' }}
                 className='imageContainer min-h-[300px] w-full max-w-[800px] flex-1 2xl:min-h-[420px] 2xl:flex-initial'
               >
@@ -411,7 +417,7 @@ export default function Impresoras() {
             </motion.div> */}
           </div>
         </div>
-      </motion.div>
+      </div>
     </section>
   )
 }

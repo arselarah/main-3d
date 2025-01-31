@@ -164,7 +164,7 @@ export default function Escaneres() {
                           src={escaner.imagen}
                           fill
                           alt={escaner.titulo}
-                          className='object-contain'
+                          className='mx-auto max-w-[80%] object-contain'
                         />
                       </div>
                     ))}

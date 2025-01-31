@@ -20,7 +20,7 @@ export default function HeroHome() {
     <>
       <section
         ref={container}
-        className={`hero relative m-0 h-dvh min-h-[640px] w-full ${poppins.className} hero overflow-hidden`}
+        className={`hero relative mb-[3vw] h-dvh min-h-[640px] w-full ${poppins.className} hero overflow-hidden`}
       >
         <video
           autoPlay
