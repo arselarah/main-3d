@@ -72,20 +72,20 @@ export default function Escaneres() {
           </div>
 
           <div className='relative h-auto w-full p-4 lg:p-16' ref={ref}>
-            <div className='relative flex h-full w-full flex-row flex-nowrap items-center justify-center'>
+            <div className='relative flex h-full w-full flex-row flex-nowrap items-center justify-center gap-10'>
               <div className='escaneres_contenedor h-full flex-1'>
                 {escaneres.slice(0, 4).map((escaner, index) => (
                   <div
                     key={index}
-                    className='escaneres_intem group relative flex w-full cursor-pointer flex-row items-end gap-10 py-8 transition-all duration-1000 hover:translate-x-5'
                     onMouseEnter={() => {
                       setModal({ active: true, index })
                     }}
                     onMouseLeave={() => {
                       setModal({ active: false, index })
                     }}
+                    className='escaneres_intem group relative flex w-full cursor-pointer flex-row items-stretch justify-start py-8 transition-all duration-1000 hover:translate-x-5'
                   >
-                    <div>
+                    <div className='relative w-1/2'>
                       <h4 className='text-clamp-sm font-medium text-black md:max-w-[240px]'>
                         {escaner.titulo}
                       </h4>
@@ -93,21 +93,16 @@ export default function Escaneres() {
                         {escaner.texto}
                       </p>
                     </div>
-
-                    <Link
-                      className='relative z-10 hidden rounded-full border-[1px] border-negro bg-negro p-4 text-white opacity-0 transition-all duration-300 hover:bg-transparent hover:text-negro group-hover:ml-4 group-hover:opacity-100 md:block'
-                      href={'/'}
-                    >
-                      <SlArrowRight />
-                    </Link>
-                    {/* <div className='absolute left-1/2 top-1/2 aspect-square w-3/4 max-w-2xl -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full border-2 border-negro'>
+                    <div className='relative flex h-auto max-h-[200px] w-1/2 items-center justify-center overflow-clip'>
                       <Image
-                        src={escaner.imagen}
                         alt={escaner.titulo}
-                        fill
-                        className='object-contain transition-all duration-500'
-                      /> 
-                    </div>*/}
+                        src={escaner.imagen}
+                        width={0}
+                        height={0}
+                        className='relative aspect-video w-full object-contain'
+                      />
+                    </div>
+
                     <Link
                       href={`/${index}`}
                       className='absolute inset-0 left-0 top-0'
@@ -115,7 +110,6 @@ export default function Escaneres() {
                   </div>
                 ))}
               </div>
-
               <div className='borderAnimado relative z-[1] flex-1 items-center justify-center overflow-clip rounded-full bg-fondo_claro md:flex'>
                 <motion.svg
                   width='100%'
@@ -171,12 +165,11 @@ export default function Escaneres() {
                   </div>
                 </motion.div>
               </div>
-
               <div className='escaneres_contenedor h-full flex-1'>
                 {escaneres.slice(4, 8).map((escaner, index) => (
                   <div
                     key={index}
-                    className='escaneres_intem group relative flex w-full cursor-pointer flex-row-reverse items-end gap-10 py-8 transition-all duration-1000 hover:-translate-x-5'
+                    className='escaneres_intem group relative flex w-full cursor-pointer flex-row-reverse items-stretch justify-start py-8 transition-all duration-1000 hover:translate-x-5'
                     onMouseEnter={() => {
                       setModal({ active: true, index })
                     }}
@@ -184,7 +177,7 @@ export default function Escaneres() {
                       setModal({ active: false, index })
                     }}
                   >
-                    <div>
+                    <div className='relative w-1/2'>
                       <h4 className='text-clamp-sm font-medium text-black md:max-w-[240px]'>
                         {escaner.titulo}
                       </h4>
@@ -193,12 +186,15 @@ export default function Escaneres() {
                       </p>
                     </div>
 
-                    <Link
-                      className='prevIcon-white relative hidden rounded-full border-[1px] border-negro bg-negro p-4 text-white opacity-0 transition-all duration-300 hover:bg-transparent hover:text-negro group-hover:mr-4 group-hover:opacity-100 md:block'
-                      href={'/'}
-                    >
-                      <SlArrowLeft />
-                    </Link>
+                    <div className='relative flex h-auto max-h-[200px] w-1/2 items-center justify-center overflow-clip'>
+                      <Image
+                        alt={escaner.titulo}
+                        src={escaner.imagen}
+                        width={0}
+                        height={0}
+                        className='relative aspect-video w-full object-contain'
+                      />
+                    </div>
                     {/* <div className='absolute left-1/2 top-1/2 aspect-square w-3/4 max-w-2xl -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full border-2 border-negro'>
                       <Image
                         src={escaner.imagen}
