@@ -99,7 +99,7 @@ export default function Escaneres() {
                         src={escaner.imagen}
                         width={0}
                         height={0}
-                        className='relative aspect-video w-full object-contain'
+                        className='relative aspect-video w-[75%] object-contain'
                       />
                     </div>
 
@@ -190,9 +190,9 @@ export default function Escaneres() {
                       <Image
                         alt={escaner.titulo}
                         src={escaner.imagen}
-                        width={0}
-                        height={0}
-                        className='relative aspect-video w-full object-contain'
+                        width={100}
+                        height={1000}
+                        className='relative aspect-video w-[75%] object-contain'
                       />
                     </div>
                     {/* <div className='absolute left-1/2 top-1/2 aspect-square w-3/4 max-w-2xl -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full border-2 border-negro'>

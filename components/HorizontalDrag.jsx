@@ -40,7 +40,7 @@ export default function HorizontalDrag() {
   return (
     <>
       <section
-        className='draggableSlider my-[2vw] h-[400vh] tracking-widest lg:my-[3vw]'
+        className='draggableSlider my-[2vw] h-[300vh] tracking-widest md:h-[400vh] lg:my-[3vw]'
         ref={targetRef}
       >
         <div className='draggableSlider_container sticky top-0 h-screen overflow-hidden'>
@@ -51,7 +51,7 @@ export default function HorizontalDrag() {
             <div className='draggableSlider_item h-screen w-screen'>
               <motion.div
                 style={{ backgroundPositionX: backgroundParallax }}
-                className='draggableSlider_content impresora-uno relative h-full w-full bg-cover bg-no-repeat'
+                className='draggableSlider_content impresora-uno relative h-full w-full md:bg-cover md:bg-no-repeat'
               >
                 <div className='absolute inset-0 left-0 top-0 bg-black bg-opacity-45'>
                   <motion.div
