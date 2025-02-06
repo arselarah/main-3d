@@ -93,14 +93,15 @@ export default function Escaneres() {
                         {escaner.texto}
                       </p>
                     </div>
-                    <div className='relative flex h-auto max-h-[200px] w-1/2 items-center justify-center overflow-clip'>
+                    <div className='relative flex h-auto max-h-[200px] w-1/2 items-center justify-center overflow-clip '>
                       <Image
                         alt={escaner.titulo}
                         src={escaner.imagen}
                         width={0}
                         height={0}
-                        className='relative aspect-video w-[75%] object-contain'
+                        className='relative aspect-video w-[75%] object-contain group-hover:scale-0 transition-transform duration-500'
                       />
+                      <div className='absolute w-6 h-6 bg-rojo rounded-full top-1/2 -tranlate-y-1/2 opacity-0 group-hover:opacity-100 group-hover:scale-100 scale-0 transition-transform duration-500'/>
                     </div>
 
                     <Link
@@ -185,6 +186,7 @@ export default function Escaneres() {
                         {escaner.texto}
                       </p>
                     </div>
+                    
 
                     <div className='relative flex h-auto max-h-[200px] w-1/2 items-center justify-center overflow-clip'>
                       <Image
@@ -192,8 +194,9 @@ export default function Escaneres() {
                         src={escaner.imagen}
                         width={100}
                         height={1000}
-                        className='relative aspect-video w-[75%] object-contain'
+                        className='relative aspect-video w-[75%] object-contain group-hover:scale-0 transition-transform duration-500'
                       />
+                      <div className='absolute w-6 h-6 bg-rojo rounded-full top-1/2 -tranlate-y-1/2 opacity-0 group-hover:opacity-100 group-hover:scale-100 scale-0 transition-transform duration-500'/>
                     </div>
                     {/* <div className='absolute left-1/2 top-1/2 aspect-square w-3/4 max-w-2xl -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full border-2 border-negro'>
                       <Image
