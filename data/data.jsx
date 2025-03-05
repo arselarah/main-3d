@@ -125,3 +125,24 @@ export const modales = [
     imagen: '/assets/landing-Sistema-AutoScan-T42-3D-10.png.webp',
   },
 ]
+
+export const banners = [
+  {
+    titulo: 'Impresión DUAL',
+    texto:
+      'Con dos o cuatro cabezales de entre (Pellets o Filamento) puedes crear una pieza impresa hecha con dos o más materiales diferentes para proporcionarle propiedades físicas específicas.',
+    fondo: 'impresora-uno',
+  },
+  {
+    titulo: 'Impresión con Metal',
+    texto:
+      'Gracias al cabezal de Pellets podrás crear piezas metálicas, por ejemplo, con un material INOX 316. Podrás obtener una pieza 100% de metal después del sinterizado. Contáctanos para conocer más sobre materiales metálicos en impresión 3D.',
+    fondo: 'impresora-dos',
+  },
+  {
+    titulo: 'Impresión Simétrica',
+    texto:
+      'Al elegir una impresora con doble cabezal, podrás crear piezas al mismo tiempo de forma simétrica o en espejo. Esto te ayudará a reducir el tiempo de impresión para crear piezas únicas.',
+    fondo: 'impresora-tres',
+  },
+]

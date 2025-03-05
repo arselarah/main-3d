@@ -72,7 +72,7 @@ export default function Escaneres() {
           </div>
 
           <div className='relative h-auto w-full p-4 lg:p-16' ref={ref}>
-            <div className='relative flex h-full w-full flex-row flex-nowrap items-center justify-center gap-10'>
+            <div className='relative flex h-full w-full flex-row flex-nowrap items-center justify-center gap-10 md:gap-10'>
               <div className='escaneres_contenedor h-full flex-1'>
                 {escaneres.slice(0, 4).map((escaner, index) => (
                   <div
@@ -85,7 +85,7 @@ export default function Escaneres() {
                     }}
                     className='escaneres_intem group relative flex w-full cursor-pointer flex-row items-stretch justify-start py-8 transition-all duration-1000 hover:translate-x-5'
                   >
-                    <div className='relative w-1/2'>
+                    <div className='relative w-full md:w-1/2'>
                       <h4 className='text-clamp-sm font-medium text-black md:max-w-[240px]'>
                         {escaner.titulo}
                       </h4>
@@ -93,15 +93,15 @@ export default function Escaneres() {
                         {escaner.texto}
                       </p>
                     </div>
-                    <div className='relative flex h-auto max-h-[200px] w-1/2 items-center justify-center overflow-clip '>
+                    <div className='relative hidden h-auto max-h-[200px] w-1/2 items-center justify-center overflow-clip md:flex'>
                       <Image
                         alt={escaner.titulo}
                         src={escaner.imagen}
                         width={0}
                         height={0}
-                        className='relative aspect-video w-[75%] object-contain group-hover:scale-0 transition-transform duration-500'
+                        className='relative aspect-video w-[75%] object-contain transition-transform duration-500 group-hover:scale-0'
                       />
-                      <div className='absolute w-6 h-6 bg-rojo rounded-full top-1/2 -tranlate-y-1/2 opacity-0 group-hover:opacity-100 group-hover:scale-100 scale-0 transition-transform duration-500'/>
+                      <div className='-tranlate-y-1/2 absolute top-1/2 h-6 w-6 scale-0 rounded-full bg-rojo opacity-0 transition-transform duration-500 group-hover:scale-100 group-hover:opacity-100' />
                     </div>
 
                     <Link
@@ -111,7 +111,7 @@ export default function Escaneres() {
                   </div>
                 ))}
               </div>
-              <div className='borderAnimado relative z-[1] flex-1 items-center justify-center overflow-clip rounded-full bg-fondo_claro md:flex'>
+              <div className='borderAnimado relative z-[1] hidden flex-1 items-center justify-center overflow-clip rounded-full bg-fondo_claro md:flex'>
                 <motion.svg
                   width='100%'
                   height='100%'
@@ -178,7 +178,7 @@ export default function Escaneres() {
                       setModal({ active: false, index })
                     }}
                   >
-                    <div className='relative w-1/2'>
+                    <div className='relative w-full md:w-1/2'>
                       <h4 className='text-clamp-sm font-medium text-black md:max-w-[240px]'>
                         {escaner.titulo}
                       </h4>
@@ -186,17 +186,16 @@ export default function Escaneres() {
                         {escaner.texto}
                       </p>
                     </div>
-                    
 
-                    <div className='relative flex h-auto max-h-[200px] w-1/2 items-center justify-center overflow-clip'>
+                    <div className='relative hidden h-auto max-h-[200px] w-1/2 items-center justify-center overflow-clip md:flex'>
                       <Image
                         alt={escaner.titulo}
                         src={escaner.imagen}
                         width={100}
                         height={1000}
-                        className='relative aspect-video w-[75%] object-contain group-hover:scale-0 transition-transform duration-500'
+                        className='relative aspect-video w-[75%] object-contain transition-transform duration-500 group-hover:scale-0'
                       />
-                      <div className='absolute w-6 h-6 bg-rojo rounded-full top-1/2 -tranlate-y-1/2 opacity-0 group-hover:opacity-100 group-hover:scale-100 scale-0 transition-transform duration-500'/>
+                      <div className='-tranlate-y-1/2 absolute top-1/2 h-6 w-6 scale-0 rounded-full bg-rojo opacity-0 transition-transform duration-500 group-hover:scale-100 group-hover:opacity-100' />
                     </div>
                     {/* <div className='absolute left-1/2 top-1/2 aspect-square w-3/4 max-w-2xl -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full border-2 border-negro'>
                       <Image

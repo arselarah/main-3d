@@ -18,14 +18,14 @@ body {
 }
 
 .impresora-uno {
-  background-image: url('/assets/pexels-googledeepmind-18069490.jpg');
+  background-image: url('/assets/impresion-dual.jpg');
 }
 .impresora-dos {
-  background-image: url('/assets/pexels-steve-30177090.jpg');
+  background-image: url('/assets/impresion-simetrica.jpg');
 }
 
 .impresora-tres {
-  background-image: url('/assets/pexels-thisisengineering-3862372.jpg');
+  background-image: url('/assets/impresion-metal.jpg');
 }
 
 /* .escaneres_intem:nth-child(2),

@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { Poppins } from 'next/font/google'
 import { impresoras } from '@/data/data'
 import { useRef } from 'react'
-import FondoSvg from './FondoSvg'
+//import FondoSvg from './FondoSvg'
 
 const poppins = Poppins({
   subsets: ['latin'],
