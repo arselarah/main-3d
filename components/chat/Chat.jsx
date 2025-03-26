@@ -22,8 +22,8 @@ export default function Chat() {
     >
       <motion.div
         layout
-        className={`flex flex-col justify-between overflow-hidden bg-white p-4 shadow-lg ${
-          isOpen ? 'h-96 w-80' : 'h-16 w-16'
+        className={`flex cursor-pointer flex-col justify-between overflow-hidden bg-white p-4 shadow-lg ${
+          isOpen ? 'h-96 w-80 cursor-default' : 'h-16 w-16'
         }`}
         initial={{
           width: '4rem',
