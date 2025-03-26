@@ -7,6 +7,7 @@ import Lenis from 'lenis'
 import 'lenis/dist/lenis.css'
 import { useEffect } from 'react'
 import Footer from '@/components/footer/Footer'
+import Chat from '@/components/chat/Chat'
 
 export default function App({ Component, pageProps }) {
   useEffect(() => {
@@ -41,6 +42,7 @@ export default function App({ Component, pageProps }) {
         }}
       >
         <NavBar />
+        <Chat />
         <Component {...pageProps} />
         <Footer />
       </motion.div>
