@@ -1,14 +1,42 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { MessageSquare, X } from 'lucide-react'
 
 export default function Chat() {
   const [isOpen, setIsOpen] = useState(false)
   const [input, setInput] = useState('')
-  const [messages, setMessages] = useState([])
+  const [messages, setMessages] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return JSON.parse(localStorage.getItem('chatMessages')) || []
+    }
+    return []
+  })
   const [loading, setLoading] = useState(false)
-  const [formSubmitted, setFormSubmitted] = useState(false)
-  const [userInfo, setUserInfo] = useState({ nombre: '', email: '', telefono: '' })
+  const [formSubmitted, setFormSubmitted] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return JSON.parse(localStorage.getItem('formSubmitted')) || false
+    }
+    return false
+  })
+  const [userInfo, setUserInfo] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return JSON.parse(localStorage.getItem('userInfo')) || { nombre: '', email: '', telefono: '' }
+    }
+    return { nombre: '', email: '', telefono: '' }
+  })
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('chatMessages', JSON.stringify(messages))
+    }
+  }, [messages])
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('formSubmitted', JSON.stringify(formSubmitted))
+      localStorage.setItem('userInfo', JSON.stringify(userInfo))
+    }
+  }, [formSubmitted, userInfo])
 
   const toggleChat = () => setIsOpen(!isOpen)
   const closeChat = () => setIsOpen(false)
@@ -21,19 +49,36 @@ export default function Chat() {
   const handleSubmitForm = () => {
     if (userInfo.nombre && userInfo.email && userInfo.telefono) {
       setFormSubmitted(true)
+      const greeting = `¡Hola ${userInfo.nombre}! Bienvenido a Main-3D 👋. ¿En qué estás pensando usar tu impresora 3D?`
+      setMessages([{ from: 'bot', text: greeting }])
+      sendUserToSheets()
     } else {
       alert('Por favor completa todos los campos')
     }
   }
 
+  const sendUserToSheets = async () => {
+    try {
+      await fetch('http://127.0.0.1:5000/registro', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userInfo),
+      })
+    } catch (error) {
+      console.error('Error al registrar usuario:', error)
+    }
+  }
+
   const sendMessage = async () => {
     if (!input.trim()) return
-    const isFirstMessage = messages.length === 0
+    const isFirstMessage = messages.length === 1
     setMessages(prev => [...prev, { from: 'user', text: input }])
     setLoading(true)
 
     try {
-      const res = await fetch('http://localhost:5000/chat', {
+      const res = await fetch('http://127.0.0.1:5000/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
