@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { MessageSquare, X } from 'lucide-react'
 
@@ -20,14 +20,19 @@ export default function Chat() {
   })
   const [userInfo, setUserInfo] = useState(() => {
     if (typeof window !== 'undefined') {
-      return JSON.parse(localStorage.getItem('userInfo')) || {
-        nombre: '',
-        email: '',
-        telefono: '',
-      }
+      return JSON.parse(localStorage.getItem('userInfo')) || { nombre: '', email: '', telefono: '' }
     }
     return { nombre: '', email: '', telefono: '' }
   })
+
+  const messagesEndRef = useRef(null)
+
+  // Scroll automático al fondo
+  useEffect(() => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' })
+    }
+  }, [messages, loading])
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -47,15 +52,15 @@ export default function Chat() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
-    setUserInfo((prev) => ({ ...prev, [name]: value }))
+    setUserInfo(prev => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmitForm = async () => {
+  const handleSubmitForm = () => {
     if (userInfo.nombre && userInfo.email && userInfo.telefono) {
       setFormSubmitted(true)
       const greeting = `¡Hola ${userInfo.nombre}! Bienvenido a Main-3D 👋. ¿En qué estás pensando usar tu impresora 3D?`
       setMessages([{ from: 'bot', text: greeting }])
-      await sendUserToSheets()
+      sendUserToSheets()
     } else {
       alert('Por favor completa todos los campos')
     }
@@ -65,9 +70,7 @@ export default function Chat() {
     try {
       await fetch('http://127.0.0.1:5000/registro', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(userInfo),
       })
     } catch (error) {
@@ -77,52 +80,43 @@ export default function Chat() {
 
   const sendMessage = async () => {
     if (!input.trim()) return
-    const isFirstMessage = messages.length <= 1
-    setMessages((prev) => [...prev, { from: 'user', text: input }])
+    const userMessage = input.trim()
+    setInput('') // 🧼 Limpiar input inmediatamente
+    setMessages(prev => [...prev, { from: 'user', text: userMessage }])
     setLoading(true)
-
+  
     try {
-      const res = await fetch('http://127.0.0.1:5000/chat', {
+      const res = await fetch("https://127.0.0.1:5000/chat", {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ pregunta: input, reiniciar: isFirstMessage }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ pregunta: userMessage, reiniciar: false }),
       })
-
+  
       const data = await res.json()
-      setMessages((prev) => [...prev, { from: 'bot', text: data.respuesta }])
+      setMessages(prev => [...prev, { from: 'bot', text: data.respuesta }])
     } catch (err) {
-      setMessages((prev) => [
-        ...prev,
-        { from: 'bot', text: '❌ Error al conectar con el bot' },
-      ])
+      setMessages(prev => [...prev, { from: 'bot', text: '❌ Error al conectar con el bot' }])
     } finally {
-      setInput('')
       setLoading(false)
     }
   }
+  
 
-  const handleEndChat = async () => {
+  const finalizarConversacion = async () => {
     try {
       await fetch('http://127.0.0.1:5000/finalizar', {
         method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userInfo, messages })
       })
-
-      localStorage.removeItem('chatMessages')
-      localStorage.removeItem('formSubmitted')
-      localStorage.removeItem('userInfo')
-
+      alert('✅ Conversación finalizada y guardada.')
       setMessages([])
+      setInput('')
       setFormSubmitted(false)
       setUserInfo({ nombre: '', email: '', telefono: '' })
-      setInput('')
-      setIsOpen(false)
-
-      alert('✅ Conversación finalizada')
-    } catch (error) {
-      console.error('Error al finalizar conversación:', error)
-      alert('❌ Ocurrió un error al finalizar')
+      localStorage.clear()
+    } catch (err) {
+      alert('❌ Error al finalizar la conversación.')
     }
   }
 
@@ -134,7 +128,7 @@ export default function Chat() {
     >
       <motion.div
         layout
-        className={`flex cursor-pointer flex-col justify-between overflow-hidden bg-white p-4 shadow-lg ${
+        className={`flex cursor-pointer flex-col justify-between overflow-hidden bg-white p-4 shadow-xl border border-gray-200 ${
           isOpen ? 'h-[32rem] w-80 cursor-default' : 'h-16 w-16'
         }`}
         initial={{ width: '4rem', height: '4rem', borderRadius: '4rem' }}
@@ -200,38 +194,44 @@ export default function Chat() {
               </div>
             ) : (
               <>
-                <div className='flex-1 overflow-y-auto p-2 space-y-2'>
+                <div className='flex-1 overflow-y-scroll p-2 space-y-3 scroll-smooth'
+                     style={{ scrollbarWidth: 'thin', overscrollBehavior: 'contain' }}>
                   {messages.map((msg, idx) => (
                     <div
                       key={idx}
-                      className={`text-sm max-w-[80%] px-3 py-2 rounded-lg ${
+                      className={`max-w-[80%] rounded-lg px-3 py-2 text-sm ${
                         msg.from === 'user'
-                          ? 'bg-blue-100 text-blue-800 self-end ml-auto'
-                          : 'bg-gray-100 text-gray-800 self-start mr-auto'
+                          ? 'ml-auto bg-blue-100 text-blue-800'
+                          : 'mr-auto bg-gray-200 text-gray-800'
                       }`}
                     >
                       {msg.text}
                     </div>
                   ))}
-                  {loading && (
-                    <div className='text-gray-400 text-sm'>Escribiendo...</div>
-                  )}
+                  {loading && <div className='text-gray-400 text-sm'>Escribiendo...</div>}
+                  <div ref={messagesEndRef} />
                 </div>
 
-                <div className='border-t border-gray-200 p-2'>
+                <div className='border-t border-gray-200 p-2 flex flex-col gap-2'>
                   <input
                     type='text'
                     placeholder='Escribe un mensaje...'
                     className='w-full rounded-lg border border-gray-300 p-2 focus:outline-none focus:ring-2 focus:ring-blue-400'
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
-                    onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' && input.trim()) {
+                        e.preventDefault()
+                        sendMessage()
+                      }
+                    }}
+                    
                   />
                   <button
-                    onClick={handleEndChat}
-                    className='mt-2 w-full rounded bg-red-500 py-2 text-sm text-white hover:bg-red-600'
+                    onClick={finalizarConversacion}
+                    className='text-xs text-center text-red-500 hover:underline'
                   >
-                    Finalizar chat
+                    Finalizar conversación
                   </button>
                 </div>
               </>
