@@ -77,7 +77,7 @@ export default function Chat() {
 
   const sendMessage = async () => {
     if (!input.trim()) return
-    const isFirstMessage = messages.length === 1
+    const isFirstMessage = messages.length <= 1
     setMessages((prev) => [...prev, { from: 'user', text: input }])
     setLoading(true)
 
