@@ -20,7 +20,11 @@ export default function Chat() {
   })
   const [userInfo, setUserInfo] = useState(() => {
     if (typeof window !== 'undefined') {
-      return JSON.parse(localStorage.getItem('userInfo')) || { nombre: '', email: '', telefono: '' }
+      return JSON.parse(localStorage.getItem('userInfo')) || {
+        nombre: '',
+        email: '',
+        telefono: '',
+      }
     }
     return { nombre: '', email: '', telefono: '' }
   })
@@ -43,15 +47,15 @@ export default function Chat() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
-    setUserInfo(prev => ({ ...prev, [name]: value }))
+    setUserInfo((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmitForm = () => {
+  const handleSubmitForm = async () => {
     if (userInfo.nombre && userInfo.email && userInfo.telefono) {
       setFormSubmitted(true)
       const greeting = `¡Hola ${userInfo.nombre}! Bienvenido a Main-3D 👋. ¿En qué estás pensando usar tu impresora 3D?`
       setMessages([{ from: 'bot', text: greeting }])
-      sendUserToSheets()
+      await sendUserToSheets()
     } else {
       alert('Por favor completa todos los campos')
     }
@@ -74,7 +78,7 @@ export default function Chat() {
   const sendMessage = async () => {
     if (!input.trim()) return
     const isFirstMessage = messages.length === 1
-    setMessages(prev => [...prev, { from: 'user', text: input }])
+    setMessages((prev) => [...prev, { from: 'user', text: input }])
     setLoading(true)
 
     try {
@@ -83,16 +87,42 @@ export default function Chat() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ pregunta: input, reiniciar: isFirstMessage })
+        body: JSON.stringify({ pregunta: input, reiniciar: isFirstMessage }),
       })
 
       const data = await res.json()
-      setMessages(prev => [...prev, { from: 'bot', text: data.respuesta }])
+      setMessages((prev) => [...prev, { from: 'bot', text: data.respuesta }])
     } catch (err) {
-      setMessages(prev => [...prev, { from: 'bot', text: '❌ Error al conectar con el bot' }])
+      setMessages((prev) => [
+        ...prev,
+        { from: 'bot', text: '❌ Error al conectar con el bot' },
+      ])
     } finally {
       setInput('')
       setLoading(false)
+    }
+  }
+
+  const handleEndChat = async () => {
+    try {
+      await fetch('http://127.0.0.1:5000/finalizar', {
+        method: 'POST',
+      })
+
+      localStorage.removeItem('chatMessages')
+      localStorage.removeItem('formSubmitted')
+      localStorage.removeItem('userInfo')
+
+      setMessages([])
+      setFormSubmitted(false)
+      setUserInfo({ nombre: '', email: '', telefono: '' })
+      setInput('')
+      setIsOpen(false)
+
+      alert('✅ Conversación finalizada')
+    } catch (error) {
+      console.error('Error al finalizar conversación:', error)
+      alert('❌ Ocurrió un error al finalizar')
     }
   }
 
@@ -174,16 +204,18 @@ export default function Chat() {
                   {messages.map((msg, idx) => (
                     <div
                       key={idx}
-                      className={`text-sm ${
+                      className={`text-sm max-w-[80%] px-3 py-2 rounded-lg ${
                         msg.from === 'user'
-                          ? 'text-right text-blue-700'
-                          : 'text-left text-gray-700'
+                          ? 'bg-blue-100 text-blue-800 self-end ml-auto'
+                          : 'bg-gray-100 text-gray-800 self-start mr-auto'
                       }`}
                     >
                       {msg.text}
                     </div>
                   ))}
-                  {loading && <div className='text-gray-400 text-sm'>Escribiendo...</div>}
+                  {loading && (
+                    <div className='text-gray-400 text-sm'>Escribiendo...</div>
+                  )}
                 </div>
 
                 <div className='border-t border-gray-200 p-2'>
@@ -195,6 +227,12 @@ export default function Chat() {
                     onChange={(e) => setInput(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
                   />
+                  <button
+                    onClick={handleEndChat}
+                    className='mt-2 w-full rounded bg-red-500 py-2 text-sm text-white hover:bg-red-600'
+                  >
+                    Finalizar chat
+                  </button>
                 </div>
               </>
             )}
