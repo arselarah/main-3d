@@ -27,7 +27,6 @@ export default function Chat() {
 
   const messagesEndRef = useRef(null)
 
-  // Scroll automático al fondo
   useEffect(() => {
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({ behavior: 'smooth' })
@@ -35,16 +34,12 @@ export default function Chat() {
   }, [messages, loading])
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('chatMessages', JSON.stringify(messages))
-    }
+    localStorage.setItem('chatMessages', JSON.stringify(messages))
   }, [messages])
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('formSubmitted', JSON.stringify(formSubmitted))
-      localStorage.setItem('userInfo', JSON.stringify(userInfo))
-    }
+    localStorage.setItem('formSubmitted', JSON.stringify(formSubmitted))
+    localStorage.setItem('userInfo', JSON.stringify(userInfo))
   }, [formSubmitted, userInfo])
 
   const toggleChat = () => setIsOpen(!isOpen)
@@ -57,6 +52,15 @@ export default function Chat() {
 
   const handleSubmitForm = () => {
     if (userInfo.nombre && userInfo.email && userInfo.telefono) {
+      if (userInfo.telefono.length !== 10) {
+        alert('El número de teléfono debe tener 10 dígitos')
+        return
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userInfo.email)) {
+        alert('Por favor ingresa un correo válido')
+        return
+      }
+
       setFormSubmitted(true)
       const greeting = `¡Hola ${userInfo.nombre}! Bienvenido a Main-3D 👋. ¿En qué estás pensando usar tu impresora 3D?`
       setMessages([{ from: 'bot', text: greeting }])
@@ -81,17 +85,17 @@ export default function Chat() {
   const sendMessage = async () => {
     if (!input.trim()) return
     const userMessage = input.trim()
-    setInput('') // 🧼 Limpiar input inmediatamente
+    setInput('')
     setMessages(prev => [...prev, { from: 'user', text: userMessage }])
     setLoading(true)
-  
+
     try {
-      const res = await fetch("https://127.0.0.1:5000/chat", {
+      const res = await fetch("http://127.0.0.1:5000/chat", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ pregunta: userMessage, reiniciar: false }),
       })
-  
+
       const data = await res.json()
       setMessages(prev => [...prev, { from: 'bot', text: data.respuesta }])
     } catch (err) {
@@ -100,7 +104,6 @@ export default function Chat() {
       setLoading(false)
     }
   }
-  
 
   const finalizarConversacion = async () => {
     try {
@@ -128,22 +131,13 @@ export default function Chat() {
     >
       <motion.div
         layout
-        className={`flex cursor-pointer flex-col justify-between overflow-hidden bg-white p-4 shadow-xl border border-gray-200 ${
-          isOpen ? 'h-[32rem] w-80 cursor-default' : 'h-16 w-16'
+        className={`flex flex-col justify-between overflow-hidden bg-white shadow-lg ${
+          isOpen ? 'h-[80vh] w-[90vw] sm:w-96 sm:h-[34rem] rounded-xl' : 'h-16 w-16 rounded-full'
         }`}
-        initial={{ width: '4rem', height: '4rem', borderRadius: '4rem' }}
-        animate={{
-          width: isOpen ? '20rem' : '4rem',
-          height: isOpen ? '32rem' : '4rem',
-          borderRadius: isOpen ? '1rem' : '4rem',
-        }}
         transition={{ type: 'spring', stiffness: 300, damping: 25 }}
       >
         {!isOpen && (
-          <div
-            className='flex h-full items-center justify-center'
-            onClick={toggleChat}
-          >
+          <div className='flex h-full items-center justify-center' onClick={toggleChat}>
             <MessageSquare size={32} className='text-gray-500' />
           </div>
         )}
@@ -157,34 +151,38 @@ export default function Chat() {
             </div>
 
             {!formSubmitted ? (
-              <div className='flex-1 overflow-y-auto p-2 space-y-2'>
+              <div className='flex-1 overflow-y-auto px-4 py-3 flex flex-col justify-center gap-3'>
                 <p className='text-sm font-semibold text-gray-600 text-center'>
                   Antes de comenzar, cuéntanos un poco de ti:
                 </p>
+
                 <input
                   type='text'
                   name='nombre'
                   placeholder='Nombre'
                   value={userInfo.nombre}
                   onChange={handleInputChange}
-                  className='w-full rounded border p-2 text-sm'
+                  className='w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400'
                 />
+
                 <input
                   type='email'
                   name='email'
                   placeholder='Correo electrónico'
                   value={userInfo.email}
                   onChange={handleInputChange}
-                  className='w-full rounded border p-2 text-sm'
+                  className='w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400'
                 />
+
                 <input
                   type='tel'
                   name='telefono'
                   placeholder='Número de teléfono'
                   value={userInfo.telefono}
                   onChange={handleInputChange}
-                  className='w-full rounded border p-2 text-sm'
+                  className='w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400'
                 />
+
                 <button
                   onClick={handleSubmitForm}
                   className='mt-2 w-full rounded bg-blue-500 py-2 text-sm text-white hover:bg-blue-600'
@@ -194,42 +192,28 @@ export default function Chat() {
               </div>
             ) : (
               <>
-                <div className='flex-1 overflow-y-scroll p-2 space-y-3 scroll-smooth'
-                     style={{ scrollbarWidth: 'thin', overscrollBehavior: 'contain' }}>
+                <div className='flex-1 overflow-y-auto p-2 space-y-2'>
                   {messages.map((msg, idx) => (
-                    <div
-                      key={idx}
-                      className={`max-w-[80%] rounded-lg px-3 py-2 text-sm ${
-                        msg.from === 'user'
-                          ? 'ml-auto bg-blue-100 text-blue-800'
-                          : 'mr-auto bg-gray-200 text-gray-800'
-                      }`}
-                    >
+                    <div key={idx} className={`max-w-[80%] rounded-xl px-4 py-2 text-sm ${msg.from === 'user' ? 'ml-auto bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-800'}`}>
                       {msg.text}
                     </div>
                   ))}
-                  {loading && <div className='text-gray-400 text-sm'>Escribiendo...</div>}
+                  {loading && <div className='text-sm text-gray-500'>Escribiendo...</div>}
                   <div ref={messagesEndRef} />
                 </div>
 
-                <div className='border-t border-gray-200 p-2 flex flex-col gap-2'>
+                <div className='border-t border-gray-200 p-2'>
                   <input
                     type='text'
                     placeholder='Escribe un mensaje...'
                     className='w-full rounded-lg border border-gray-300 p-2 focus:outline-none focus:ring-2 focus:ring-blue-400'
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter' && input.trim()) {
-                        e.preventDefault()
-                        sendMessage()
-                      }
-                    }}
-                    
+                    onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
                   />
                   <button
                     onClick={finalizarConversacion}
-                    className='text-xs text-center text-red-500 hover:underline'
+                    className='mt-2 w-full rounded bg-red-500 py-2 text-white hover:bg-red-600 text-sm'
                   >
                     Finalizar conversación
                   </button>
