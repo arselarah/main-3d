@@ -72,7 +72,7 @@ export default function Chat() {
 
   const sendUserToSheets = async () => {
     try {
-      await fetch('http://127.0.0.1:5000/registro', {
+      await fetch('https://main3d-api-rag.onrender.com/registro', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(userInfo),
@@ -90,15 +90,21 @@ export default function Chat() {
     setLoading(true)
 
     try {
-      const res = await fetch("http://127.0.0.1:5000/chat", {
+      const res = await fetch("https://main3d-api-rag.onrender.com/chat", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ pregunta: userMessage, reiniciar: false }),
+        body: JSON.stringify({
+          pregunta: userMessage,
+          reiniciar: messages.length === 1
+        }),
       })
+
+      if (!res.ok) throw new Error('Respuesta del servidor no fue OK')
 
       const data = await res.json()
       setMessages(prev => [...prev, { from: 'bot', text: data.respuesta }])
     } catch (err) {
+      console.error("❌ Error al conectar con el bot:", err)
       setMessages(prev => [...prev, { from: 'bot', text: '❌ Error al conectar con el bot' }])
     } finally {
       setLoading(false)
@@ -107,7 +113,7 @@ export default function Chat() {
 
   const finalizarConversacion = async () => {
     try {
-      await fetch('http://127.0.0.1:5000/finalizar', {
+      await fetch('https://main3d-api-rag.onrender.com/finalizar', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userInfo, messages })
@@ -151,38 +157,34 @@ export default function Chat() {
             </div>
 
             {!formSubmitted ? (
-              <div className='flex-1 overflow-y-auto px-4 py-3 flex flex-col justify-center gap-3'>
+              <div className='flex-1 overflow-y-auto p-4 space-y-4'>
                 <p className='text-sm font-semibold text-gray-600 text-center'>
                   Antes de comenzar, cuéntanos un poco de ti:
                 </p>
-
                 <input
                   type='text'
                   name='nombre'
                   placeholder='Nombre'
                   value={userInfo.nombre}
                   onChange={handleInputChange}
-                  className='w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400'
+                  className='w-full rounded border p-2 text-sm'
                 />
-
                 <input
                   type='email'
                   name='email'
                   placeholder='Correo electrónico'
                   value={userInfo.email}
                   onChange={handleInputChange}
-                  className='w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400'
+                  className='w-full rounded border p-2 text-sm'
                 />
-
                 <input
                   type='tel'
                   name='telefono'
                   placeholder='Número de teléfono'
                   value={userInfo.telefono}
                   onChange={handleInputChange}
-                  className='w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400'
+                  className='w-full rounded border p-2 text-sm'
                 />
-
                 <button
                   onClick={handleSubmitForm}
                   className='mt-2 w-full rounded bg-blue-500 py-2 text-sm text-white hover:bg-blue-600'
@@ -194,7 +196,14 @@ export default function Chat() {
               <>
                 <div className='flex-1 overflow-y-auto p-2 space-y-2'>
                   {messages.map((msg, idx) => (
-                    <div key={idx} className={`max-w-[80%] rounded-xl px-4 py-2 text-sm ${msg.from === 'user' ? 'ml-auto bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-800'}`}>
+                    <div
+                      key={idx}
+                      className={`max-w-[80%] rounded-xl px-4 py-2 text-sm ${
+                        msg.from === 'user'
+                          ? 'ml-auto bg-blue-100 text-blue-800'
+                          : 'bg-gray-100 text-gray-800'
+                      }`}
+                    >
                       {msg.text}
                     </div>
                   ))}
