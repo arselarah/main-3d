@@ -118,7 +118,6 @@ export default function Chat() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userInfo, messages })
       })
-      alert('✅ Conversación finalizada y guardada.')
       setMessages([])
       setInput('')
       setFormSubmitted(false)
