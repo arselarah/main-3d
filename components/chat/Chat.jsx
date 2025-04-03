@@ -1,29 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
-import { MessageSquare, X } from 'lucide-react'
+import { MessageSquare } from 'lucide-react'
 
 export default function Chat() {
   const [isOpen, setIsOpen] = useState(false)
   const [input, setInput] = useState('')
-  const [messages, setMessages] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return JSON.parse(localStorage.getItem('chatMessages')) || []
-    }
-    return []
-  })
+  const [messages, setMessages] = useState([])
   const [loading, setLoading] = useState(false)
-  const [formSubmitted, setFormSubmitted] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return JSON.parse(localStorage.getItem('formSubmitted')) || false
-    }
-    return false
-  })
-  const [userInfo, setUserInfo] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return JSON.parse(localStorage.getItem('userInfo')) || { nombre: '', email: '', telefono: '' }
-    }
-    return { nombre: '', email: '', telefono: '' }
-  })
+  const [formSubmitted, setFormSubmitted] = useState(false)
+  const [userInfo, setUserInfo] = useState({ nombre: '', email: '', telefono: '' })
+  const [menuVisible, setMenuVisible] = useState(true)
+  const [submenu, setSubmenu] = useState(null)
 
   const messagesEndRef = useRef(null)
 
@@ -32,15 +19,6 @@ export default function Chat() {
       messagesEndRef.current.scrollIntoView({ behavior: 'smooth' })
     }
   }, [messages, loading])
-
-  useEffect(() => {
-    localStorage.setItem('chatMessages', JSON.stringify(messages))
-  }, [messages])
-
-  useEffect(() => {
-    localStorage.setItem('formSubmitted', JSON.stringify(formSubmitted))
-    localStorage.setItem('userInfo', JSON.stringify(userInfo))
-  }, [formSubmitted, userInfo])
 
   const toggleChat = () => setIsOpen(!isOpen)
   const closeChat = () => setIsOpen(false)
@@ -52,17 +30,10 @@ export default function Chat() {
 
   const handleSubmitForm = () => {
     if (userInfo.nombre && userInfo.email && userInfo.telefono) {
-      if (userInfo.telefono.length !== 10) {
-        alert('El número de teléfono debe tener 10 dígitos')
-        return
-      }
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userInfo.email)) {
-        alert('Por favor ingresa un correo válido')
-        return
-      }
-
+      if (userInfo.telefono.length !== 10) return alert('El número debe tener 10 dígitos')
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userInfo.email)) return alert('Email no válido')
       setFormSubmitted(true)
-      const greeting = `¡Hola ${userInfo.nombre}! Bienvenido a Main-3D 👋. ¿En qué estás pensando usar tu impresora 3D?`
+      const greeting = `¡Hola ${userInfo.nombre}! Bienvenido a Main-3D 👋. ¿Sobre qué tema te puedo ayudar?`
       setMessages([{ from: 'bot', text: greeting }])
       sendUserToSheets()
     } else {
@@ -77,34 +48,27 @@ export default function Chat() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(userInfo),
       })
-    } catch (error) {
-      console.error('Error al registrar usuario:', error)
+    } catch (err) {
+      console.error('Registro fallido', err)
     }
   }
 
-  const sendMessage = async () => {
-    if (!input.trim()) return
-    const userMessage = input.trim()
+  const sendMessage = async (message = input) => {
+    if (!message.trim()) return
+    setMessages(prev => [...prev, { from: 'user', text: message }])
     setInput('')
-    setMessages(prev => [...prev, { from: 'user', text: userMessage }])
+    setMenuVisible(false)
     setLoading(true)
-
     try {
-      const res = await fetch("https://main3d-api-rag.onrender.com/chat", {
+      const res = await fetch('https://main3d-api-rag.onrender.com/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          pregunta: userMessage,
-          reiniciar: messages.length === 1
-        }),
+        body: JSON.stringify({ pregunta: message, reiniciar: false })
       })
-
-      if (!res.ok) throw new Error('Respuesta del servidor no fue OK')
-
       const data = await res.json()
       setMessages(prev => [...prev, { from: 'bot', text: data.respuesta }])
-    } catch (err) {
-      console.error("❌ Error al conectar con el bot:", err)
+      setMenuVisible(true)
+    } catch {
       setMessages(prev => [...prev, { from: 'bot', text: '❌ Error al conectar con el bot' }])
     } finally {
       setLoading(false)
@@ -118,119 +82,148 @@ export default function Chat() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userInfo, messages })
       })
+integracion_bot
+      alert('✅ Conversación guardada.')
+    main
       setMessages([])
       setInput('')
       setFormSubmitted(false)
       setUserInfo({ nombre: '', email: '', telefono: '' })
       localStorage.clear()
-    } catch (err) {
-      alert('❌ Error al finalizar la conversación.')
+    } catch {
+      alert('❌ Error al finalizar.')
     }
   }
 
+  const menuButtons = {
+    productos: ['Impresoras 3D', 'Escáner 3D', 'Filamentos', 'Resinas', 'Otros'],
+    servicios: ['Impresión 3D', 'Escaneo 3D', 'RV / RA', 'Cursos', 'Otros']
+  }
+
   return (
-    <motion.div
-      className='fixed bottom-4 right-4 z-50 flex items-end justify-end'
-      initial={{ scale: 1 }}
-      animate={{ scale: isOpen ? 1 : 1 }}
-    >
+    <div style={{ position: 'fixed', bottom: 16, right: 16, zIndex: 1000 }}>
       <motion.div
         layout
-        className={`flex flex-col justify-between overflow-hidden bg-white shadow-lg ${
-          isOpen ? 'h-[80vh] w-[90vw] sm:w-96 sm:h-[34rem] rounded-xl' : 'h-16 w-16 rounded-full'
-        }`}
-        transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          overflow: 'hidden',
+          backgroundColor: 'white',
+          boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
+          borderRadius: isOpen ? 12 : '9999px',
+          height: isOpen ? '80vh' : 64,
+          width: isOpen ? '90vw' : 64,
+          maxWidth: 384,
+          transition: 'all 0.3s ease-in-out'
+        }}
       >
-        {!isOpen && (
-          <div className='flex h-full items-center justify-center' onClick={toggleChat}>
-            <MessageSquare size={32} className='text-gray-500' />
+        {!isOpen ? (
+          <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }} onClick={toggleChat}>
+            <MessageSquare size={32} color="gray" />
           </div>
-        )}
-
-        {isOpen && (
-          <div className='flex h-full flex-col'>
-            <div className='flex justify-end p-2'>
-              <button onClick={closeChat}>
-                <X size={24} className='text-gray-500 hover:text-gray-700' />
-              </button>
+        ) : (
+          <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+            <div style={{ display: 'flex', justifyContent: 'flex-end', padding: 8 }}>
+              <button onClick={closeChat} style={{ fontSize: 20, fontWeight: 'bold', color: '#666' }}>-</button>
             </div>
 
             {!formSubmitted ? (
-              <div className='flex-1 overflow-y-auto p-4 space-y-4'>
-                <p className='text-sm font-semibold text-gray-600 text-center'>
-                  Antes de comenzar, cuéntanos un poco de ti:
-                </p>
-                <input
-                  type='text'
-                  name='nombre'
-                  placeholder='Nombre'
-                  value={userInfo.nombre}
-                  onChange={handleInputChange}
-                  className='w-full rounded border p-2 text-sm'
-                />
-                <input
-                  type='email'
-                  name='email'
-                  placeholder='Correo electrónico'
-                  value={userInfo.email}
-                  onChange={handleInputChange}
-                  className='w-full rounded border p-2 text-sm'
-                />
-                <input
-                  type='tel'
-                  name='telefono'
-                  placeholder='Número de teléfono'
-                  value={userInfo.telefono}
-                  onChange={handleInputChange}
-                  className='w-full rounded border p-2 text-sm'
-                />
-                <button
-                  onClick={handleSubmitForm}
-                  className='mt-2 w-full rounded bg-blue-500 py-2 text-sm text-white hover:bg-blue-600'
-                >
-                  Comenzar
-                </button>
+              <div style={{ flex: 1, overflowY: 'auto', padding: 12 }}>
+                <p style={{ textAlign: 'center', fontSize: 14, fontWeight: 'bold', color: '#333' }}>Antes de comenzar, cuéntanos un poco de ti:</p>
+                <input style={inputStyle} type='text' name='nombre' placeholder='Nombre' value={userInfo.nombre} onChange={handleInputChange} />
+                <input style={inputStyle} type='email' name='email' placeholder='Correo electrónico' value={userInfo.email} onChange={handleInputChange} />
+                <input style={inputStyle} type='tel' name='telefono' placeholder='Número de teléfono' value={userInfo.telefono} onChange={handleInputChange} />
+                <button style={buttonStyle} onClick={handleSubmitForm}>Comenzar</button>
               </div>
             ) : (
               <>
-                <div className='flex-1 overflow-y-auto p-2 space-y-2'>
+                <div style={{ flex: 1, overflowY: 'auto', padding: 12 }}>
                   {messages.map((msg, idx) => (
-                    <div
-                      key={idx}
-                      className={`max-w-[80%] rounded-xl px-4 py-2 text-sm ${
-                        msg.from === 'user'
-                          ? 'ml-auto bg-blue-100 text-blue-800'
-                          : 'bg-gray-100 text-gray-800'
-                      }`}
-                    >
-                      {msg.text}
-                    </div>
+                    <div key={idx} style={{
+                      alignSelf: msg.from === 'user' ? 'flex-end' : 'flex-start',
+                      backgroundColor: msg.from === 'user' ? '#e0f0ff' : '#f2f2f2',
+                      padding: 10,
+                      borderRadius: 10,
+                      marginBottom: 6,
+                      maxWidth: '80%',
+                      color: '#222',
+                      fontSize: 14
+                    }}>{msg.text}</div>
                   ))}
-                  {loading && <div className='text-sm text-gray-500'>Escribiendo...</div>}
+                  {loading && <div style={{ fontSize: 14, color: '#999' }}>Escribiendo...</div>}
                   <div ref={messagesEndRef} />
                 </div>
 
-                <div className='border-t border-gray-200 p-2'>
+                {menuVisible && (
+                  <div style={{ padding: 8 }}>
+                    {!submenu ? (
+                      <>
+                        <button style={menuBtn} onClick={() => setSubmenu('productos')}>Productos</button>
+                        <button style={menuBtn} onClick={() => setSubmenu('servicios')}>Servicios</button>
+                      </>
+                    ) : (
+                      <>
+                        {menuButtons[submenu].map((item, i) => (
+                          <button key={i} style={menuBtn} onClick={() => {
+                            sendMessage(item)
+                            setSubmenu(null)
+                          }}>{item}</button>
+                        ))}
+                      </>
+                    )}
+                  </div>
+                )}
+
+                <div style={{ padding: 8 }}>
                   <input
-                    type='text'
-                    placeholder='Escribe un mensaje...'
-                    className='w-full rounded-lg border border-gray-300 p-2 focus:outline-none focus:ring-2 focus:ring-blue-400'
+                    style={{ width: '100%', padding: 10, borderRadius: 8, border: '1px solid #ccc', marginBottom: 8 }}
+                    placeholder="Escribe un mensaje..."
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
                   />
-                  <button
-                    onClick={finalizarConversacion}
-                    className='mt-2 w-full rounded bg-red-500 py-2 text-white hover:bg-red-600 text-sm'
-                  >
-                    Finalizar conversación
-                  </button>
+                  <button style={buttonStyle} onClick={finalizarConversacion}>Finalizar conversación</button>
                 </div>
               </>
             )}
           </div>
         )}
       </motion.div>
-    </motion.div>
+    </div>
   )
+}
+
+const inputStyle = {
+  width: '100%',
+  borderRadius: 6,
+  border: '1px solid #ccc',
+  padding: 10,
+  marginTop: 8,
+  fontSize: 14
+}
+
+const buttonStyle = {
+  width: '100%',
+  borderRadius: 6,
+  backgroundColor: '#3b82f6',
+  color: '#fff',
+  padding: 10,
+  fontSize: 14,
+  marginTop: 8,
+  cursor: 'pointer'
+}
+
+const menuBtn = {
+  display: 'block',
+  width: '100%',
+  backgroundColor: '#e6efff',
+  border: 'none',
+  padding: 12,
+  marginBottom: 6,
+  borderRadius: 8,
+  color: '#1d4ed8',
+  fontWeight: 500,
+  fontSize: 14,
+  cursor: 'pointer'
 }
