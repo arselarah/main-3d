@@ -82,7 +82,9 @@ export default function Chat() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userInfo, messages })
       })
+integracion_bot
       alert('✅ Conversación guardada.')
+    main
       setMessages([])
       setInput('')
       setFormSubmitted(false)
