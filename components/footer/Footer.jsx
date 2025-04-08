@@ -13,7 +13,7 @@ export default function Footer() {
       <section
         className={`relative w-full px-4 py-[2vw] lg:px-8 lg:py-[3vw] ${poppins.className} text-white`}
       >
-        <article className='relative flex min-h-screen w-full flex-col items-stretch overflow-hidden rounded-3xl bg-[url("/assets/pexels-photo-15584332.webp")] bg-cover bg-center bg-no-repeat p-4 before:absolute before:inset-0 before:left-0 before:top-0 before:bg-negro before:bg-opacity-85 before:content-[""] lg:p-16'>
+        <article className='relative flex min-h-screen w-full flex-col items-stretch overflow-hidden rounded-3xl bg-[url("/assets/contacto.webp")] bg-cover bg-center bg-no-repeat p-4 before:absolute before:inset-0 before:left-0 before:top-0 before:bg-negro before:bg-opacity-85 before:content-[""] lg:p-16'>
           <div className='relative pb-8 md:pb-16'>
             <Link href={'/'} className=''>
               <Image
@@ -32,11 +32,19 @@ export default function Footer() {
                 </h1>
               </div>
               <div className='flex flex-col'>
-                <Link href={''} className='mb-4 inline-block hover:underline'>
-                  info@main-3d.com
+                <Link
+                  href={'mailto:contacto3d@recato.mx'}
+                  className='mb-4 inline-block hover:underline'
+                >
+                  contacto3d@recato.mx
                 </Link>
-                <Link href={''} className='inline-block hover:underline'>
-                  871 122 3344
+                <Link
+                  href={
+                    'https://wa.me/5218717878715?text=Hola%2C%20quiero%20más%20información'
+                  }
+                  className='inline-block hover:underline'
+                >
+                  +52 871 787 8715
                 </Link>
               </div>
             </div>
@@ -83,23 +91,25 @@ export default function Footer() {
               </div>
               <div className='flex flex-row'>
                 <Link
-                  href={''}
+                  href={
+                    'https://www.facebook.com/profile.php?id=61564956297439'
+                  }
                   className='facebook mr-4 inline-block h-7 w-7 bg-contain bg-center bg-no-repeat'
                 ></Link>
                 <Link
-                  href={''}
+                  href={'https://www.instagram.com/main3d_/'}
                   className='instagram mr-4 inline-block h-7 w-7 bg-contain bg-center bg-no-repeat'
                 ></Link>
                 <Link
-                  href={''}
+                  href={'https://x.com/main3d_'}
                   className='twitter mr-4 inline-block h-7 w-7 bg-contain bg-center bg-no-repeat'
                 ></Link>
                 <Link
-                  href={''}
+                  href={'https://www.youtube.com/@MAIN.3D'}
                   className='youtube mr-4 inline-block h-7 w-7 bg-contain bg-center bg-no-repeat'
                 ></Link>
                 <Link
-                  href={''}
+                  href={'https://www.linkedin.com/company/main-3d'}
                   className='linkedin mr-4 inline-block h-7 w-7 bg-contain bg-center bg-no-repeat'
                 ></Link>
               </div>
