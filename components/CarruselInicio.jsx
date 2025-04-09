@@ -13,43 +13,46 @@ const poppins = Poppins({
 
 const slides = [
   {
-    imagen: '/assets/realidad-aumentada-educacion.jpg.webp',
-    titulo: 'Realidad Aumentada',
-    subtitulo: 'Llega tridimensionalmente a cualquier parte del mundo.',
-    logo: 'clonDigital',
-  },
-  {
-    imagen: '/assets/realidad-virtual-multijugador.jpg.webp',
-    titulo: 'Realidad Virtual',
+    imagen: '/assets/Otros_Servicios/servicio_impresion.webp',
+    titulo: 'Servicio de Impresión 3D',
     subtitulo:
-      'Crea espacios inmersivos y compártelos con un grupo de personas.',
-    logo: 'clonDigital',
-  },
-  {
-    imagen: '/assets/DomoBIO-A4.png.webp',
-    titulo: 'Tecnologías de Fabricación Avanzadas',
-    subtitulo:
-      'La bio-fabricación a tu alcance. Aportamos soluciones en bioimpresión.',
-    logo: 'domoBio',
-  },
-  {
-    imagen: '/assets/domobio-sec-1.webp',
-    titulo: 'Tecnologías de Fabricación Avanzadas Customizadas',
-    subtitulo:
-      'Personalizamos tu sistema de fabricación a Medida. ¡Cuéntanos qué necesitas!',
-    logo: 'domoBio',
-  },
-  {
-    imagen: '/assets/Portada-landing-aula-ateca.webp',
-    titulo: 'Aula AtecA',
-    subtitulo: 'Espacio de experimentación y aprendizaje.',
+      'Cotiza con nosotros tu pieza, ya sea para enfoque industrial o creativo. Nosotros nos encargamos de asesorarte para que tu proyecto resulte de la mejor manera.',
     logo: '',
   },
   {
-    imagen: '/assets/portada-adf.webp',
-    titulo: 'Aula del Futuro',
-    subtitulo: 'Espacio educativo, formativo, flexible y reconfigurable.',
-    logo: 'aulaFuturo',
+    imagen: '/assets/Otros_Servicios/servicio_validacion.webp',
+    titulo: 'Servicio de Validación de Material',
+    subtitulo:
+      'Si lo que quieres es crear una pieza con tu propio material, nosotros podemos realizarlo a través de una validación. A lo largo de nuestra carrera hemos validado más de 50 materiales diferentes que no se encuentran en formato de filamento.',
+    logo: '',
+  },
+  {
+    imagen: '/assets/Otros_Servicios/servicio_escaneo.webp',
+    titulo: 'Servicio de Escaneo, Control y Diseño',
+    subtitulo:
+      'Gracias a nuestros equipos de alta precisión te podremos brindar servicio de escaneo fiable para control dimensional, ingeniería inversa o modelado 3D. Nuestros equipos alcanzan una resolución de hasta 20 micras.',
+    logo: '',
+  },
+  {
+    imagen: '/assets/Otros_Servicios/servicio_vr.webp',
+    titulo: 'Realidad virtual y aumentada',
+    subtitulo:
+      '¿Quieres que tus clientes vean tus productos en RV o RA? Podemos digitalizar objetos únicos incluso hasta un espacio completo. Solo imagina ver tu producto dimensionado a la realidad a través de un dispositivo inteligente.',
+    logo: 'clonDigital',
+  },
+  {
+    imagen: '/assets/Otros_Servicios/servicio_fabricacion.webp',
+    titulo: 'Tecnologías de Fabricación Avanzadas',
+    subtitulo:
+      'La bio-fabricación a tu alcance. Aportamos soluciones en bioimpresión. Experimente el futuro de la impresión con nuestra impresora 3D multitecnología, donde la innovación se combina con la versatilidad.',
+    logo: 'domoBio',
+  },
+  {
+    imagen: '/assets/Otros_Servicios/servicio_construccion.webp',
+    titulo: 'Sistema de Construcción Inteligente',
+    subtitulo:
+      'Sistema de impresión 3D diseñada y desarrollada para satisfacer los requisitos más exigentes de la industria de la construcción, particularmente en la impresión masiva de unidades de vivienda con un alto grado de calidad y confiabilidad.',
+    logo: '',
   },
 ]
 export default function CarruselInicio() {

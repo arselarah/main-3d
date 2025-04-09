@@ -1,11 +1,9 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Poppins } from 'next/font/google'
 import Image from 'next/image'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useRef } from 'react'
 import { escaneres } from '@/data/data'
 import Link from 'next/link'
-import { SlArrowLeft } from 'react-icons/sl'
-import { SlArrowRight } from 'react-icons/sl'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -74,7 +72,7 @@ export default function Escaneres() {
           <div className='relative h-auto w-full p-4 lg:p-16' ref={ref}>
             <div className='relative flex h-full w-full flex-row flex-nowrap items-center justify-center gap-10 md:gap-10'>
               <div className='escaneres_contenedor h-full flex-1'>
-                {escaneres.slice(0, 4).map((escaner, index) => (
+                {escaneres.slice(0, 3).map((escaner, index) => (
                   <div
                     key={index}
                     onMouseEnter={() => {
@@ -161,21 +159,24 @@ export default function Escaneres() {
                           alt={escaner.titulo}
                           className='mx-auto max-w-[80%] object-contain'
                         />
+                        {/* <div className='absolute inset-0 left-0 top-0 flex items-center justify-center'>
+                          <p className=''>{escaner.titulo}</p>
+                        </div> */}
                       </div>
                     ))}
                   </div>
                 </motion.div>
               </div>
               <div className='escaneres_contenedor h-full flex-1'>
-                {escaneres.slice(4, 8).map((escaner, index) => (
+                {escaneres.slice(3, 6).map((escaner, index) => (
                   <div
                     key={index}
                     className='escaneres_intem group relative flex w-full cursor-pointer flex-row-reverse items-stretch justify-start py-8 transition-all duration-1000 hover:translate-x-5'
                     onMouseEnter={() => {
-                      setModal({ active: true, index })
+                      setModal({ active: true, index: index + 3 })
                     }}
                     onMouseLeave={() => {
-                      setModal({ active: false, index })
+                      setModal({ active: false, index: index + 3 })
                     }}
                   >
                     <div className='relative w-full md:w-1/2'>

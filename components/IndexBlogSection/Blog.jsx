@@ -9,21 +9,21 @@ const poppins = Poppins({
 const posts = [
   {
     fondo: 'postUno',
-    titulo: 'Artículo #1',
+    titulo: 'CURSO MAIN 3D',
     texto:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eget leo pellentesque, venenatis nisi ut, pharetra leo. Nunc justo metus, sollicitudin in blandit id, porttitor a libero.',
+      'Las competencias clave del futuro las están desarrollando niños, jóvenes y adolescentes, dejando huella en su creatividad y aprendizaje de robótica.',
   },
   {
     fondo: 'postDos',
-    titulo: 'Artículo #2',
+    titulo: 'MAIN 3D, PARTNER OFICIAL DE IT3D GROUP',
     texto:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eget leo pellentesque, venenatis nisi ut, pharetra leo. Nunc justo metus, sollicitudin in blandit id, porttitor a libero.',
+      'Colaboración importante para distribuir soluciones 3D a empresas y profesionales en México, de la mano con tecnologías avanzadas a nivel global.',
   },
   {
     fondo: 'postTres',
-    titulo: 'Artículo #3',
+    titulo: 'INAUGURACIÓN MAIN 3D',
     texto:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eget leo pellentesque, venenatis nisi ut, pharetra leo. Nunc justo metus, sollicitudin in blandit id, porttitor a libero.',
+      'Comprometidos en impulsar la Innovación en Industria y Educación con Tecnología 3D﻿. Diversidad de soluciones a sectores como la manufactura aditiva, escaneo 3D, diseño, realidad virtual y aumentada.',
   },
 ]
 

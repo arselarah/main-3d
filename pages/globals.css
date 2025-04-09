@@ -64,25 +64,25 @@ body {
 }
 
 .prevIcon {
-  background-image: url('/assets/8666557_chevron_left_icon.png');
+  background-image: url('/assets/icons/8666557_chevron_left_icon.png');
   background-size: 50%;
 }
 
 .nextIcon {
-  background-image: url('/assets/8666777_chevron_right_arrow_icon.png');
+  background-image: url('/assets/icons/8666777_chevron_right_arrow_icon.png');
   background-size: 50%;
 }
 
 .postUno {
-  background-image: url('/assets/realidad-aumentada-educacion.jpg.webp');
+  background-image: url('/assets/Blog_Posts/curso_3d.webp');
 }
 
 .postDos {
-  background-image: url('/assets/realidad-virtual-multijugador.jpg.webp');
+  background-image: url('/assets/Blog_Posts/partner_it3d.webp');
 }
 
 .postTres {
-  background-image: url('/assets/DomoBIO-A4.png.webp');
+  background-image: url('/assets/Blog_Posts/inauguracion.webp');
 }
 
 .facebook {
