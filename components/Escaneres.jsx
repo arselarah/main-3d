@@ -70,7 +70,7 @@ export default function Escaneres() {
           </div>
 
           <div className='relative h-auto w-full p-4 lg:p-16' ref={ref}>
-            <div className='relative flex h-full w-full flex-row flex-nowrap items-center justify-center gap-10 md:gap-10'>
+            <div className='relative flex h-full w-full flex-col flex-nowrap items-center justify-center gap-10 md:flex-row md:gap-10'>
               <div className='escaneres_contenedor h-full flex-1'>
                 {escaneres.slice(0, 3).map((escaner, index) => (
                   <div
@@ -87,11 +87,11 @@ export default function Escaneres() {
                       <h4 className='text-clamp-sm font-medium text-black md:max-w-[240px]'>
                         {escaner.titulo}
                       </h4>
-                      <p className='text-gris_oscuro md:max-w-[240px]'>
+                      <p className='max-w-[457px] text-gris_oscuro md:max-w-[240px]'>
                         {escaner.texto}
                       </p>
                     </div>
-                    <div className='relative hidden h-auto max-h-[200px] w-1/2 items-center justify-center overflow-clip md:flex'>
+                    <div className='relative flex h-auto max-h-[200px] w-1/2 items-center justify-center overflow-clip'>
                       <Image
                         alt={escaner.titulo}
                         src={escaner.imagen}
@@ -188,7 +188,7 @@ export default function Escaneres() {
                       </p>
                     </div>
 
-                    <div className='relative hidden h-auto max-h-[200px] w-1/2 items-center justify-center overflow-clip md:flex'>
+                    <div className='relative flex h-auto max-h-[200px] w-1/2 items-center justify-center overflow-clip'>
                       <Image
                         alt={escaner.titulo}
                         src={escaner.imagen}

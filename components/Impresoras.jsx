@@ -107,25 +107,25 @@ export default function Impresoras() {
                     </motion.h2>
                   </div>
                   <div className='textContainer_title pb-4 md:pb-8'>
-                    <h4 className='pr-[20%] text-clamp-sm font-medium leading-snug text-black'>
+                    <h4 className='text-clamp-sm font-medium leading-snug text-black md:pr-[20%]'>
                       {impresora.tituloCaracteristicas}
                     </h4>
                   </div>
                   <div className='textContainer_caracteristicas flex flex-row flex-wrap gap-4 md:gap-8'>
-                    <div className='mb:pb-8 w-full flex-initial pb-4 pr-[50%]'>
+                    <div className='mb:pb-8 w-full flex-initial pb-4 lg:pr-[50%]'>
                       <h4 className='text-clamp-sm font-medium text-black'>
                         {impresora.subtituloUno}
                       </h4>
                       <p className='text-gris_oscuro'>{impresora.textoUno}</p>
                     </div>
-                    <div className='mb:pb-8 w-full flex-initial pb-4 pr-[50%]'>
+                    <div className='mb:pb-8 w-full flex-initial pb-4 md:pr-[50%]'>
                       <h4 className='text-clamp-sm font-medium text-black'>
                         {impresora.subtituloDos}
                       </h4>
                       <p className='text-gris_oscuro'>{impresora.textoDos}</p>
                     </div>
                     <div className='w-full'>
-                      <div className='group relative w-full max-w-[250px] rounded-full border-[1px] border-negro bg-negro py-2 transition-all duration-300 hover:bg-transparent'>
+                      <div className='group relative mx-auto w-full max-w-[250px] rounded-full border-[1px] border-negro bg-negro py-2 transition-all duration-300 hover:bg-transparent md:mx-0'>
                         <Link
                           href={`/${impresora.tituloPequeño.toLowerCase().replace(/\s+/g, '')}`}
                           className='block text-center uppercase text-white transition-all duration-300 group-hover:text-negro'
