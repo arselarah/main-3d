@@ -42,7 +42,7 @@ export default function IndexBlogSection() {
           {posts.map((post, index) => (
             <div key={index} className='group relative flex flex-1 flex-col'>
               <div
-                className={`aspect-video h-full w-full overflow-hidden rounded-3xl`}
+                className={`h-[180px] w-full overflow-hidden rounded-3xl md:h-[320px]`}
               >
                 <div
                   className={`h-full w-full bg-cover bg-center bg-no-repeat ${post.fondo} transition-all duration-500 group-hover:scale-105`}
@@ -57,17 +57,6 @@ export default function IndexBlogSection() {
               <Link href={``} className='absolute inset-0 left-0 top-0' />
             </div>
           ))}
-          {/* <div className='flex flex-1 flex-col'>
-            <div
-              className={`h-full min-h-80 w-full overflow-hidden rounded-3xl bg-gray-400 bg-cover bg-center bg-no-repeat lg:min-h-96`}
-            ></div>
-            <div>
-              <h3 className='max-w-[240px] py-4 text-clamp-sm font-medium text-black lg:py-8'>
-                Título
-              </h3>
-              <p className='max-w-[240px] text-gris_oscuro'>Texto</p>
-            </div>
-          </div> */}
         </article>
         <div className='titleContainer pt-[2vw] text-black lg:pt-[3vw]'>
           <div className='group mx-auto w-full max-w-[450px] rounded-full border-[1px] border-negro bg-negro py-2 transition-all duration-300 hover:bg-transparent'>

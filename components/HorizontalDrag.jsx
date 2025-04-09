@@ -56,7 +56,7 @@ export default function HorizontalDrag() {
               >
                 <motion.div
                   style={{ backgroundPositionX: backgroundParallax }}
-                  className={`draggableSlider_content ${banner.fondo} relative h-full w-full bg-cover bg-no-repeat`}
+                  className={`draggableSlider_content ${banner.fondo} bg-size-[500%] relative h-full w-full bg-no-repeat`}
                 >
                   <div className='absolute inset-0 left-0 top-0 bg-black bg-opacity-45'>
                     <motion.div
