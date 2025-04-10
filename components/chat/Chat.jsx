@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { MessageSquare, Minus, Send } from 'lucide-react';
+import { MessageSquare, Minus } from 'lucide-react';
 
 export default function Chat() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isHovering, setIsHovering] = useState(false);
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -11,18 +10,16 @@ export default function Chat() {
   const [userInfo, setUserInfo] = useState({ nombre: '', email: '', telefono: '' });
   const [menuVisible, setMenuVisible] = useState(true);
   const [submenu, setSubmenu] = useState(null);
-
   const messagesEndRef = useRef(null);
 
-  // Auto-scroll to bottom when new messages arrive
+  const toggleChat = () => setIsOpen(!isOpen);
+  const closeChat = () => setIsOpen(false);
+
   useEffect(() => {
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   }, [messages, loading]);
-
-  const toggleChat = () => setIsOpen(!isOpen);
-  const closeChat = () => setIsOpen(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -99,171 +96,120 @@ export default function Chat() {
     servicios: ['Impresión 3D', 'Escaneo 3D', 'RV / RA', 'Cursos', 'Otros']
   };
 
-  // Render the chat component
   return (
     <div className="fixed bottom-4 right-4 z-50">
-      {!isOpen && (
-        <div 
-          className={`
-            flex items-center overflow-hidden shadow-md transition-all duration-300 ease-in-out cursor-pointer
-            ${isHovering ? 
-              'bg-white border border-gray-200 rounded-3xl py-3 px-4 w-64' : 
-              'bg-white rounded-full h-14 w-14 justify-center items-center'}
-          `}
-          onMouseEnter={() => setIsHovering(true)}
-          onMouseLeave={() => setIsHovering(false)}
+      {!isOpen ? (
+        <button
           onClick={toggleChat}
+          className="flex items-center justify-center bg-white shadow-lg rounded-full w-14 h-14"
         >
-          {isHovering ? (
-            <>
-              <div className="flex-shrink-0 flex items-center justify-center mr-3">
-                <MessageSquare size={24} className="text-blue-500" />
-              </div>
-              <div className="text-blue-600 font-medium whitespace-nowrap">
-                Hola, soy Main-3D bot
-              </div>
-            </>
-          ) : (
-            <MessageSquare size={24} className="text-gray-500" />
-          )}
-        </div>
-      )}
-      
-      {isOpen && (
-        <div className="flex flex-col bg-white rounded-xl shadow-lg h-96 w-80 overflow-hidden">
-          {/* Chat header */}
-          <div className="bg-blue-500 text-white p-3 flex justify-between items-center">
-            <div className="font-medium">Main-3D Chat</div>
-            <button onClick={closeChat} className="text-white font-bold text-xl leading-none">
-              -
+          <MessageSquare className="text-gray-500" />
+        </button>
+      ) : (
+        <div
+          className="bg-white shadow-lg rounded-xl flex flex-col resize overflow-hidden"
+          style={{
+            height: '50vh', // Reduce la altura
+            width: '70vw',  // Reduce el ancho
+            maxWidth: '18rem', // Reduce el tamaño máximo
+            minHeight: '24rem' // Reduce la altura mínima
+          }}
+        >
+          <div
+            className="flex items-center justify-between text-white px-4 py-3"
+            style={{ backgroundColor: '#C72020' }}
+          >
+            <span className="font-bold">Main-3D Chat</span>
+            <button onClick={closeChat} className="text-white text-xl">
+              <Minus />
             </button>
           </div>
 
           {!formSubmitted ? (
-            // User info form
             <div className="flex-1 overflow-y-auto p-4">
-              <p className="text-center text-sm font-medium text-gray-700 mb-4">
+              <p className="text-center text-sm font-semibold mb-4">
                 Antes de comenzar, cuéntanos un poco de ti:
               </p>
-              <input 
-                className="w-full rounded-md border border-gray-300 p-2 text-sm mb-3" 
-                type="text" 
-                name="nombre" 
-                placeholder="Nombre" 
-                value={userInfo.nombre} 
-                onChange={handleInputChange} 
+              <input
+                name="nombre"
+                placeholder="Nombre"
+                className="w-full mb-2 p-2 border border-gray-300 rounded"
+                value={userInfo.nombre}
+                onChange={handleInputChange}
               />
-              <input 
-                className="w-full rounded-md border border-gray-300 p-2 text-sm mb-3" 
-                type="email" 
-                name="email" 
-                placeholder="Correo electrónico" 
-                value={userInfo.email} 
-                onChange={handleInputChange} 
+              <input
+                name="email"
+                placeholder="Correo electrónico"
+                className="w-full mb-2 p-2 border border-gray-300 rounded"
+                value={userInfo.email}
+                onChange={handleInputChange}
               />
-              <input 
-                className="w-full rounded-md border border-gray-300 p-2 text-sm mb-3" 
-                type="tel" 
-                name="telefono" 
-                placeholder="Número de teléfono" 
-                value={userInfo.telefono} 
-                onChange={handleInputChange} 
+              <input
+                name="telefono"
+                placeholder="Número de teléfono"
+                className="w-full mb-4 p-2 border border-gray-300 rounded"
+                value={userInfo.telefono}
+                onChange={handleInputChange}
               />
-              <button 
-                className="w-full bg-blue-500 text-white rounded-md p-2 text-sm font-medium hover:bg-blue-600"
+              <button
+                className="w-full p-2 rounded text-white font-semibold"
+                style={{ backgroundColor: '#C72020' }}
                 onClick={handleSubmitForm}
               >
                 Comenzar
               </button>
             </div>
           ) : (
-            // Chat conversation
             <>
-              <div className="flex-1 overflow-y-auto p-3 bg-gray-50">
+              <div className="flex-1 overflow-y-auto p-2 bg-gray-50" style={{ maxHeight: '100%', overflowY: 'auto' }}>
                 {messages.map((msg, idx) => (
-                  <div key={idx} className={`
-                    max-w-3/4 p-3 mb-2 rounded-lg text-sm
-                    ${msg.from === 'user' 
-                      ? 'ml-auto bg-blue-100 text-blue-800' 
-                      : 'mr-auto bg-white border border-gray-200 text-gray-800 flex items-start'}
-                  `}>
-                    {msg.from === 'bot' && (
-                      <div className="bg-blue-500 rounded-full w-8 h-8 flex items-center justify-center mr-2 shrink-0">
-                        <span className="text-white text-xs">🤖</span>
-                      </div>
-                    )}
-                    <div>{msg.text}</div>
+                  <div key={idx} className={`mb-2 p-2 rounded-lg max-w-[80%] text-sm ${msg.from === 'user' ? 'ml-auto bg-blue-100 text-blue-800' : 'mr-auto bg-white border border-gray-200 text-gray-800'}`}>
+                    {msg.text}
                   </div>
                 ))}
                 {loading && (
-                  <div className="text-sm text-gray-500 flex items-center">
-                    <div className="bg-blue-500 rounded-full w-8 h-8 flex items-center justify-center mr-2">
-                      <span className="text-white text-xs">🤖</span>
-                    </div>
-                    <div>Escribiendo...</div>
-                  </div>
+                  <div className="text-sm text-gray-500">Escribiendo...</div>
                 )}
                 <div ref={messagesEndRef} />
               </div>
 
-              {/* Quick menu options */}
               {menuVisible && (
-                <div className="px-2 pt-2">
+                <div className="px-3 pb-2">
                   {!submenu ? (
                     <div className="grid grid-cols-2 gap-2">
-                      <button 
-                        className="bg-blue-50 text-blue-600 p-2 rounded text-sm font-medium hover:bg-blue-100"
-                        onClick={() => setSubmenu('productos')}
-                      >
-                        Productos
-                      </button>
-                      <button 
-                        className="bg-blue-50 text-blue-600 p-2 rounded text-sm font-medium hover:bg-blue-100"
-                        onClick={() => setSubmenu('servicios')}
-                      >
-                        Servicios
-                      </button>
+                      <button onClick={() => setSubmenu('productos')} className="bg-blue-100 text-blue-600 py-2 rounded font-medium text-sm">Productos</button>
+                      <button onClick={() => setSubmenu('servicios')} className="bg-blue-100 text-blue-600 py-2 rounded font-medium text-sm">Servicios</button>
                     </div>
                   ) : (
                     <div className="grid grid-cols-2 gap-2">
-                      {menuButtons[submenu].map((item, i) => (
-                        <button 
-                          key={i} 
-                          className="bg-blue-50 text-blue-600 p-2 rounded text-sm font-medium hover:bg-blue-100"
-                          onClick={() => {
-                            sendMessage(item);
-                            setSubmenu(null);
-                          }}
-                        >
-                          {item}
-                        </button>
+                      {menuButtons[submenu].map((item, idx) => (
+                        <button key={idx} onClick={() => { sendMessage(item); setSubmenu(null); }} className="bg-blue-50 text-blue-700 py-2 rounded font-medium text-sm">{item}</button>
                       ))}
                     </div>
                   )}
                 </div>
               )}
 
-              {/* Message input */}
               <div className="p-3 border-t border-gray-200">
-                <div className="flex">
+                <div className="flex gap-2">
                   <input
-                    className="flex-1 p-2 border border-gray-300 rounded-l-md text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+                    className="flex-1 border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none"
                     placeholder="Escribe un mensaje..."
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
                   />
-                  <button 
-                    className="bg-blue-500 text-white p-2 rounded-r-md hover:bg-blue-600"
+                  <button
+                    className="bg-blue-500 text-white px-4 rounded hover:bg-blue-600 text-sm"
                     onClick={() => sendMessage()}
                   >
-                    <Send size={16} />
+                    Enviar
                   </button>
                 </div>
-                <button 
-                  className="w-full mt-2 p-2 text-sm border rounded hover:bg-red-50"
-                  style={{ borderColor: '#C72020', color: '#C72020' }}
+                <button
                   onClick={finalizarConversacion}
+                  style={{ borderColor: '#C72020', color: '#C72020' }}
+                  className="w-full mt-2 border text-sm rounded py-2 hover:bg-red-50"
                 >
                   Finalizar conversación
                 </button>
