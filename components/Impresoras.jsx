@@ -101,7 +101,7 @@ export default function Impresoras() {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: 0.3, duration: 0.5, ease: 'linear' }}
-                      className='text-start text-clamp-lg font-semibold leading-none'
+                      className='min-h-10 text-start text-clamp-lg font-semibold leading-none'
                     >
                       {impresora.tituloGrande}
                     </motion.h2>
