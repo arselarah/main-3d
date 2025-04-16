@@ -38,7 +38,7 @@ export default function HeroHome() {
           /> */}
           Your browser does not support the video tag.
         </video>
-        <div className='relative flex h-full w-full flex-col items-center justify-end bg-black bg-opacity-80'>
+        <div className='relative flex h-full w-full flex-col items-center justify-end bg-black bg-opacity-40'>
           <motion.div
             style={{ y: slideUp, opacity: opacityDown }}
             className='hero_text-container px-4 pb-20 tracking-widest md:pb-[10%] lg:px-8'
