@@ -95,22 +95,32 @@ export default function Footer() {
                     'https://www.facebook.com/profile.php?id=61564956297439'
                   }
                   className='facebook mr-4 inline-block h-7 w-7 bg-contain bg-center bg-no-repeat'
+                  target='_blank'
+                  rel='noopener noreferrer'
                 ></Link>
                 <Link
                   href={'https://www.instagram.com/main3d_/'}
                   className='instagram mr-4 inline-block h-7 w-7 bg-contain bg-center bg-no-repeat'
+                  target='_blank'
+                  rel='noopener noreferrer'
                 ></Link>
                 <Link
                   href={'https://x.com/main3d_'}
                   className='twitter mr-4 inline-block h-7 w-7 bg-contain bg-center bg-no-repeat'
+                  target='_blank'
+                  rel='noopener noreferrer'
                 ></Link>
                 <Link
                   href={'https://www.youtube.com/@MAIN.3D'}
                   className='youtube mr-4 inline-block h-7 w-7 bg-contain bg-center bg-no-repeat'
+                  target='_blank'
+                  rel='noopener noreferrer'
                 ></Link>
                 <Link
                   href={'https://www.linkedin.com/company/main-3d'}
                   className='linkedin mr-4 inline-block h-7 w-7 bg-contain bg-center bg-no-repeat'
+                  target='_blank'
+                  rel='noopener noreferrer'
                 ></Link>
               </div>
             </div>

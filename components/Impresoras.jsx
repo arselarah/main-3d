@@ -148,7 +148,7 @@ export default function Impresoras() {
                       src={impresora.imagen}
                       width={0}
                       height={0}
-                      className='w-[50%] object-contain'
+                      className='w-[80%] object-contain'
                     />
                   </motion.div>
                 </motion.div>
