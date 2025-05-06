@@ -19,6 +19,32 @@ export default function App({ Component, pageProps }) {
     requestAnimationFrame(raf)
   }, [])
 
+  useEffect(() => {
+    // Añadir estilos globales para el scrollbar
+    const style = document.createElement('style');
+    style.textContent = `
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #C72020;
+        border-radius: 4px;
+      }
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: #C72020 transparent;
+      }
+    `;
+    document.head.appendChild(style);
+    
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
+
   const router = useRouter()
   return (
     // <AnimatePresence exitBeforeEnter>

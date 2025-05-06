@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { MessageSquare, Minus, GripHorizontal } from 'lucide-react';
+import { MessageSquare, Minus, GripHorizontal, ChevronDown } from 'lucide-react';
 
 export default function Chat() {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,16 +11,42 @@ export default function Chat() {
   const [menuVisible, setMenuVisible] = useState(true);
   const [submenu, setSubmenu] = useState(null);
   const [showTooltip, setShowTooltip] = useState(false);
+  const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
   const messagesEndRef = useRef(null);
   const tooltipTimeoutRef = useRef(null);
 
+  // Load saved chat data on component mount
   useEffect(() => {
+    const savedData = localStorage.getItem('chatData');
+    if (savedData) {
+      const parsed = JSON.parse(savedData);
+      setMessages(parsed.messages || []);
+      setUserInfo(parsed.userInfo || { nombre: '', email: '', telefono: '' });
+      setFormSubmitted(parsed.formSubmitted || false);
+    }
+  }, []);
+
+  // Save chat data whenever it changes
+  useEffect(() => {
+    localStorage.setItem('chatData', JSON.stringify({
+      messages,
+      userInfo,
+      formSubmitted
+    }));
+  }, [messages, userInfo, formSubmitted]);
+
+  useEffect(() => {
+    let hideTimeout;
     const startTooltipCycle = () => {
       if (!isOpen) {
+        setShowTooltip(false);
         tooltipTimeoutRef.current = setInterval(() => {
           setShowTooltip(true);
-          setTimeout(() => setShowTooltip(false), 5000); // Hide after 5 seconds
-        }, 45000); // Show every 45 seconds
+          const hideTimeout = setTimeout(() => {
+            setShowTooltip(false);
+          }, 5000);
+          return () => clearTimeout(hideTimeout);
+        }, 45000);
       }
     };
 
@@ -30,6 +56,7 @@ export default function Chat() {
       if (tooltipTimeoutRef.current) {
         clearInterval(tooltipTimeoutRef.current);
       }
+      setShowTooltip(false);
     };
   }, [isOpen]);
 
@@ -109,14 +136,14 @@ export default function Chat() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userInfo, messages })
       });
-      alert('✅ Conversación guardada.');
+      alert('¡Conversación guardada exitosamente!');
       setMessages([]);
       setInput('');
       setFormSubmitted(false);
       setUserInfo({ nombre: '', email: '', telefono: '' });
-      localStorage.clear();
+      localStorage.removeItem('chatData');
     } catch {
-      alert('❌ Error al finalizar.');
+      alert('❌ Error al finalizar la conversación');
     }
   };
 
@@ -125,10 +152,23 @@ export default function Chat() {
     servicios: ['Impresión 3D', 'Escaneo 3D', 'RV / RA', 'Cursos', 'Otros']
   };
 
+  const handleMenuClick = (type, event) => {
+    setSubmenu(submenu === type ? null : type);
+  };
+
+  const handleOptionClick = (option) => {
+    sendMessage(option);
+    setSubmenu(null);
+  };
+
   return (
     <div className="fixed bottom-4 right-4 z-50">
       {!isOpen ? (
-        <div className="relative group">
+        <div 
+          className="relative group"
+          onMouseEnter={() => setShowTooltip(true)}
+          onMouseLeave={() => setShowTooltip(false)}
+        >
           <button
             onClick={toggleChat}
             className="flex items-center justify-center bg-[#C72020] shadow-lg rounded-full w-14 h-14 hover:bg-[#a81b1b] transition-all duration-300 group-hover:rounded-xl"
@@ -137,9 +177,7 @@ export default function Chat() {
           </button>
           <div 
             className={`absolute right-0 bottom-full mb-2 pointer-events-none transition-all duration-300 transform ${
-              showTooltip || 'group-hover:opacity-100 group-hover:translate-y-0'
-              ? 'opacity-100 translate-y-0'
-              : 'opacity-0 translate-y-1'
+              showTooltip ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'
             }`}
           >
             <div className="bg-white text-[#C72020] px-4 py-2 rounded-lg shadow-lg whitespace-nowrap text-sm font-medium">
@@ -212,9 +250,31 @@ export default function Chat() {
           ) : (
             <>
               <div 
-                className="flex-1 overflow-y-auto p-3 bg-[#f0f2f5]" 
-                style={{ scrollbarWidth: 'thin', scrollbarColor: '#C72020 #f0f2f5' }}
+                className="flex-1 p-3 bg-[#f0f2f5] overflow-y-auto"
+                style={{
+                  scrollbarWidth: "thin",
+                  scrollbarColor: "#C72020 transparent"
+                }}
               >
+                <style jsx global>{`
+                  /* Estilos para Chrome, Safari y Edge */
+                  body::-webkit-scrollbar,
+                  div::-webkit-scrollbar {
+                    width: 8px !important;
+                  }
+                  
+                  body::-webkit-scrollbar-thumb,
+                  div::-webkit-scrollbar-thumb {
+                    background-color: #C72020 !important;
+                    border-radius: 4px !important;
+                  }
+                  
+                  /* Estilos para Firefox */
+                  * {
+                    scrollbar-width: thin !important;
+                    scrollbar-color: #C72020 transparent !important;
+                  }
+                `}</style>
                 <div className="flex flex-col space-y-2">
                   {messages.map((msg, idx) => (
                     <div 
@@ -244,30 +304,33 @@ export default function Chat() {
               </div>
 
               {menuVisible && (
-                <div className="p-3 bg-white border-t border-gray-100">
+                <div className="px-3 py-2 bg-white border-t border-gray-100">
                   {!submenu ? (
                     <div className="grid grid-cols-2 gap-2">
                       <button 
                         onClick={() => setSubmenu('productos')} 
-                        className="bg-[#f8e5e5] text-[#C72020] py-2 px-4 rounded-lg font-medium text-sm hover:bg-[#fad6d6] transition-colors duration-200"
+                        className="w-full bg-[#f8e5e5] text-[#C72020] py-2 px-4 rounded-lg font-medium text-sm hover:bg-[#fad6d6] transition-colors duration-200"
                       >
                         Productos
                       </button>
                       <button 
                         onClick={() => setSubmenu('servicios')} 
-                        className="bg-[#f8e5e5] text-[#C72020] py-2 px-4 rounded-lg font-medium text-sm hover:bg-[#fad6d6] transition-colors duration-200"
+                        className="w-full bg-[#f8e5e5] text-[#C72020] py-2 px-4 rounded-lg font-medium text-sm hover:bg-[#fad6d6] transition-colors duration-200"
                       >
                         Servicios
                       </button>
                     </div>
                   ) : (
-                    <div className="space-y-2">
+                    <div>
                       <div className="grid grid-cols-2 gap-2">
                         {menuButtons[submenu].map((item, idx) => (
-                          <button 
-                            key={idx} 
-                            onClick={() => { sendMessage(item); setSubmenu(null); }}
-                            className="bg-[#f8e5e5] text-[#C72020] py-2 px-3 rounded-lg font-medium text-sm hover:bg-[#fad6d6] transition-colors duration-200"
+                          <button
+                            key={idx}
+                            onClick={() => {
+                              sendMessage(item);
+                              setSubmenu(null);
+                            }}
+                            className="w-full bg-[#f8e5e5] text-[#C72020] py-2 px-4 rounded-lg font-medium text-sm hover:bg-[#fad6d6] transition-colors duration-200"
                           >
                             {item}
                           </button>
@@ -275,9 +338,9 @@ export default function Chat() {
                       </div>
                       <button
                         onClick={() => setSubmenu(null)}
-                        className="text-sm text-gray-500 hover:text-[#C72020] transition-colors duration-200"
+                        className="w-full mt-2 text-gray-500 text-sm hover:text-[#C72020] transition-colors duration-200"
                       >
-                        ← Volver
+                        Volver
                       </button>
                     </div>
                   )}
@@ -301,6 +364,12 @@ export default function Chat() {
                     Enviar
                   </button>
                 </div>
+                <button
+                  onClick={finalizarConversacion}
+                  className="w-full mt-3 border border-[#C72020] text-[#C72020] text-sm rounded-lg py-2 hover:bg-[#fff5f5] transition-colors duration-200 font-medium"
+                >
+                  Finalizar conversación
+                </button>
               </div>
             </>
           )}
