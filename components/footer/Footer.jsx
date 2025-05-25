@@ -86,7 +86,7 @@ export default function Footer() {
                   Cookies
                 </Link>
                 <Link href={''} className='mb-4 inline-block hover:underline'>
-                  Lorem Impsum
+                  Ubicación
                 </Link>
               </div>
               <div className='flex flex-row'>

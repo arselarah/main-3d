@@ -63,7 +63,7 @@ export default function Escaneres() {
             <motion.h3 className='pb-4 text-center text-clamp-sm font-medium'>
               Escáneres 3D
             </motion.h3>
-            <motion.h2 className='mx-auto max-w-[840px] text-center text-clamp-lg font-semibold leading-none'>
+            <motion.h2 className='mx-auto max-w-[840px] text-center text-clamp-lg font-semibold leading-tight'>
               Da vida a la geometría de tus piezas mediante la tecnología de
               Scantech
             </motion.h2>
