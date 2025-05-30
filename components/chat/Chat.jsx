@@ -97,7 +97,7 @@ export default function Chat() {
 
   const sendUserToSheets = async () => {
     try {
-      await fetch('https://main3d-api-rag.onrender.com/registro', {
+      await fetch('https://raggemini-production.up.railway.app/registro', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(userInfo),
@@ -114,10 +114,10 @@ export default function Chat() {
     setMenuVisible(false);
     setLoading(true);
     try {
-      const res = await fetch('https://main3d-api-rag.onrender.com/chat', {
+      const res = await fetch('https://raggemini-production.up.railway.app/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ pregunta: message, reiniciar: false })
+        body: JSON.stringify({ question: message })
       });
       const data = await res.json();
       setMessages(prev => [...prev, { from: 'bot', text: data.respuesta }]);
@@ -131,10 +131,10 @@ export default function Chat() {
 
   const finalizarConversacion = async () => {
     try {
-      await fetch('https://main3d-api-rag.onrender.com/finalizar', {
+      await fetch('https://raggemini-production.up.railway.app/finalizar', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ userInfo, messages })
+        body: JSON.stringify({})
       });
       alert('¡Conversación guardada exitosamente!');
       setMessages([]);
