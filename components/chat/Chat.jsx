@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { MessageSquare, Minus, GripHorizontal, ChevronDown } from 'lucide-react';
 
+// Cambia aquí la URL base de la API
+const API_BASE = 'https://raggemini-production.up.railway.app';
+
 export default function Chat() {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
@@ -83,26 +86,37 @@ export default function Chat() {
   };
 
   const handleSubmitForm = () => {
-    if (userInfo.nombre && userInfo.email && userInfo.telefono) {
-      if (userInfo.telefono.length !== 10) return alert('El número debe tener 10 dígitos');
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userInfo.email)) return alert('Email no válido');
-      setFormSubmitted(true);
-      const greeting = `¡Hola ${userInfo.nombre}! Bienvenido a Main-3D 👋. ¿Sobre qué tema te puedo ayudar?`;
-      setMessages([{ from: 'bot', text: greeting }]);
-      sendUserToSheets();
-    } else {
-      alert('Por favor completa todos los campos');
+    const cleanUserInfo = {
+      nombre: userInfo.nombre.trim(),
+      correo: userInfo.email.trim(),
+      telefono: userInfo.telefono.trim()
+    };
+    if (!cleanUserInfo.nombre || !cleanUserInfo.correo || !cleanUserInfo.telefono) {
+      return alert('Por favor completa todos los campos');
     }
+    if (cleanUserInfo.telefono.length !== 10) return alert('El número debe tener 10 dígitos');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cleanUserInfo.correo)) return alert('Email no válido');
+    setUserInfo(cleanUserInfo); // Actualiza el estado con los valores limpios
+    sendUserToSheets(cleanUserInfo);
   };
 
-  const sendUserToSheets = async () => {
+  const sendUserToSheets = async (info = userInfo) => {
     try {
-      await fetch('https://raggemini-production.up.railway.app/registro', {
+      const res = await fetch(`${API_BASE}/registro`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(userInfo),
+        body: JSON.stringify(info),
       });
+      const data = await res.json();
+      if (res.ok) {
+        setFormSubmitted(true);
+        const greeting = `¡Hola ${info.nombre}! Bienvenido a Main-3D 👋. ¿Sobre qué tema te puedo ayudar?`;
+        setMessages([{ from: 'bot', text: greeting }]);
+      } else {
+        alert(data.error || 'Error al registrar usuario');
+      }
     } catch (err) {
+      alert('Registro fallido');
       console.error('Registro fallido', err);
     }
   };
@@ -114,7 +128,7 @@ export default function Chat() {
     setMenuVisible(false);
     setLoading(true);
     try {
-      const res = await fetch('https://raggemini-production.up.railway.app/chat', {
+      const res = await fetch(`${API_BASE}/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ question: message })
@@ -131,12 +145,18 @@ export default function Chat() {
 
   const finalizarConversacion = async () => {
     try {
-      await fetch('https://raggemini-production.up.railway.app/finalizar', {
+      // Prepara el historial en formato [['Usuario', msg], ['Bot', msg], ...]
+      const conversacion = messages.map(msg => [msg.from === 'user' ? 'Usuario' : 'Bot', msg.text]);
+      await fetch(`${API_BASE}/finalizar`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({})
+        body: JSON.stringify({
+          nombre: userInfo.nombre,
+          correo: userInfo.correo || userInfo.email, // por compatibilidad
+          telefono: userInfo.telefono,
+          conversacion
+        })
       });
-      alert('¡Conversación guardada exitosamente!');
       setMessages([]);
       setInput('');
       setFormSubmitted(false);
@@ -188,7 +208,7 @@ export default function Chat() {
         </div>
       ) : (
         <div
-          className="bg-white shadow-xl rounded-xl flex flex-col overflow-hidden resize"
+          className="bg-white shadow-xl rounded-xl flex flex-col overflow-hidden"
           style={{
             height: '500px',
             width: '350px',
@@ -204,7 +224,7 @@ export default function Chat() {
           >
             <span className="font-bold">Main-3D Chat</span>
             <div className="flex items-center gap-2">
-              <GripHorizontal className="cursor-move" size={18} />
+              {/* <GripHorizontal className="cursor-move" size={18} /> */}
               <button 
                 onClick={closeChat}
                 className="hover:bg-[#a81b1b] p-1 rounded transition-colors duration-200"
