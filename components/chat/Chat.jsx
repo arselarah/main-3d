@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { MessageSquare, Minus, GripHorizontal, ChevronDown } from 'lucide-react';
 
+// Cambia aquí la URL base de la API
+const API_BASE = 'https://raggemini-production.up.railway.app';
+
 export default function Chat() {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
@@ -99,7 +102,7 @@ export default function Chat() {
 
   const sendUserToSheets = async (info = userInfo) => {
     try {
-      const res = await fetch('http://127.0.0.1:5000/registro', {
+      const res = await fetch(`${API_BASE}/registro`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(info),
@@ -125,7 +128,7 @@ export default function Chat() {
     setMenuVisible(false);
     setLoading(true);
     try {
-      const res = await fetch('http://127.0.0.1:5000/chat', {
+      const res = await fetch(`${API_BASE}/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ question: message })
@@ -144,7 +147,7 @@ export default function Chat() {
     try {
       // Prepara el historial en formato [['Usuario', msg], ['Bot', msg], ...]
       const conversacion = messages.map(msg => [msg.from === 'user' ? 'Usuario' : 'Bot', msg.text]);
-      await fetch('http://127.0.0.1:5000/finalizar', {
+      await fetch(`${API_BASE}/finalizar`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
