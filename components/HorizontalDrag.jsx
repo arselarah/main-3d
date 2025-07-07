@@ -50,8 +50,21 @@ export default function HorizontalDrag() {
                     <h2 className='border-b-[1px] border-white pb-4 text-clamp-lg font-medium leading-none text-white'>
                       {banner.titulo}
                     </h2>
-                    <p className='max-w-[350px] pt-6 text-clamp-sm font-light text-white md:max-w-[520px] lg:max-w-[640px]'>
+                    {/* <p className='max-w-[350px] pt-6 text-clamp-sm font-light text-white md:max-w-[520px] lg:max-w-[640px]'>
                       {banner.texto}
+                    </p> */}
+                    <p className='max-w-[350px] pt-6 text-clamp-sm font-light text-white md:max-w-[520px] lg:max-w-[640px]'>
+                      {banner.textoPartes
+                        ? banner.textoPartes.map((parte, i) =>
+                            parte === 'Pellets' ? (
+                              <strong key={i} className='font-semibold'>
+                                {parte}
+                              </strong>
+                            ) : (
+                              <span key={i}>{parte}</span>
+                            ),
+                          )
+                        : banner.texto}
                     </p>
                     <div className='group mt-12 w-full max-w-[450px] rounded-full bg-white bg-opacity-15 py-2 transition-all duration-300 ease-[cubic-bezier(.51,.92,.24,1.15)] hover:bg-opacity-100'>
                       <Link

@@ -29,7 +29,7 @@ const scaleAnimation = {
 }
 
 export default function Escaneres() {
-  const [modal, setModal] = useState({ active: false, index: 0 })
+  const [modal, setModal] = useState({ active: true, index: 0 })
   const { active, index } = modal
   const container = useRef(null)
   const ref = useRef(null)
@@ -79,7 +79,7 @@ export default function Escaneres() {
                       setModal({ active: true, index })
                     }}
                     onMouseLeave={() => {
-                      setModal({ active: false, index })
+                      setModal({ active: true, index })
                     }}
                     className='escaneres_intem group relative flex w-full cursor-pointer flex-row items-stretch justify-start py-8 transition-all duration-1000 hover:translate-x-5'
                   >
@@ -109,7 +109,7 @@ export default function Escaneres() {
                   </div>
                 ))}
               </div>
-              <div className='borderAnimado relative z-[1] hidden flex-1 items-center justify-center overflow-clip rounded-full bg-fondo_claro md:flex'>
+              <div className='borderAnimado relative z-[1] hidden flex-1 items-center justify-center overflow-clip rounded-full md:flex'>
                 <motion.svg
                   width='100%'
                   height='100%'
@@ -157,7 +157,7 @@ export default function Escaneres() {
                           src={escaner.imagen}
                           fill
                           alt={escaner.titulo}
-                          className='mx-auto max-w-[70%] object-contain'
+                          className='mx-auto object-contain'
                         />
                         {/* <div className='absolute inset-0 left-0 top-0 flex items-center justify-center'>
                           <p className=''>{escaner.titulo}</p>
@@ -176,7 +176,7 @@ export default function Escaneres() {
                       setModal({ active: true, index: index + 3 })
                     }}
                     onMouseLeave={() => {
-                      setModal({ active: false, index: index + 3 })
+                      setModal({ active: true, index: index + 3 })
                     }}
                   >
                     <div className='relative w-full md:w-1/2'>

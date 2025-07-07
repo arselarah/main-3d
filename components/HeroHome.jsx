@@ -45,14 +45,12 @@ export default function HeroHome() {
             className='hero_text-container px-4 pb-20 tracking-widest md:pb-[10%] lg:px-8'
           >
             <h1 className='text-center text-clamp-xl font-light leading-none text-white'>
-              Advanced research
-              <br />
-              and printing materials
+              Soluciones en Tecnología 3D
             </h1>
-            <p className='mx-auto max-w-[350px] pt-6 text-center text-clamp-sm font-light text-white md:max-w-[520px] lg:max-w-[640px]'>
+            {/* <p className='mx-auto max-w-[350px] pt-6 text-center text-clamp-sm font-light text-white md:max-w-[520px] lg:max-w-[640px]'>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non
               tincidunt eros.
-            </p>
+            </p> */}
             <div className='group mx-auto mt-12 w-full max-w-[450px] rounded-full bg-white bg-opacity-15 py-2 transition-all duration-300 ease-[cubic-bezier(.51,.92,.24,1.15)] hover:bg-opacity-100'>
               <Link
                 href={'/'}

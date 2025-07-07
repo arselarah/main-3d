@@ -50,37 +50,37 @@ export const escaneres = [
     id: 1,
     titulo: 'SIMSCAN E',
     texto:
-      'El escáner 3D portátil más compacto y asequible para ingeniería inversa y diseño',
+      'El escáner 3D portátil más compacto y asequible para ingeniería inversa y diseño.',
     imagen: '/assets/Escaneres/simscan_e.webp',
   },
   {
     id: 2,
     titulo: 'RAPTOR X Inalámbrico',
-    texto: 'Un equipo muy amigable, equipado y profesional',
+    texto: 'Un equipo muy amigable, equipado y profesional.',
     imagen: '/assets/Escaneres/raptor_x.webp',
   },
   {
     id: 3,
     titulo: 'SCAN ONE',
-    texto: 'Ideal para trabajos sencillos sin perder fidelidad',
+    texto: 'Ideal para trabajos sencillos sin perder fidelidad.',
     imagen: '/assets/Escaneres/it3d_scan_one.webp',
   },
   {
     id: 4,
     titulo: '3DeVOK – MT',
-    texto: 'Confiable para la productividad industrial y artística',
+    texto: 'Confiable para la productividad industrial y artística.',
     imagen: '/assets/Escaneres/3DeVOK _MT.webp',
   },
   {
     id: 5,
     titulo: 'NIMBLE TRACK',
-    texto: 'Escanea de 1 a 10 piezas en menos de 10 minutos',
+    texto: 'Escanea de 1 a 10 piezas en menos de 10 minutos.',
     imagen: '/assets/Escaneres/nimble_track.webp',
   },
   {
     id: 6,
     titulo: 'TRACKSCAN SHARP-S',
-    texto: 'Diseñado para escanear grandes objetos de forma precisa',
+    texto: 'Diseñado para escanear grandes objetos de forma precisa.',
     imagen: '/assets/Escaneres/trackscan_sharp.webp',
   },
   // {
@@ -129,14 +129,29 @@ export const banners = [
   },
   {
     titulo: 'Impresión con Metal',
-    texto:
-      'Gracias al cabezal de Pellets podrás crear piezas metálicas, por ejemplo, con un material INOX 316. Podrás obtener una pieza 100% de metal después del sinterizado. Contáctanos para conocer más sobre materiales metálicos en impresión 3D.',
+    textoPartes: [
+      'Gracias al cabezal de ',
+      'Pellets',
+      ' podrás utilizar más de 300 materiales diferentes, incluyendo metálicos. (INOX 316, entre otros.)',
+    ],
     fondo: 'impresora-tres',
+    // titulo: 'Impresión con Metal',
+    // texto:
+    //   'Gracias al cabezal de <strong>Pellets</strong> podrás utilizar más de 300 materiales diferentes, incluyendo metálicos. (INOX 316, entre otros.)',
+    // texto:
+    //   'Gracias al cabezal de Pellets podrás crear piezas metálicas, por ejemplo, con un material INOX 316. Podrás obtener una pieza 100% de metal después del sinterizado. Contáctanos para conocer más sobre materiales metálicos en impresión 3D.',
+    // fondo: 'impresora-tres',
   },
+  // {
+  //   titulo: 'Impresión Simétrica',
+  //   texto:
+  //     'Al elegir una impresora con doble cabezal, podrás crear piezas al mismo tiempo de forma simétrica o en espejo. Esto te ayudará a reducir el tiempo de impresión para crear piezas únicas.',
+  //   fondo: 'impresora-dos',
+  // },
   {
     titulo: 'Impresión Simétrica',
     texto:
-      'Al elegir una impresora con doble cabezal, podrás crear piezas al mismo tiempo de forma simétrica o en espejo. Esto te ayudará a reducir el tiempo de impresión para crear piezas únicas.',
+      'Una impresora con doble cabezal, podrás fabricar piezas de forma simétrica o en espejo. Esto ayuda a optimizar tiempos de fabricación.',
     fondo: 'impresora-dos',
   },
 ]
