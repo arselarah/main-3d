@@ -208,6 +208,7 @@ export default function Chat() {
         </div>
       ) : (
         <div
+          onWheel={(e) => e.stopPropagation()}
           className="bg-white shadow-xl rounded-xl flex flex-col overflow-hidden"
           style={{
             height: '500px',
