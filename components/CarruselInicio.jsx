@@ -13,46 +13,39 @@ const poppins = Poppins({
 
 const slides = [
   {
-    imagen: '/assets/Otros_Servicios/servicio_impresion.webp',
-    titulo: 'Servicio de Impresión 3D',
-    subtitulo:
-      'Cotiza con nosotros tu pieza, ya sea para enfoque industrial o creativo. Nosotros nos encargamos de asesorarte para que tu proyecto resulte de la mejor manera.',
-    logo: '',
-  },
-  {
     imagen: '/assets/Otros_Servicios/servicio_validacion.webp',
     titulo: 'Servicio de Validación de Material',
     subtitulo:
-      'Si lo que quieres es crear una pieza con tu propio material, nosotros podemos realizarlo a través de una validación. A lo largo de nuestra carrera hemos validado más de 50 materiales diferentes que no se encuentran en formato de filamento.',
-    logo: '',
+      'Crea una pieza con tu propio material, lo realizamos a través de una validación. Hemos validado más de 50 materiales diferentes ya disponibles en pellets que no se encuentran en formato de filamento.',
+    logo: 'clonDigital',
   },
   {
     imagen: '/assets/Otros_Servicios/servicio_escaneo.webp',
     titulo: 'Servicio de Escaneo, Control y Diseño',
     subtitulo:
-      'Gracias a nuestros equipos de alta precisión te podremos brindar servicio de escaneo fiable para control dimensional, ingeniería inversa o modelado 3D. Nuestros equipos alcanzan una resolución de hasta 20 micras.',
-    logo: '',
+      'Con nuestros equipos de alta precisión te brindamos un escaneo fiable para control dimensional, ingeniería inversa o modelado 3D, alcanzando una resolución de hasta 20 micras.',
+    logo: 'scantech',
   },
   {
     imagen: '/assets/Otros_Servicios/servicio_vr.webp',
-    titulo: 'Realidad virtual y aumentada',
+    titulo: 'Realidad Virtual y Aumentada',
     subtitulo:
-      '¿Quieres que tus clientes vean tus productos en RV o RA? Podemos digitalizar objetos únicos incluso hasta un espacio completo. Solo imagina ver tu producto dimensionado a la realidad a través de un dispositivo inteligente.',
+      'Potencializa tus productos en RV o RA. Dese un objeto hasta un espacio completo. Imagina presentar tus productos dimensionados a la realidad en cualquier momento a tus clientes.',
     logo: 'clonDigital',
   },
   {
     imagen: '/assets/Otros_Servicios/servicio_fabricacion.webp',
     titulo: 'Tecnologías de Fabricación Avanzadas',
     subtitulo:
-      'La bio-fabricación a tu alcance. Aportamos soluciones en bioimpresión. Experimente el futuro de la impresión con nuestra impresora 3D multitecnología, donde la innovación se combina con la versatilidad.',
+      'La bio-fabricación a tu alcance. Aportamos soluciones en bioimpresión. Experimenta el futuro de la impresión con nuestra impresora 3D multitecnología, donde la innovación se combina con la versatilidad.',
     logo: 'domoBio',
   },
   {
     imagen: '/assets/Otros_Servicios/servicio_construccion.webp',
-    titulo: 'Sistema de Construcción Inteligente',
+    titulo: 'Sistema de construcción inteligente',
     subtitulo:
-      'Sistema de impresión 3D diseñada y desarrollada para satisfacer los requisitos más exigentes de la industria de la construcción, particularmente en la impresión masiva de unidades de vivienda con un alto grado de calidad y confiabilidad.',
-    logo: '',
+      'Sistema de impresión 3D desarrollada para satisfacer los requisitos más exigentes de la industria de vivienda, particularmente en la impresión masiva de unidades con alto grado de calidad y confiabilidad.',
+    logo: 'cosmos3d',
   },
 ]
 export default function CarruselInicio() {
@@ -117,7 +110,7 @@ export default function CarruselInicio() {
                 initial={{ x: 0 }}
                 animate={{ x: -currentIndex * (largo + 40) }}
                 transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                className='relative grid auto-cols-[90vw] grid-flow-col gap-10 md:auto-cols-[40vw]'
+                className='relative grid auto-cols-[90vw] grid-flow-col gap-10 md:auto-cols-[70vw] lg:auto-cols-[50vw]'
               >
                 {slides.map((slide, index) => (
                   <motion.div
@@ -132,7 +125,7 @@ export default function CarruselInicio() {
                       height={100}
                       className='h-full w-full object-cover transition-all duration-500 group-hover:scale-105'
                     />
-                    <div className='absolute inset-0 left-0 top-0 flex flex-col items-center justify-end bg-negro bg-opacity-55 px-[2vw] lg:px-[3vw]'>
+                    <div className='absolute inset-0 left-0 top-0 flex flex-col items-center justify-end bg-negro bg-opacity-55 p-6 lg:p-8'>
                       <h3 className='mx-auto max-w-[840px] text-center text-clamp-md font-medium capitalize leading-none text-white'>
                         {slide.titulo}
                       </h3>
@@ -140,7 +133,7 @@ export default function CarruselInicio() {
                         {slide.subtitulo}
                       </p>
                       <div
-                        className={`absolute left-[2vw] top-4 h-[15%] min-h-[60px] w-[20%] min-w-[120px] bg-contain bg-center bg-no-repeat lg:left-[3vw] lg:top-16 ${slide.logo}`}
+                        className={`absolute left-4 top-4 h-24 w-32 bg-contain bg-center bg-no-repeat lg:left-[3vw] lg:top-8 ${slide.logo}`}
                       ></div>
                     </div>
                     <Link

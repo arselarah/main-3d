@@ -63,6 +63,14 @@ body {
   background-image: url('/assets/logo-aula-del-futuro-negro.png.webp');
 }
 
+.scantech {
+  background-image: url('/assets/logo_scantech.png');
+}
+
+.cosmos3d {
+  background-image: url('/assets/logo_cosmos-3d.png');
+}
+
 .prevIcon {
   background-image: url('/assets/icons/8666557_chevron_left_icon.png');
   background-size: 50%;
