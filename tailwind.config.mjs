@@ -22,8 +22,8 @@ export default {
       fontSize: {
         'clamp-xl': 'clamp(1.8rem, 5vw, 5rem)',
         'clamp-lg': 'clamp(1.5rem, 2.5vw, 3rem)',
-        'clamp-md': 'clamp(1rem, 2vw, 2rem)',
-        'clamp-sm': 'clamp(0.875rem, 1.5vw, 1.5rem)',
+        'clamp-md': 'clamp(1.2rem, 1.8vw, 1.8rem)',
+        'clamp-sm': 'clamp(0.85rem, 1.5vw, 1.3rem)',
         'clamp-menu': 'clamp(0.65rem, .75vw, 1rem)',
       },
     },
