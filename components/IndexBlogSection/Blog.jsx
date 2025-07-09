@@ -31,7 +31,7 @@ export default function IndexBlogSection() {
   return (
     <>
       <section
-        className={`relative w-full px-4 py-[2vw] lg:px-8 lg:py-[3vw] ${poppins.className}`}
+        className={`relative my-16 w-full px-4 lg:my-32 lg:px-8 ${poppins.className}`}
       >
         <div className='titleContainer pb-[2vw] text-black lg:pb-[3vw]'>
           <h2 className='mx-auto max-w-[840px] text-center text-clamp-lg font-semibold leading-none'>

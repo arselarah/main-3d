@@ -56,10 +56,10 @@ export default function Escaneres() {
   return (
     <>
       <section
-        className={`relative w-full px-4 py-[2vw] lg:px-8 lg:py-[3vw] ${poppins.className}`}
+        className={`relative my-16 w-full px-4 lg:my-32 lg:px-8 ${poppins.className}`}
       >
         <article className='relative w-full rounded-3xl bg-fondo_claro p-4 lg:p-16'>
-          <div className='titleContainer border-b-[1px] border-gray-500 py-[2vw] text-black lg:py-[3vw]'>
+          <div className='titleContainer border-b-[1px] border-gray-500 pb-16 text-black lg:pb-32'>
             <motion.h3 className='pb-4 text-center text-clamp-sm font-medium'>
               Escáneres 3D
             </motion.h3>
@@ -216,7 +216,7 @@ export default function Escaneres() {
             </div>
             {/* contenedor */}
           </div>
-          <div className='titleContainer py-[2vw] text-black lg:py-[3vw]'>
+          <div className='titleContainer pt-16 text-black lg:pt-32'>
             <div className='group mx-auto w-full max-w-[450px] rounded-full border-[1px] border-negro bg-negro py-2 transition-all duration-300 hover:bg-transparent'>
               <Link
                 href={'/'}

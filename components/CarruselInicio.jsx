@@ -108,7 +108,7 @@ export default function CarruselInicio() {
   return (
     <>
       <section
-        className={`relative w-full overflow-hidden px-4 py-[2vw] lg:px-8 lg:py-[3vw] ${poppins.className}`}
+        className={`relative w-full overflow-hidden px-4 lg:px-8 ${poppins.className}`}
       >
         <article className='relative w-full'>
           <div className='relative flex flex-col items-center'>

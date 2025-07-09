@@ -14,7 +14,8 @@ export default {
         gris_oscuro: '#6C6C6C',
 
         negro: '#020202',
-        fondo_claro: '#EEF3ED',
+        fondo_claro: '#E8EFFA',
+        //fondo_claro: '#EEF3ED',
       },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],

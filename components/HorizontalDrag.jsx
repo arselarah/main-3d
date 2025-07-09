@@ -25,7 +25,7 @@ export default function HorizontalDrag() {
 
   return (
     <section
-      className='draggableSlider my-[2vw] h-[300vh] tracking-widest md:h-[400vh] lg:my-[3vw]'
+      className='draggableSlider h-[300vh] tracking-widest md:h-[400vh]'
       ref={targetRef}
     >
       <div className='draggableSlider_container sticky top-0 h-screen overflow-hidden'>

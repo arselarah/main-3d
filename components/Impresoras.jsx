@@ -35,7 +35,7 @@ export default function Impresoras() {
 
   return (
     <section
-      className={`relative mx-4 mb-[3vw] lg:mx-8 lg:mb-[6vw] ${poppins.className} h-[300hv] overflow-clip rounded-3xl bg-fondo_claro`}
+      className={`relative mx-4 my-16 lg:mx-8 lg:my-32 ${poppins.className} h-[300hv] overflow-clip rounded-3xl bg-fondo_claro`}
     >
       <div className='absolute left-0 top-0 flex w-full max-w-[80rem] items-center justify-center'></div>
       <div className='absolute bottom-0 right-0 flex w-full max-w-[80rem] items-center justify-center'></div>
