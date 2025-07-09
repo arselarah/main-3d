@@ -42,7 +42,7 @@ export default function IndexBlogSection() {
           {posts.map((post, index) => (
             <div key={index} className='group relative flex flex-1 flex-col'>
               <div
-                className={`h-[180px] w-full overflow-hidden rounded-3xl md:h-[320px]`}
+                className={`h-[320px] w-full overflow-hidden rounded-3xl md:h-[480px]`}
               >
                 <div
                   className={`h-full w-full bg-cover bg-center bg-no-repeat ${post.fondo} transition-all duration-500 group-hover:scale-105`}
