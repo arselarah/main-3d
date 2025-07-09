@@ -97,7 +97,7 @@ export default function Escaneres() {
                         src={escaner.imagen}
                         width={0}
                         height={0}
-                        className='relative aspect-video w-[75%] object-contain transition-transform duration-500 group-hover:scale-0'
+                        className='relative aspect-video w-full object-contain transition-transform duration-500 group-hover:scale-0 lg:w-[75%]'
                       />
                       <div className='-tranlate-y-1/2 absolute top-1/2 h-6 w-6 scale-0 rounded-full bg-rojo opacity-0 transition-transform duration-500 group-hover:scale-100 group-hover:opacity-100' />
                     </div>
@@ -157,7 +157,7 @@ export default function Escaneres() {
                           src={escaner.imagen}
                           fill
                           alt={escaner.titulo}
-                          className='mx-auto max-w-[78%] object-contain'
+                          className='mx-auto max-w-[95%] object-contain'
                         />
                         {/* <div className='absolute inset-0 left-0 top-0 flex items-center justify-center'>
                           <p className=''>{escaner.titulo}</p>

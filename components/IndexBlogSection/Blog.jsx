@@ -49,10 +49,10 @@ export default function IndexBlogSection() {
                 ></div>
               </div>
               <div>
-                <h3 className='py-4 text-clamp-sm font-medium text-black lg:py-8'>
+                <h3 className='py-4 text-clamp-md font-medium text-black lg:py-8'>
                   {post.titulo}
                 </h3>
-                <p className='text-gris_oscuro'>{post.texto}</p>
+                <p className='text-clamp-sm text-gris_oscuro'>{post.texto}</p>
               </div>
               <Link href={``} className='absolute inset-0 left-0 top-0' />
             </div>

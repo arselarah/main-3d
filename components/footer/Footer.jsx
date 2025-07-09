@@ -25,7 +25,7 @@ export default function Footer() {
             </Link>
           </div>
           <div className='relative flex w-full flex-1 flex-col items-stretch md:flex-row'>
-            <div className='flex flex-1 flex-col justify-between pb-10 md:pr-10 lg:pr-20'>
+            <div className='flex w-full flex-grow flex-col justify-between pb-10 md:pr-10 lg:pr-20'>
               <div>
                 <h1 className='max-w-[920px] text-clamp-xl font-light leading-none text-white'>
                   Advanced research and printing materials
@@ -48,7 +48,7 @@ export default function Footer() {
                 </Link>
               </div>
             </div>
-            <div className='flex w-full max-w-[320px] flex-col justify-between lg:max-w-[400px]'>
+            <div className='flex w-auto flex-col justify-between'>
               <div className='flex flex-col items-start'>
                 <Link
                   href={''}

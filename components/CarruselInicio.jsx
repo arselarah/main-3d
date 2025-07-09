@@ -13,6 +13,13 @@ const poppins = Poppins({
 
 const slides = [
   {
+    imagen: '/assets/Otros_Servicios/servicio_impresion.webp',
+    titulo: 'Servicio de Impresión 3D',
+    subtitulo:
+      'Cotiza con nosotros tu pieza, ya sea para enfoque industrial o creativo. Nosotros nos encargamos de asesorarte para que tu proyecto resulte de la mejor manera.',
+    logo: 'clonDigital',
+  },
+  {
     imagen: '/assets/Otros_Servicios/servicio_validacion.webp',
     titulo: 'Servicio de Validación de Material',
     subtitulo:
@@ -101,11 +108,11 @@ export default function CarruselInicio() {
   return (
     <>
       <section
-        className={`relative w-full px-4 py-[2vw] lg:px-8 lg:py-[3vw] ${poppins.className}`}
+        className={`relative w-full overflow-hidden px-4 py-[2vw] lg:px-8 lg:py-[3vw] ${poppins.className}`}
       >
         <article className='relative w-full'>
           <div className='relative flex flex-col items-center'>
-            <div className='h-auto w-full overflow-hidden'>
+            <div className='h-auto w-full'>
               <motion.div
                 initial={{ x: 0 }}
                 animate={{ x: -currentIndex * (largo + 40) }}
