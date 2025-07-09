@@ -34,7 +34,7 @@ export default {
       lg: '1024px',
       lgx: '1080px',
       xl: '1440px',
-      '2xl': '1536px',
+      '2xl': '1660px',
     },
   },
   plugins: [],

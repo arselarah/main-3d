@@ -117,13 +117,13 @@ export default function CarruselInicio() {
                 initial={{ x: 0 }}
                 animate={{ x: -currentIndex * (largo + 40) }}
                 transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                className='relative grid auto-cols-[90vw] grid-flow-col gap-10 md:auto-cols-[70vw] lg:auto-cols-[50vw]'
+                className='relative grid auto-cols-[90vw] grid-flow-col gap-10 md:auto-cols-[70vw] lg:auto-cols-[50vw] xl:auto-cols-[45vw]'
               >
                 {slides.map((slide, index) => (
                   <motion.div
                     key={index}
                     ref={diapositivaLargo}
-                    className='diapositiva group relative aspect-video overflow-hidden rounded-3xl'
+                    className='diapositiva group relative aspect-square overflow-hidden rounded-3xl lg:aspect-video'
                   >
                     <Image
                       src={slide.imagen}

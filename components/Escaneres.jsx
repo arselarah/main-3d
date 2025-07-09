@@ -69,7 +69,7 @@ export default function Escaneres() {
             </motion.h2>
           </div>
 
-          <div className='relative h-auto w-full p-4 lg:p-16' ref={ref}>
+          <div className='relative h-auto w-full p-0 lg:p-16' ref={ref}>
             <div className='relative flex h-full w-full flex-col flex-nowrap items-center justify-center gap-10 md:flex-row md:gap-10'>
               <div className='escaneres_contenedor h-full flex-1'>
                 {escaneres.slice(0, 3).map((escaner, index) => (
@@ -81,13 +81,13 @@ export default function Escaneres() {
                     onMouseLeave={() => {
                       setModal({ active: true, index })
                     }}
-                    className='escaneres_intem group relative flex w-full cursor-pointer flex-row items-stretch justify-start py-8 transition-all duration-1000 hover:translate-x-5'
+                    className='escaneres_intem group relative flex w-full cursor-pointer flex-col items-center justify-start gap-8 py-8 transition-all duration-1000 hover:translate-x-5 md:flex-row md:items-stretch md:gap-0'
                   >
-                    <div className='relative w-full md:w-1/2'>
+                    <div className='md-justify-start relative flex w-full flex-col items-center justify-center md:w-1/2 md:items-start'>
                       <h4 className='text-clamp-sm font-medium text-black md:max-w-[240px]'>
                         {escaner.titulo}
                       </h4>
-                      <p className='max-w-[457px] text-gris_oscuro md:max-w-[240px]'>
+                      <p className='max-w-[240px] text-center text-gris_oscuro md:text-left'>
                         {escaner.texto}
                       </p>
                     </div>
@@ -97,7 +97,7 @@ export default function Escaneres() {
                         src={escaner.imagen}
                         width={0}
                         height={0}
-                        className='relative aspect-video w-full object-contain transition-transform duration-500 group-hover:scale-0 lg:w-[75%]'
+                        className='relative aspect-square w-full object-contain transition-transform duration-500 group-hover:scale-0 md:aspect-video md:w-[75%]'
                       />
                       <div className='-tranlate-y-1/2 absolute top-1/2 h-6 w-6 scale-0 rounded-full bg-rojo opacity-0 transition-transform duration-500 group-hover:scale-100 group-hover:opacity-100' />
                     </div>
@@ -171,7 +171,7 @@ export default function Escaneres() {
                 {escaneres.slice(3, 6).map((escaner, index) => (
                   <div
                     key={index}
-                    className='escaneres_intem group relative flex w-full cursor-pointer flex-row-reverse items-stretch justify-start py-8 transition-all duration-1000 hover:translate-x-5'
+                    className='escaneres_intem group relative flex w-full cursor-pointer flex-col items-center justify-start gap-8 py-8 transition-all duration-1000 hover:translate-x-5 md:flex-row-reverse md:items-stretch md:gap-0'
                     onMouseEnter={() => {
                       setModal({ active: true, index: index + 3 })
                     }}
@@ -179,11 +179,11 @@ export default function Escaneres() {
                       setModal({ active: true, index: index + 3 })
                     }}
                   >
-                    <div className='relative w-full md:w-1/2'>
+                    <div className='md-justify-start relative flex w-full flex-col items-center justify-center md:w-1/2 md:items-start'>
                       <h4 className='text-clamp-sm font-medium text-black md:max-w-[240px]'>
                         {escaner.titulo}
                       </h4>
-                      <p className='text-gris_oscuro md:max-w-[240px]'>
+                      <p className='max-w-[240px] text-center text-gris_oscuro md:text-left'>
                         {escaner.texto}
                       </p>
                     </div>
@@ -194,7 +194,7 @@ export default function Escaneres() {
                         src={escaner.imagen}
                         width={100}
                         height={1000}
-                        className='relative aspect-video w-[75%] object-contain transition-transform duration-500 group-hover:scale-0'
+                        className='relative aspect-square w-full object-contain transition-transform duration-500 group-hover:scale-0 md:aspect-video md:w-[75%]'
                       />
                       <div className='-tranlate-y-1/2 absolute top-1/2 h-6 w-6 scale-0 rounded-full bg-rojo opacity-0 transition-transform duration-500 group-hover:scale-100 group-hover:opacity-100' />
                     </div>
