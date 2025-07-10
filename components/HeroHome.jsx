@@ -28,9 +28,26 @@ export default function HeroHome() {
           muted
           preload='auto'
           playsInline
-          className='pointer-events-none absolute inset-0 left-0 top-0 h-full w-full object-cover'
+          className='pointer-events-none absolute inset-0 left-0 top-0 hidden h-full w-full object-cover lg:block'
         >
           <source src='/assets/hero_index.mp4' type='video/mp4' />
+          {/* <track
+            src='/path/to/captions.vtt'
+            kind='subtitles'
+            srcLang='en'
+            label='English'
+          /> */}
+          Your browser does not support the video tag.
+        </video>
+        <video
+          autoPlay
+          loop
+          muted
+          preload='auto'
+          playsInline
+          className='pointer-events-none absolute inset-0 left-0 top-0 block h-full w-full object-cover lg:hidden'
+        >
+          <source src='/assets/hero_index_movil.mp4' type='video/mp4' />
           {/* <track
             src='/path/to/captions.vtt'
             kind='subtitles'
