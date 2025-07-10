@@ -38,5 +38,7 @@ export default {
       '2xl': '1660px',
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { MessageSquare, Minus, GripHorizontal, ChevronDown } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
 
 // Cambia aquí la URL base de la API
 const API_BASE = 'https://raggemini-production.up.railway.app';
@@ -309,7 +310,25 @@ export default function Chat() {
                             : 'bg-white text-gray-800 rounded-bl-none'
                         }`}
                       >
-                        {msg.text}
+                        {msg.from === 'bot' ? (
+                          <div className="prose prose-sm max-w-none prose-headings:text-gray-800 prose-strong:text-[#C72020] prose-strong:font-bold prose-ul:my-2 prose-li:my-1">
+                            <ReactMarkdown
+                              components={{
+                                strong: ({children}) => <strong className="font-bold text-[#C72020]">{children}</strong>,
+                                ul: ({children}) => <ul className="list-disc list-inside space-y-1 my-2 ml-2">{children}</ul>,
+                                li: ({children}) => <li className="text-sm leading-relaxed">{children}</li>,
+                                p: ({children}) => <p className="mb-2 last:mb-0 leading-relaxed">{children}</p>,
+                                h1: ({children}) => <h1 className="text-lg font-bold mb-2 text-gray-800">{children}</h1>,
+                                h2: ({children}) => <h2 className="text-base font-bold mb-2 text-gray-800">{children}</h2>,
+                                h3: ({children}) => <h3 className="text-sm font-bold mb-1 text-gray-800">{children}</h3>
+                              }}
+                            >
+                              {msg.text}
+                            </ReactMarkdown>
+                          </div>
+                        ) : (
+                          msg.text
+                        )}
                       </div>
                     </div>
                   ))}
