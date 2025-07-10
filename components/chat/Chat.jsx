@@ -3,7 +3,7 @@ import { MessageSquare, Minus, GripHorizontal, ChevronDown } from 'lucide-react'
 import ReactMarkdown from 'react-markdown';
 
 // Cambia aquí la URL base de la API
-const API_BASE = 'http://127.0.0.1:5000';
+const API_BASE = 'https://raggemini-production.up.railway.app';
 
 export default function Chat() {
   const [isOpen, setIsOpen] = useState(false);
