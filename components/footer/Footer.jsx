@@ -52,25 +52,25 @@ export default function Footer() {
               <div className='flex flex-col items-start'>
                 <Link
                   href={''}
-                  className='mb-4 inline-block text-clamp-lg font-semibold leading-none transition-all duration-300 hover:ml-4 lg:mb-8'
+                  className='mb-4 inline-block text-clamp-lg font-semibold leading-none transition-all duration-300 hover:translate-x-4 lg:mb-8'
                 >
                   Contacto
                 </Link>
                 <Link
                   href={''}
-                  className='mb-4 inline-block text-clamp-lg font-semibold leading-none transition-all duration-300 hover:ml-4 lg:mb-8'
+                  className='mb-4 inline-block text-clamp-lg font-semibold leading-none transition-all duration-300 hover:translate-x-4 lg:mb-8'
                 >
                   Servicios
                 </Link>
                 <Link
                   href={''}
-                  className='mb-4 inline-block text-clamp-lg font-semibold leading-none transition-all duration-300 hover:ml-4 lg:mb-8'
+                  className='mb-4 inline-block text-clamp-lg font-semibold leading-none transition-all duration-300 hover:translate-x-4 lg:mb-8'
                 >
                   Nosotros
                 </Link>
                 <Link
                   href={''}
-                  className='mb-4 inline-block text-clamp-lg font-semibold leading-none transition-all duration-300 hover:ml-4 lg:mb-8'
+                  className='mb-4 inline-block text-clamp-lg font-semibold leading-none transition-all duration-300 hover:translate-x-4 lg:mb-8'
                 >
                   Soporte
                 </Link>
