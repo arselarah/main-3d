@@ -42,7 +42,10 @@ export default function HorizontalDrag() {
           style={{ x }}
         >
           {banners.map((banner, index) => (
-            <div key={index} className='draggableSlider_item h-screen w-screen'>
+            <div
+              key={index}
+              className='draggableSlider_item relative h-screen w-screen'
+            >
               <motion.div
                 style={{ backgroundPositionX: backgroundParallaxArray[index] }}
                 className={`draggableSlider_content ${banner.fondo} relative h-full w-full bg-cover bg-no-repeat`}
@@ -82,6 +85,12 @@ export default function HorizontalDrag() {
                   </motion.div>
                 </div>
               </motion.div>
+              {/* <div className='absolute bottom-10 right-[10%] h-10 w-10'>
+                <div>
+                  <p className='uppercase text-white'>{banner.material1}</p>
+                  <p className='uppercase text-white'>{banner.material2}</p>
+                </div>
+              </div> */}
             </div>
           ))}
         </motion.div>

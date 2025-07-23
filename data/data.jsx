@@ -126,6 +126,8 @@ export const banners = [
     texto:
       'Con dos o cuatro cabezales de entre (Pellets o Filamento) puedes crear una pieza impresa hecha con dos o más materiales diferentes para proporcionarle propiedades físicas específicas.',
     fondo: 'impresora-uno',
+    // material1: 'TPU',
+    // material2: 'TPU',
   },
   {
     titulo: 'Impresión con Metal',
