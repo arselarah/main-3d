@@ -84,10 +84,10 @@ export default function Escaneres() {
                     className='escaneres_intem group relative flex w-full cursor-pointer flex-col items-center justify-start gap-8 py-8 transition-all duration-1000 hover:translate-x-5 md:flex-row md:items-stretch md:gap-0'
                   >
                     <div className='md-justify-start relative flex w-full flex-col items-center justify-center md:w-1/2 md:items-start'>
-                      <h4 className='text-clamp-sm font-medium text-black md:max-w-[240px]'>
+                      <h4 className='text-clamp-md font-medium leading-snug text-black md:max-w-[240px]'>
                         {escaner.titulo}
                       </h4>
-                      <p className='max-w-[240px] text-center text-gris_oscuro md:text-left'>
+                      <p className='max-w-[240px] text-center text-clamp-sm leading-snug text-gris_oscuro md:text-left'>
                         {escaner.texto}
                       </p>
                     </div>
@@ -180,10 +180,10 @@ export default function Escaneres() {
                     }}
                   >
                     <div className='md-justify-start relative flex w-full flex-col items-center justify-center md:w-1/2 md:items-start'>
-                      <h4 className='text-clamp-sm font-medium text-black md:max-w-[240px]'>
+                      <h4 className='text-clamp-md font-medium leading-snug text-black md:max-w-[240px]'>
                         {escaner.titulo}
                       </h4>
-                      <p className='max-w-[240px] text-center text-gris_oscuro md:text-left'>
+                      <p className='max-w-[240px] text-center text-clamp-sm leading-snug text-gris_oscuro md:text-left'>
                         {escaner.texto}
                       </p>
                     </div>

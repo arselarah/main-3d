@@ -113,16 +113,20 @@ export default function Impresoras() {
                   </div>
                   <div className='textContainer_caracteristicas flex flex-row flex-wrap gap-4 md:gap-8'>
                     <div className='mb:pb-8 w-full flex-initial pb-4 lg:pr-[50%]'>
-                      <h4 className='text-clamp-sm font-medium text-black'>
+                      <h4 className='text-clamp-md font-medium leading-snug text-black'>
                         {impresora.subtituloUno}
                       </h4>
-                      <p className='text-gris_oscuro'>{impresora.textoUno}</p>
+                      <p className='text-clamp-sm leading-snug text-gris_oscuro'>
+                        {impresora.textoUno}
+                      </p>
                     </div>
                     <div className='mb:pb-8 w-full flex-initial pb-4 md:pr-[50%]'>
-                      <h4 className='text-clamp-sm font-medium text-black'>
+                      <h4 className='text-clamp-md font-medium leading-snug text-black'>
                         {impresora.subtituloDos}
                       </h4>
-                      <p className='text-gris_oscuro'>{impresora.textoDos}</p>
+                      <p className='text-clamp-sm leading-snug text-gris_oscuro'>
+                        {impresora.textoDos}
+                      </p>
                     </div>
                     <div className='w-full'>
                       <div className='group relative mx-auto w-full max-w-[250px] rounded-full border-[1px] border-negro bg-negro py-2 transition-all duration-300 hover:bg-transparent md:mx-0'>

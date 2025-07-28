@@ -23,8 +23,8 @@ export default {
       fontSize: {
         'clamp-xl': 'clamp(1.8rem, 5vw, 5rem)',
         'clamp-lg': 'clamp(1.5rem, 2.5vw, 3rem)',
-        'clamp-md': 'clamp(1.2rem, 1.8vw, 1.8rem)',
-        'clamp-sm': 'clamp(0.85rem, 1.5vw, 1.3rem)',
+        'clamp-md': 'clamp(1.1rem, 1.6vw, 1.6rem)',
+        'clamp-sm': 'clamp(0.95rem, 1.4vw, 1.25rem)',
         'clamp-menu': 'clamp(0.65rem, .75vw, 1rem)',
       },
     },
@@ -38,7 +38,5 @@ export default {
       '2xl': '1660px',
     },
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
+  plugins: [require('@tailwindcss/typography')],
 }

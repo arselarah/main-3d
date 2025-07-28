@@ -61,7 +61,7 @@ export default function HorizontalDrag() {
                     <h2 className='border-b-[1px] border-white pb-4 text-clamp-lg font-medium leading-none text-white'>
                       {banner.titulo}
                     </h2>
-                    <p className='max-w-[350px] pt-6 text-clamp-sm font-light text-white md:max-w-[520px] lg:max-w-[640px]'>
+                    <p className='max-w-[350px] pt-6 text-clamp-sm font-light leading-snug text-white md:max-w-[520px] lg:max-w-[640px]'>
                       {banner.textoPartes
                         ? banner.textoPartes.map((parte, i) =>
                             parte === 'Pellets' ? (

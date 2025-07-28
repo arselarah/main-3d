@@ -133,10 +133,10 @@ export default function CarruselInicio() {
                       className='h-full w-full object-cover transition-all duration-500 group-hover:scale-105'
                     />
                     <div className='absolute inset-0 left-0 top-0 flex flex-col items-center justify-end bg-negro bg-opacity-55 p-6 lg:p-8'>
-                      <h3 className='mx-auto max-w-[840px] text-center text-clamp-md font-medium capitalize leading-none text-white'>
+                      <h3 className='mx-auto max-w-[840px] text-center text-clamp-md font-medium capitalize leading-snug text-white'>
                         {slide.titulo}
                       </h3>
-                      <p className='pb-[1vw] pt-[1vw] text-center text-clamp-sm font-light text-white lg:max-w-[640px] lg:pb-[2]'>
+                      <p className='pb-[1vw] pt-[1vw] text-center text-clamp-sm font-light leading-snug text-white lg:max-w-[640px] lg:pb-[2]'>
                         {slide.subtitulo}
                       </p>
                       <div
