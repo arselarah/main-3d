@@ -17,14 +17,14 @@ const slides = [
     titulo: 'Servicio de Impresión 3D',
     subtitulo:
       'Cotiza con nosotros tu pieza, ya sea para enfoque industrial o creativo. Nosotros nos encargamos de asesorarte para que tu proyecto resulte de la mejor manera.',
-    logo: 'clonDigital',
+    logo: '',
   },
   {
     imagen: '/assets/Otros_Servicios/servicio_validacion.webp',
     titulo: 'Servicio de Validación de Material',
     subtitulo:
       'Crea una pieza con tu propio material, lo realizamos a través de una validación. Hemos validado más de 50 materiales diferentes ya disponibles en pellets que no se encuentran en formato de filamento.',
-    logo: 'clonDigital',
+    logo: '',
   },
   {
     imagen: '/assets/Otros_Servicios/servicio_escaneo.webp',

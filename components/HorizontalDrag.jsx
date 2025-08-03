@@ -50,7 +50,7 @@ export default function HorizontalDrag() {
                 style={{ backgroundPositionX: backgroundParallaxArray[index] }}
                 className={`draggableSlider_content ${banner.fondo} relative h-full w-full bg-cover bg-no-repeat`}
               >
-                <div className='absolute inset-0 left-0 top-0 bg-black bg-opacity-45'>
+                <div className='absolute inset-0 left-0 top-0 bg-black bg-opacity-35'>
                   <motion.div
                     initial={{ opacity: 0, y: '100px' }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -61,7 +61,7 @@ export default function HorizontalDrag() {
                     <h2 className='border-b-[1px] border-white pb-4 text-clamp-lg font-medium leading-none text-white'>
                       {banner.titulo}
                     </h2>
-                    <p className='max-w-[350px] pt-6 text-clamp-sm font-light leading-snug text-white md:max-w-[520px] lg:max-w-[640px]'>
+                    <p className='max-w-[350px] pt-6 text-clamp-md font-light leading-snug text-white md:max-w-[520px] lg:max-w-[640px]'>
                       {banner.textoPartes
                         ? banner.textoPartes.map((parte, i) =>
                             parte === 'Pellets' ? (
