@@ -9,15 +9,15 @@ const poppins = Poppins({
 const posts = [
   {
     fondo: 'postUno',
-    titulo: 'CURSO MAIN 3D',
+    titulo: 'El Colegio Miguel Ángel da el salto al 3D',
     texto:
-      'Las competencias clave del futuro las están desarrollando niños, jóvenes y adolescentes, dejando huella en su creatividad y aprendizaje de robótica.',
+      'La impresión 3D ha revolucionado el sistema educativo proporcionando las facilidades de aprendizaje a los alumnos de primaria y secundaria.',
   },
   {
     fondo: 'postDos',
-    titulo: 'MAIN 3D, PARTNER OFICIAL DE IT3D GROUP',
+    titulo: 'MAIN 3D Patrocinador del 1er Seminario de Certificaciones de obra',
     texto:
-      'Colaboración importante para distribuir soluciones 3D a empresas y profesionales en México, de la mano con tecnologías avanzadas a nivel global.',
+      'Se expusieron los beneficios de la tecnología de construcción COSMOS 3D, además de diversas tecnologías de impresión 3D y escaneo de ingeniería inversa.',
   },
   {
     fondo: 'postTres',
