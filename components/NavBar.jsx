@@ -11,15 +11,106 @@ const poppins = Poppins({
 
 export default function NavBar() {
   const links = [
-    'Impresoras 3D',
-    'Escáneres 3D',
-    'AR-VR',
-    'Servicios',
-    'Accesorios',
-    'Consumibles',
-    'Nosotros',
-    'Blog',
-    'Soporte',
+    {
+      name: 'Impresoras 3D',
+      href: '/impresoras3d',
+      megaMenu: true,
+      submenu: [
+        {
+          name: 'Impresoras FDM',
+          href: '/impresoras3d/fdm',
+          image: '/assets/menu/impresoras-fdm.jpg',
+        },
+        {
+          name: 'Impresoras de resina',
+          href: '/impresoras3d/resina',
+          image: '/assets/menu/impresoras-resina.jpg',
+        },
+        {
+          name: 'Impresoras industriales',
+          href: '/impresoras3d/industriales',
+          image: '/assets/menu/impresoras-industriales.jpg',
+        },
+        {
+          name: 'Impresoras industriales',
+          href: '/impresoras3d/industriales',
+          image: '/assets/menu/impresoras-industriales.jpg',
+        },
+      ],
+    },
+    {
+      name: 'Escáneres 3D',
+      href: '/escaneres3d',
+      megaMenu: true,
+      submenu: [
+        {
+          name: 'Escáneres portátiles',
+          href: '/escaneres3d/portatiles',
+          image: '/assets/menu/escaneres-portatiles.jpg',
+        },
+        {
+          name: 'Escáneres profesionales',
+          href: '/escaneres3d/profesionales',
+          image: '/assets/menu/escaneres-profesionales.jpg',
+        },
+      ],
+    },
+    {
+      name: 'AR/VR',
+      href: '/ar-vr',
+    },
+    {
+      name: 'Servicios',
+      href: '/servicios',
+      submenu: [
+        {
+          name: 'Impresión 3D',
+          href: '/servicios/impresion-3d',
+        },
+        {
+          name: 'Escaneo 3D',
+          href: '/servicios/escaneo-3d',
+        },
+        {
+          name: 'Ingeniería',
+          href: '/servicios/ingenieria',
+        },
+      ],
+    },
+    {
+      name: 'Accesorios',
+      href: '/accesorios',
+      submenu: [
+        {
+          name: 'Filamentos',
+          href: '/accesorios/filamentos',
+        },
+        {
+          name: 'Resinas',
+          href: '/accesorios/resinas',
+        },
+        {
+          name: 'Refacciones',
+          href: '/accesorios/refacciones',
+        },
+      ],
+    },
+    {
+      name: 'Consumibles',
+      href: '/consumibles',
+    },
+    {
+      name: 'Nosotros',
+      href: '/nosotros',
+    },
+    {
+      name: 'Blog',
+      href: '/blog',
+    },
+    {
+      name: 'Soporte',
+      href: '/soporte',
+    },
   ]
 
   const [headerBackground, setHeaderBackground] = useState('bg-white')
@@ -117,45 +208,88 @@ export default function NavBar() {
                 <div className={`h-[2px] w-10 ${burgerBackground}`}></div>
               </button>
             </div>
-            <nav className='hidden w-auto flex-row justify-center gap-8 px-[2vw] xl:flex'>
-              {[
-                'Impresoras 3D',
-                'Escáneres 3D',
-                'AR/VR',
-                'Servicios',
-                'Accesorios',
-                'Consumibles',
-                'Nosotros',
-                'Blog',
-                'Soporte',
-              ].map((vinculo, id) => {
-                //const width = vinculo.length * 11
-                const href = `/${vinculo.toLowerCase().replace(/\s+/g, '')}`
-                return (
-                  <div
-                    className='group relative flex h-10 w-full flex-col justify-center overflow-clip px-1'
-                    key={id}
-                    // style={{
-                    //   width: `${width}px`,
-                    // }}
-                  >
-                    <div className='relative h-10 w-full'>
-                      <Link
-                        href={href}
-                        className={`text-clamp-menu font-light ${textColor} relative inset-0 left-0 top-0 flex h-10 w-full flex-wrap items-center justify-center overflow-hidden`}
-                      >
-                        <div className='relative flex h-10 w-full items-center justify-center text-center tracking-wider transition-all duration-500 ease-[cubic-bezier(.57,.21,.69,1.25)] group-hover:-translate-y-full group-hover:scale-90'>
-                          {vinculo}
-                        </div>
-                        <div className='relative flex h-10 w-full scale-90 items-center justify-center text-center font-semibold transition-all duration-500 ease-[cubic-bezier(.57,.21,.69,1.25)] group-hover:-translate-y-full group-hover:scale-100'>
-                          {vinculo}
-                        </div>
-                      </Link>
-                    </div>
+            {links.map((item, id) => {
+              const hasSubmenu = item.submenu && item.submenu.length > 0
+
+              return (
+                <div
+                  key={id}
+                  className='group relative flex h-10 flex-col justify-center'
+                >
+                  {/* ITEM PRINCIPAL */}
+                  <div className='relative h-10'>
+                    <Link
+                      href={item.href}
+                      className={`text-clamp-menu font-light ${textColor} relative flex h-10 w-full items-center justify-center whitespace-nowrap px-1 tracking-wider`}
+                    >
+                      {item.name}
+
+                      {hasSubmenu && (
+                        <span className='ml-2 text-[10px] transition-transform duration-300 group-hover:rotate-180'>
+                          ▼
+                        </span>
+                      )}
+                    </Link>
                   </div>
-                )
-              })}
-            </nav>
+
+                  {/* MEGA MENU */}
+                  {item.megaMenu && hasSubmenu && (
+                    <div className='invisible fixed left-0 top-16 z-50 w-full translate-y-2 bg-white opacity-0 shadow-xl transition-all duration-300 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100'>
+                      <div className='mx-auto max-w-[1600px] px-8 py-8'>
+                        <div className='mb-6'>
+                          <Link
+                            href={item.href}
+                            className='text-sm font-medium uppercase tracking-widest text-negro'
+                          >
+                            {item.name}
+                          </Link>
+                        </div>
+
+                        <div className='grid grid-cols-3 gap-6'>
+                          {item.submenu.map((submenuItem, submenuId) => (
+                            <Link
+                              key={submenuId}
+                              href={submenuItem.href}
+                              className='group/card overflow-hidden rounded-xl bg-gray-50'
+                            >
+                              <div className='relative aspect-[16/9] overflow-hidden'>
+                                <Image
+                                  src={submenuItem.image}
+                                  alt={submenuItem.name}
+                                  fill
+                                  className='object-cover transition-transform duration-500 group-hover/card:scale-105'
+                                />
+                              </div>
+
+                              <div className='p-4'>
+                                <h3 className='text-sm font-medium text-negro'>
+                                  {submenuItem.name}
+                                </h3>
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* DROPDOWN NORMAL */}
+                  {!item.megaMenu && hasSubmenu && (
+                    <div className='invisible absolute left-1/2 top-full z-50 min-w-[220px] -translate-x-1/2 translate-y-2 rounded-xl bg-white py-3 opacity-0 shadow-xl transition-all duration-300 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100'>
+                      {item.submenu.map((submenuItem, submenuId) => (
+                        <Link
+                          key={submenuId}
+                          href={submenuItem.href}
+                          className='block px-5 py-2.5 text-sm font-light text-negro transition-colors duration-200 hover:bg-gray-100'
+                        >
+                          {submenuItem.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )
+            })}
             <div className='cta__header group relative hidden h-10 min-w-[200px] flex-col justify-center overflow-hidden rounded-full bg-rojo md:flex'>
               <Link
                 href={'/contacto'}
