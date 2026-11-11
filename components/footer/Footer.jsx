@@ -33,10 +33,10 @@ export default function Footer() {
               </div>
               <div className='flex flex-col'>
                 <Link
-                  href={'mailto:contacto3d@recato.mx'}
+                  href={'mailto:contacto@main-3d.com'}
                   className='mb-4 inline-block hover:underline'
                 >
-                  contacto3d@recato.mx
+                  contacto@main-3d.com
                 </Link>
                 <Link
                   href={
@@ -44,7 +44,7 @@ export default function Footer() {
                   }
                   className='inline-block hover:underline'
                 >
-                  +52 871 787 8715
+                  +52 871 494 3519
                 </Link>
               </div>
             </div>
